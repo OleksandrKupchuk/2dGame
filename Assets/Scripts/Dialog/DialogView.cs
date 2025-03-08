@@ -10,7 +10,6 @@ public class DialogView : MonoBehaviour {
     private RectTransform _backgroundRectTransform;
     private RectTransform _speakerRectTransform;
     private VerticalLayoutGroup _backgroundVerticalLayoutGroup;
-    private List<DialogData> _dialogues;
 
     [SerializeField]
     private DialogController _dialogController;
@@ -67,7 +66,6 @@ public class DialogView : MonoBehaviour {
     }
 
     public void OpenDialogues(string speakerName, List<DialogData> dialogues) {
-        _dialogues = dialogues;
         _speakerName.text = speakerName;
         _background.SetActive(true);
         ShowDialogues(dialogues);

@@ -54,7 +54,7 @@ public class DialogController : ScriptableObject {
         _dialogData = dialogData;
         _paragraphCounter = 0;
 
-        if (!_dialogData.IsHaveToSaySomething) {
+        if (!_dialogData.IsNeedNpcWords) {
             TryExecuteDialogActions(_dialogData);
             return;
         }

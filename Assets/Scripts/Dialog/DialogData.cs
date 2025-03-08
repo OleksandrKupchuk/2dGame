@@ -33,7 +33,6 @@ public class DialogData {
     public string PlayerWords => _playerWords;
     public bool IsNeedNpcWords => _isNeedNpcWords;
     public List<string> NpcWords => _npcWords;
-    public bool IsHaveToSaySomething => _isNeedNpcWords;
     public bool IsNeedQuest => _isNeedQuest;
     public Quest Quest => _quest;
     public string PlayerWordsAfterQuestComplete => _playerWordsAfterQuestComplete;
