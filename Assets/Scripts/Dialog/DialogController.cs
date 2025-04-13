@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogController")]
 public class DialogController : ScriptableObject {
-    private Dialogues _dialogues;
+    private NpcDialogues _dialogues;
     private DialogData _dialogData;
     private int _paragraphCounter;
     private List<string> _paragraphs;
@@ -16,7 +16,7 @@ public class DialogController : ScriptableObject {
     public event Action OnDialoguesClosed;
     public event Action<string, bool> OnParagraphShowed;
 
-    public void OpenDialogues(string speakerName, Dialogues dialogues) {
+    public void OpenDialogues(string speakerName, NpcDialogues dialogues) {
         _dialogues = dialogues;
         OnDialoguesOpened?.Invoke(speakerName, GetUpdatedDialogues());
     }

@@ -10,18 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: Test_uk-UA
+  m_Name: Trader Dialog 0_en-US
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: uk-UA
-  m_SharedData: {fileID: 11400000, guid: 9674bfd75b7335648925d61d9c8db00e, type: 2}
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: e4d8ed4b68890f346ae4484efbe17ef8, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData:
-  - m_Id: 11064729600
-    m_Localized: "\u0413\u0440\u0430"
-    m_Metadata:
-      m_Items: []
+  m_TableData: []
   references:
     version: 2
     RefIds: []

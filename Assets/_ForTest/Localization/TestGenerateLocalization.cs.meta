@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 47831a9a2b4d9324da7b39c5c01b7c66
+guid: 7d18856ca0e5d46408afea9703fd1f3c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - _questSystem: {fileID: 11400000, guid: 103abdf9ad0489b4cafeed509210c50f, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

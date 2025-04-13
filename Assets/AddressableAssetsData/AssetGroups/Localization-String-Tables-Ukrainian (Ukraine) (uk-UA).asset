@@ -17,12 +17,17 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: d3547294425560e4bbcdd6322e5ae695
   m_SerializeEntries:
-  - m_GUID: 68296574ae26790468b427609e3d3781
-    m_Address: Test_uk-UA
+  - m_GUID: 7382c1ce0d9f7ef43811eeb7639d3331
+    m_Address: Trader Dialog 1_uk-UA
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-uk-UA
-    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a10273fa0652d2741b5f2cabfae61100
+    m_Address: Trader Dialog 0_uk-UA
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-uk-UA
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: da2b3f76fd4f0ba4092b861fd39414e0, type: 2}

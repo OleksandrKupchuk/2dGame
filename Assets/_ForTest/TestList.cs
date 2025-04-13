@@ -7,4 +7,5 @@ public class TestList : MonoBehaviour {
     private List<TestA> _nestedList;
     [SerializeField, ReadOnly]
     private bool _isExpired;
+    public TestDialogues testDialogues;
 }

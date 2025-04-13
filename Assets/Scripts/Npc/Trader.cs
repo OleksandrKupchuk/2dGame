@@ -4,7 +4,7 @@ public class Trader : Npc {
     [SerializeField]
     private DialogController _dialogController;
     [SerializeField]
-    private Dialogues _dialogues;
+    private NpcDialogues _dialogues;
     [SerializeField]
     private int _commissionPercent;
 

@@ -38,7 +38,7 @@ public class DialogDataPropertyDrawer : PropertyDrawer {
 
         EditorGUI.BeginProperty(position, label, property);
 
-        Rect _foldoutPosition = new Rect(PADDING_LEFT, 0, position.size.x, _foldoutHeight);
+        Rect _foldoutPosition = new Rect(position.x, position.y, position.size.x, _foldoutHeight);
         property.isExpanded = EditorGUI.Foldout(_foldoutPosition, property.isExpanded, label);
 
         if (!property.isExpanded) {
@@ -302,7 +302,7 @@ public class DialogDataPropertyDrawer : PropertyDrawer {
         _isNeedDialogActionsProperty = property.FindPropertyRelative("_isNeedDialogActions");
         _dialogActionsProperty = property.FindPropertyRelative("_dialogActions");
 
-        float _height = 0;
+        float _height = EditorGUIUtility.singleLineHeight;
 
         if (!property.isExpanded) {
             return _foldoutHeight + EditorGUIUtility.standardVerticalSpacing;

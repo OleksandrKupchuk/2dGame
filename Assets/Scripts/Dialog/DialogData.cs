@@ -4,9 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class DialogData {
     [SerializeField]
-    public bool _isDialogExpired;
+    private bool _isDialogExpired;
     [SerializeField]
-    public bool _isHaveConditionsToUnlockDialog;
+    private bool _isHaveConditionsToUnlockDialog;
     [SerializeField]
     private List<Condition> _conditions;
     [SerializeField]
