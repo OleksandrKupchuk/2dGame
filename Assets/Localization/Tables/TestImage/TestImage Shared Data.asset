@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TestImage Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TestImage
+  m_TableCollectionNameGuidString: 71d2fa342e16c0f47a8df8f16e6eb1e2
+  m_Entries:
+  - m_Id: 59747311616
+    m_Key: image
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 7025450835987398670
+  m_KeyGenerator:
+    rid: 7025450835987398669
+  references:
+    version: 2
+    RefIds:
+    - rid: 7025450835987398669
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1744698008951
+    - rid: 7025450835987398670
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 59747311616
+          m_TableCodes:
+          - en-US
+          - uk-UA
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

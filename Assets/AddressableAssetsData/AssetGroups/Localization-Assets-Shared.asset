@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0376f7c587d86a645a2e3f09400b76f6
   m_SerializeEntries:
+  - m_GUID: 47d892f6b1bbfb34597aba7e12fb2d58
+    m_Address: Assets/Localization/Tables/SettingsMenu/SettingsMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71d2fa342e16c0f47a8df8f16e6eb1e2
+    m_Address: Assets/Localization/Tables/TestImage/TestImage Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aa73e08a7a0993a42b4d76845a3cf4ab
     m_Address: Assets/Localization/Tables/Npc/Dialogues/Trader/Dialog 1/Trader Dialog
       1 Shared Data.asset

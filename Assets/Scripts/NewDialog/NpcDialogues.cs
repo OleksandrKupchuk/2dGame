@@ -11,12 +11,13 @@ public class NpcDialogues : ScriptableObject {
     public List<DialogData> DialoguesData => _dialoguesData;
 
     //public void OnEnable() {
-    //    if(DialoguesData == null) {
+    //    if (DialoguesData == null) {
     //        return;
     //    }
 
     //    foreach (var dialog in DialoguesData) {
     //        dialog.IsDialogExpired = false;
     //    }
+
     //}
 }

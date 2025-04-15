@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 9c4176574a5414b44828c4f678ad166d
   m_SerializeEntries:
+  - m_GUID: 8123f4969801d4e46b27f5e109baa60f
+    m_Address: SettingsMenu_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8616018c3a91ce24dbadcac539484cd7
     m_Address: Trader Dialog 0_en-US
     m_ReadOnly: 1
