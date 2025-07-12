@@ -15,7 +15,6 @@ MonoBehaviour:
   type: 1
   valueType: 0
   value: 5
-  damageMin: 5
-  damageMax: 12
-  duration: 20
+  valueMin: 0
+  valueMax: 0
   icon: {fileID: 21300000, guid: bf1aabd8052f97f41896842c39766751, type: 3}

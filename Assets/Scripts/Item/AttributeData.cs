@@ -5,8 +5,8 @@ public class AttributeData : ScriptableObject {
     public AttributeType type = new AttributeType();
     public ValueType valueType = new ValueType();
     public float value;
-    public float damageMin;
-    public float damageMax;
+    public float valueMin;
+    public float valueMax;
     public Sprite icon;
 }
 

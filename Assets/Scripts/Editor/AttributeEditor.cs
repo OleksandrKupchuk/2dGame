@@ -14,8 +14,8 @@ public class AttributeEditor : Editor {
         _attributeTypeProperty = serializedObject.FindProperty("type");
         _valueTypeProperty = serializedObject.FindProperty("valueType");
         _valueProperty = serializedObject.FindProperty("value");
-        _damageMinProperty = serializedObject.FindProperty("DamageMin");
-        _damageMaxProperty = serializedObject.FindProperty("DamageMax");
+        _damageMinProperty = serializedObject.FindProperty("valueMin");
+        _damageMaxProperty = serializedObject.FindProperty("valueMax");
         _iconProperty = serializedObject.FindProperty("icon");
 
         serializedObject.Update();

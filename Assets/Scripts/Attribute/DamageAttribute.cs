@@ -26,8 +26,8 @@ public class DamageAttribute : Attribute {
     protected override void AddIntegerAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Integer) {
-                _valueIntegerMin += attribute.damageMin;
-                _valueIntegerMax += attribute.damageMax;
+                _valueIntegerMin += attribute.valueMin;
+                _valueIntegerMax += attribute.valueMax;
             }
         }
     }
@@ -44,8 +44,8 @@ public class DamageAttribute : Attribute {
     protected override void SubtractIntegerAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Integer) {
-                _valueIntegerMin -= attribute.damageMin;
-                _valueIntegerMax -= attribute.damageMax;
+                _valueIntegerMin -= attribute.valueMin;
+                _valueIntegerMax -= attribute.valueMax;
             }
         }
     }
@@ -67,8 +67,8 @@ public class DamageAttribute : Attribute {
     protected override void AddTemporaryAttribute(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType) {
-                _valueTemporaryMin += attribute.damageMin;
-                _valueTemporaryMax += attribute.damageMax;
+                _valueTemporaryMin += attribute.valueMin;
+                _valueTemporaryMax += attribute.valueMax;
                 CheckAttributeChange(itemData);
                 return;
             }
@@ -78,8 +78,8 @@ public class DamageAttribute : Attribute {
     protected override void SubtractTemporaryAttribute(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType) {
-                _valueTemporaryMin -= attribute.damageMin;
-                _valueTemporaryMax -= attribute.damageMax;
+                _valueTemporaryMin -= attribute.valueMin;
+                _valueTemporaryMax -= attribute.valueMax;
                 CheckAttributeChange(itemData);
                 return;
             }
