@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47831a9a2b4d9324da7b39c5c01b7c66, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f1ee9c515bb2934ab127efbcd0b5249, type: 3}
   m_Name: NewDialogs
   m_EditorClassIdentifier: 
   _npcName: Trader
@@ -17,11 +17,9 @@ MonoBehaviour:
   - _isDialogExpired: 0
     _isHaveConditionsToUnlockDialog: 0
     _conditions: []
-    _playerWords: "\u0432\u0430\u043F\u0432\u0430\u043F\u0432\u0430\u043F\u0432\u0430\u043F"
-    _isNeedNpcWords: 1
-    _npcWords:
-    - sentence 14
-    - sentence 13
+    _playerWords: quest 1
+    _isNeedNpcWords: 0
+    _npcWords: []
     _isNeedQuest: 0
     _quest: {fileID: 0}
     _playerWordsAfterQuestComplete: 
@@ -31,16 +29,14 @@ MonoBehaviour:
   - _isDialogExpired: 0
     _isHaveConditionsToUnlockDialog: 0
     _conditions: []
-    _playerWords: second quest
+    _playerWords: quest 2
     _isNeedNpcWords: 1
     _npcWords:
-    - i have a job
-    - for you
-    - take it
-    _isNeedQuest: 1
+    - senyence
+    - senyence 2
+    _isNeedQuest: 0
     _quest: {fileID: 0}
-    _playerWordsAfterQuestComplete: here
-    _npcWordsAfterQuestComplete:
-    - thanks
+    _playerWordsAfterQuestComplete: 
+    _npcWordsAfterQuestComplete: []
     _isNeedDialogActions: 0
     _dialogActions: []

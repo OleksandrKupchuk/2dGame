@@ -59,8 +59,8 @@ public class NpcDialoguesPropertyDrawer : Editor {
     }
 
     private void CreateLocalizationTable(int index) {
-        string _subdirectory = _mainDirectory + $"Dialog {index}";
-        string _tableName = $"{_npcNameProperty.stringValue} Dialog {index}";
+        string _subdirectory = _mainDirectory + $"Dialog{index}";
+        string _tableName = $"{_npcNameProperty.stringValue}Dialog{index}";
         _localizationTable = new LocalizationTable(_subdirectory, _tableName);
     }
 
@@ -90,7 +90,7 @@ public class NpcDialoguesPropertyDrawer : Editor {
         int _count = property.arraySize;
 
         for (int i = 0; i < _count; i++) {
-            localizationTable.AddEntry($"{key} {i}", property.GetArrayElementAtIndex(i).stringValue);
+            localizationTable.AddEntry($"{key}{i}", property.GetArrayElementAtIndex(i).stringValue);
         }
     }
 }

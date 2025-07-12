@@ -91,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 2009860156243050292}
+  _border: {fileID: 5239414622530289589}
+  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
+  _activeBorder: {fileID: 21300000, guid: b9b05ad1d692f23429022efc0fe145d6, type: 3}
 --- !u!114 &8466255022052087603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +198,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 9091089145789856485}
   _inventoryController: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
+  _border: {fileID: 5239414622530289589}
+  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
+  _activeBorder: {fileID: 21300000, guid: b9b05ad1d692f23429022efc0fe145d6, type: 3}
   <SlotView>k__BackingField: {fileID: 7304929735555872803}
   isDropZone: 0
 --- !u!225 &9091089145789856485

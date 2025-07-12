@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,8 @@ using UnityEngine.Localization.Settings;
 public class LanguageSelection : MonoBehaviour {
     [SerializeField]
     private TMP_Dropdown _dropdown;
+
+    public TMP_Dropdown Dropdown { get => _dropdown; }   
 
     private void Start() {
         StartCoroutine(SetAvailableLocalizationForDropdown());
@@ -27,8 +28,9 @@ public class LanguageSelection : MonoBehaviour {
         _dropdown.AddOptions(_localizations);
     }
 
-    private IEnumerator SetLocale(int index) {
+    public IEnumerator SetLocale(int index) {
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+        _dropdown.value = index;
     }
 }

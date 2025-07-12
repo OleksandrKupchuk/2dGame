@@ -179,6 +179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4576197058235017556}
   _inventoryController: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
+  _border: {fileID: 4464416888167888382}
+  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
   <SlotView>k__BackingField: {fileID: 2151796629151091975}
   isDropZone: 0
 --- !u!1 &5881482881056528917

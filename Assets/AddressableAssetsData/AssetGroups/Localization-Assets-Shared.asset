@@ -27,15 +27,15 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aa73e08a7a0993a42b4d76845a3cf4ab
-    m_Address: Assets/Localization/Tables/Npc/Dialogues/Trader/Dialog 1/Trader Dialog
-      1 Shared Data.asset
+  - m_GUID: d709599cfb386e242b78f5fd651c2657
+    m_Address: Assets/Localization/Tables/Npc/NpcDialogues/Trader/Dialog1/TraderDialog1
+      Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e4d8ed4b68890f346ae4484efbe17ef8
-    m_Address: Assets/Localization/Tables/Npc/Dialogues/Trader/Dialog 0/Trader Dialog
-      0 Shared Data.asset
+  - m_GUID: e6b48a1c62940fe4698d08078acc6b70
+    m_Address: Assets/Localization/Tables/Npc/NpcDialogues/Trader/Dialog0/TraderDialog0
+      Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -17,6 +17,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public bool isDropZone = false;
 
+    public static event Action OnDragStarted;
     public static event Action<ItemData> OnItemTaken;
     public static event Action OnItemPutted;
 
@@ -30,6 +31,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         transform.SetParent(transform.root);
         _canvasGroup.blocksRaycasts = false;
         OnItemTaken?.Invoke(SlotView.ItemData);
+        OnDragStarted?.Invoke();
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -45,7 +47,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         else {
             ResetPowition();
         }
-
     }
 
     private void ResetPowition() {

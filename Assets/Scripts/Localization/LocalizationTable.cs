@@ -40,7 +40,7 @@ public class LocalizationTable {
         string _filePath = _directory + "/" + _tableName + _fileFormat;
 
         if (File.Exists(_filePath)) {
-            Debug.LogWarning($"Table name '{_tableName}' is exist in folder '{_directory}'");
+            Debug.LogWarning($"Table name '{_tableName}' is exist in folder '{_directory}', you can not have two tables with same name");
         }
         else {
             LocalizationEditorSettings.CreateStringTableCollection(_tableName, _directory);

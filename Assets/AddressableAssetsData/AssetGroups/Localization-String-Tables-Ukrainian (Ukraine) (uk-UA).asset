@@ -23,14 +23,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-uk-UA
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7382c1ce0d9f7ef43811eeb7639d3331
-    m_Address: Trader Dialog 1_uk-UA
+  - m_GUID: d79ffb14edf653a4dae6ef89cb0dcde2
+    m_Address: TraderDialog1_uk-UA
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-uk-UA
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a10273fa0652d2741b5f2cabfae61100
-    m_Address: Trader Dialog 0_uk-UA
+  - m_GUID: da928e36dd34a0746a61bca315b3ef9e
+    m_Address: TraderDialog0_uk-UA
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-uk-UA
