@@ -18,8 +18,8 @@ TagManager:
   - PlayerArm
   - Enemy
   - Item
-  - 
-  - 
+  - EnemyLeg
+  - Npc
   - 
   - 
   - 

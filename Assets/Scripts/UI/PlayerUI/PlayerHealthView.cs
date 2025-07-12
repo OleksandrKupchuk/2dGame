@@ -2,35 +2,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealthView : MonoBehaviour {
-    private Player _player;
-
     [SerializeField]
     private Text _healthValue;
     [SerializeField]
     private Image _healthBar;
+    [SerializeField]
+    private PlayerHealthController _healthController;
 
-    private void OnEnable() {
-        EventManager.PutOnItem += UpdateHealthBar;
-        EventManager.TakeAwayItem += UpdateHealthBar;
-        EventManager.UseItem += UpdateHealthBar;
+    private void Awake() {
         EventManager.ActionItemOver += UpdateHealthBar;
+        EventManager.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDestroy() {
-        EventManager.PutOnItem -= UpdateHealthBar;
-        EventManager.TakeAwayItem -= UpdateHealthBar;
-        EventManager.UseItem -= UpdateHealthBar;
         EventManager.ActionItemOver -= UpdateHealthBar;
+        EventManager.OnHealthChanged -= UpdateHealthBar;
     }
 
-    private void Awake() {
-        _player = FindObjectOfType<Player>();
-    }
-
-    public void UpdateHealthBar(Item item) {
-        float _value = _player.CurrentHealth / _player.PlayerAttributes.Health;
+    public void UpdateHealthBar(ItemData item) {
+        float _value = _healthController.CurrentHealth / _healthController.MaxHealth;
         _healthBar.fillAmount = _value;
-        _healthValue.text = string.Format("{0:0.0}", _player.CurrentHealth) + "/" + 
-            string.Format("{0:0.0}", _player.PlayerAttributes.Health);
+        _healthValue.text = string.Format("{0:0.0}", _healthController.CurrentHealth) + "/" +
+            string.Format("{0:0.0}", _healthController.MaxHealth);
+    }
+
+    public void UpdateHealthBar() {
+        float _value = _healthController.CurrentHealth / _healthController.MaxHealth;
+        _healthBar.fillAmount = _value;
+        _healthValue.text = string.Format("{0:0.0}", _healthController.CurrentHealth) + "/" +
+            string.Format("{0:0.0}", _healthController.MaxHealth);
     }
 }

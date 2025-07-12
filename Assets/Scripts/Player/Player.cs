@@ -1,68 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Player : Character {
-    private List<Damage> _objectsAttack = new List<Damage>();
-    private RaycastHit2D _raycastHit;
-    private float _deafaultGravityScale;
-    private float _timeRegenerationHealth;
-    private float _timerHealthRegeneration;
-    private AnimationEvent _attackEvent = new AnimationEvent();
+public class Player : MonoBehaviour {
+    private IInteracvite _interactive;
     private PlayerHealthView _playerHealthView;
-    private float _currentHealth;
 
     [SerializeField]
-    private InputActionReference _movementInputAction;
-    [SerializeField]
-    private InputActionReference _shotInputAction;
-    [SerializeField]
-    private InputActionReference _jumpInputAction;
-    [SerializeField]
-    private InvulnerabilityAnimation _invulnerableStatus;
-    [SerializeField]
-    private BoxCollider2D _boxCollider;
-    [SerializeField]
-    private float _distanceRaycastHit;
-    [SerializeField]
-    private LayerMask _groundLayer;
+    private Inventory _inventory;
     [SerializeField]
     private List<Collider2D> _collidersForIgnored = new List<Collider2D>();
     [SerializeField]
-    private PlayerSword _playerSword;
+    private float _delayBllinkAnimationInSeconds;
     [SerializeField]
-    protected int _frameRateInAttackAnimationForEnableCollider;
+    private List<SpriteRenderer> _sprites = new List<SpriteRenderer>();
     [SerializeField]
-    protected int _frameRateInAttackAnimationForDisableCollider;
-    [SerializeField]
-    protected AnimationClip _attackAnimation;
+    public PlayerHealthController _healthController;
 
-    public float CurrentHealth { get => _currentHealth = _currentHealth > PlayerAttributes.Health ? PlayerAttributes.Health : _currentHealth; }
-    public bool IsDead { get => CurrentHealth <= 0; }
-    public bool IsLookingLeft { get => transform.localScale.x > 0; }
-    public bool IsAttack {
-        get {
-            if (ShotInputAction.action.IsPressed()) {
-                return true;
-            }
-            return false;
-        }
-    }
-    public bool IsFalling { get => Rigidbody.velocity.y < 0; }
-    public bool CanJump {
-        get {
-            if (JumpInputAction.action.triggered && IsGround()) {
-                //print("can jump");
-                return true;
-            }
-
-            return false;
-        }
-    }
-    public Vector2 MovementInput { get; private set; }
-    public List<Collider2D> CollidersForIgnored { get => _collidersForIgnored; }
-    public PlayerConfig Config { get => (PlayerConfig)_config; }
+    public List<Collider2D> CollidesForIgnored { get => _collidersForIgnored; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerRunState RunState { get; private set; }
     public PlayerAttackState AttackState { get; private set; }
@@ -71,14 +26,26 @@ public class Player : Character {
     public PlayerHitState HitState { get; private set; }
     public PlayerDeadState DeadState { get; private set; }
     public StateMachine<Player> StateMachine { get; private set; }
-    public InputActionReference ShotInputAction { get => _shotInputAction; }
-    public InputActionReference JumpInputAction { get => _jumpInputAction; }
-    public InvulnerabilityAnimation InvulnerableStatus { get => _invulnerableStatus; }
-    public Inventory Inventory { get; private set; }
-    public PlayerAttributes PlayerAttributes { get; private set; }
 
-    private new void Awake() {
-        base.Awake();
+    public IInteracvite Interactive { get => _interactive; }
+    [field: SerializeField]
+    public InvulnerabilityStatus InvulnerableStatus { get; private set; }
+    [field: SerializeField]
+    public PlayerMovement PlayerMovement { get; private set; }
+    [field: SerializeField]
+    public PlayerWeaponController PlayerWeaponController { get; private set; }
+    [field: SerializeField]
+    public AnimationController AnimationController { get; private set; }
+
+    private void Awake() {
+        PlayerWeaponController.Init();
+        EventManager.OnHit += () => StateMachine.ChangeState(HitState);
+        EventManager.OnHit += () => {
+            StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
+            StartCoroutine(BlinkAnimation());
+        };
+        EventManager.OnDead += () => StateMachine.ChangeState(DeadState);
+
         IdleState = new PlayerIdleState();
         RunState = new PlayerRunState();
         AttackState = new PlayerAttackState();
@@ -87,195 +54,73 @@ public class Player : Character {
         HitState = new PlayerHitState();
         DeadState = new PlayerDeadState();
         StateMachine = new StateMachine<Player>(this);
-        _deafaultGravityScale = Rigidbody.gravityScale;
-        Inventory = FindObjectOfType<Inventory>();
-        PlayerAttributes = FindObjectOfType<PlayerAttributes>();
+
         CheckComponentOnNull();
-        DisableSwordCollider();
-        _currentHealth = _config.health;
+    }
+
+    private void OnDestroy() {
+        EventManager.OnHit -= () => StateMachine.ChangeState(HitState);
+        EventManager.OnHit -= () => {
+            StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
+            StartCoroutine(BlinkAnimation());
+        };
+        EventManager.OnDead -= () => StateMachine.ChangeState(DeadState);
     }
 
     private void CheckComponentOnNull() {
-        if (_movementInputAction == null) {
-            Debug.LogError($"Component {nameof(InputActionReference)} is null");
-        }
-        if (_shotInputAction == null) {
-            Debug.LogError($"Component {nameof(InputActionReference)} is null");
-        }
-        if (_jumpInputAction == null) {
-            Debug.LogError($"Component {nameof(InputActionReference)} is null");
-        }
-        if (_invulnerableStatus == null) {
-            Debug.LogError($"Component {nameof(InvulnerabilityAnimation)} is null");
-        }
-        if (_boxCollider == null) {
-            Debug.LogError($"Component {nameof(BoxCollider2D)} is null");
-        }
-        if (Inventory == null) {
-            Debug.LogError($"Component {nameof(Inventory)} is null");
-        }
-        if (PlayerAttributes == null) {
-            Debug.LogError($"object {nameof(PlayerAttributes)} is null");
-            return;
+        if (InvulnerableStatus == null) {
+            Debug.LogError($"Component {nameof(InvulnerabilityStatus)} is null");
         }
     }
 
     private void Start() {
         StateMachine.ChangeState(IdleState);
         _playerHealthView = FindAnyObjectByType<PlayerHealthView>();
-        _playerHealthView.UpdateHealthBar(null);
+        _playerHealthView.UpdateHealthBar();
     }
 
     private void Update() {
-        IsGround();
         StateMachine.Update();
-        RegenerationHealth();
+        _healthController.RegenerationHealth();
+        ToggleInventory();
     }
 
     private void FixedUpdate() {
         StateMachine.FixedUpdate();
     }
 
-    public Vector2 GetMovementInput() {
-        return MovementInput = _movementInputAction.action.ReadValue<Vector2>();
-    }
-
-    public void Flip() {
-        if (MovementInput.x > 0) {
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (MovementInput.x < 0) {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+    private void ToggleInventory() {
+        if (PlayerMovement.IsPressedOpenInventoryButton) {
+            _inventory.Open();
         }
     }
 
-    public void Jump() {
-        //print("Add Force for Jump");
-        Rigidbody.velocity = Vector2.up * Config.jumpVelocity;
-    }
-
-    public void CheckTakeDamage(float damage, Damage damageObject) {
-        if (IsThisAlreadyAttacked(damageObject)) {
-            StartCoroutine(ResetCurrentDamage(damageObject));
-        }
-        else if (_invulnerableStatus.IsInvulnerability) {
-            //print("player is invulnerable");
-        }
-        else {
-            RegisterDamageObject(damageObject);
-            TakeDamage(damage);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.TryGetComponent(out IInteracvite interacvite)) {
+            print("interactive set");
+            _interactive = interacvite;
         }
     }
 
-    private bool IsThisAlreadyAttacked(Damage damageObject) {
-        if (_objectsAttack.Count == 0) {
-            return false;
-        }
-
-        foreach (var attack in _objectsAttack) {
-            if (attack == damageObject) {
-                //print("this object already attacked");
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private IEnumerator ResetCurrentDamage(Damage damageObject) {
-        yield return new WaitForSeconds(2);
-        _objectsAttack.Remove(damageObject);
-    }
-
-    private void RegisterDamageObject(Damage damageObject) {
-        _objectsAttack.Add(damageObject);
-    }
-
-    public void TakeDamage(float damage) {
-        //print("damage = " + damage);
-        float _cleanDamage = damage - GetBlockedDamage(PlayerAttributes.Armor);
-        //print("clear damage = " + _clearDamage);
-        if (_cleanDamage <= 0) {
-            return;
-        }
-
-        _currentHealth -= _cleanDamage;
-        _playerHealthView.UpdateHealthBar(null);
-
-        //print("health = " + _health);
-        if (IsDead) {
-            StateMachine.ChangeState(DeadState);
-        }
-        else {
-            StateMachine.ChangeState(HitState);
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.TryGetComponent(out IInteracvite interacvite)) {
+            print("interactive null");
+            _interactive = null;
         }
     }
 
-    public bool IsGround() {
-        Color _color;
-        _raycastHit = Physics2D.BoxCast(_boxCollider.bounds.center, _boxCollider.bounds.size, 0f, Vector2.down, _distanceRaycastHit, _groundLayer);
-        if (_raycastHit.transform != null) {
-            _color = Color.green;
-        }
-        else {
-            _color = Color.red;
-        }
-        Debug.DrawRay(_boxCollider.bounds.center + new Vector3(_boxCollider.bounds.extents.x, 0), Vector3.down * (_boxCollider.bounds.extents.y + _distanceRaycastHit), _color);
-        Debug.DrawRay(_boxCollider.bounds.center - new Vector3(_boxCollider.bounds.extents.x, 0), Vector3.down * (_boxCollider.bounds.extents.y + _distanceRaycastHit), _color);
-        Debug.DrawRay(_boxCollider.bounds.center - new Vector3(_boxCollider.bounds.extents.x, _boxCollider.bounds.extents.y + _distanceRaycastHit), Vector3.right * _boxCollider.bounds.size.x, _color);
-        return _raycastHit.transform != null;
-    }
-
-    public void SetGravityScale(float value) {
-        Rigidbody.gravityScale = value;
-    }
-
-    public void ResetGravityScaleToDefault() {
-        Rigidbody.gravityScale = _deafaultGravityScale;
-    }
-
-    private void RegenerationHealth() {
-        if (Animator.GetCurrentAnimatorStateInfo(AnimatorLayers.BaseLayer).IsName(PlayerAnimationName.Hit)) {
-            _timerHealthRegeneration = 0;
-        }
-
-        _timerHealthRegeneration += Time.deltaTime;
-
-        if (_timerHealthRegeneration >= Config.delayHealthRegeneration) {
-            if (CurrentHealth >= PlayerAttributes.Health) {
-                return;
-            }
-
-            _timeRegenerationHealth += Time.deltaTime;
-
-            if (_timeRegenerationHealth >= 1) {
-                _timeRegenerationHealth = 0;
-                AddHealth(PlayerAttributes.HealthRegeneration);
-                //_currentHealth += PlayerAttributes.HealthRegeneration;
-                Debug.Log($"regenration health + <color=green>{PlayerAttributes.HealthRegeneration}</color>");
-                Debug.Log($"health after healing + <color=blue>{PlayerAttributes.Health}</color>");
-            }
+    public IEnumerator BlinkAnimation() {
+        while (InvulnerableStatus.IsInvulnerability) {
+            yield return new WaitForSeconds(_delayBllinkAnimationInSeconds);
+            SetSpritesAlpha(0);
+            yield return new WaitForSeconds(_delayBllinkAnimationInSeconds);
+            SetSpritesAlpha(255);
         }
     }
 
-    public void AddHealth(float health) {
-        _currentHealth += health;
-        _playerHealthView.UpdateHealthBar(null);
-    }
-
-    public void AddEnableSwordColliderEventForAttackAnimation() {
-        AttachingEventToAnimation.AddEventForFrameOfAnimation(_attackAnimation, _attackEvent, _frameRateInAttackAnimationForEnableCollider, nameof(EnableSwordCollider));
-    }
-
-    public void AddDisableSwordColliderEventForAttackAnimation() {
-        AttachingEventToAnimation.AddEventForFrameOfAnimation(_attackAnimation, _attackEvent, _frameRateInAttackAnimationForDisableCollider, nameof(DisableSwordCollider));
-    }
-
-    private void EnableSwordCollider() {
-        _playerSword.BoxCollider2D.enabled = true;
-    }
-
-    private void DisableSwordCollider() {
-        _playerSword.BoxCollider2D.enabled = false;
+    private void SetSpritesAlpha(float alpha) {
+        foreach (var element in _sprites) {
+            element.color = new Color(255f, 255f, 255f, alpha);
+        }
     }
 }
