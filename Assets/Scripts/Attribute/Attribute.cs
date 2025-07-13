@@ -31,6 +31,10 @@ public abstract class Attribute : ScriptableObject {
     }
 
     protected virtual void AddItemAttributes(ItemData itemData) {
+        if(itemData == null) {
+            return;
+        }
+
         AddIntegerAttributes(itemData);
         AddPercentAttributes(itemData);
 
@@ -49,12 +53,17 @@ public abstract class Attribute : ScriptableObject {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
                 _percentOfAttribute += attribute.value;
-                _valuePercent = _percentOfAttribute * _valueInteger / 100;
             }
         }
+
+        _valuePercent = _percentOfAttribute * _valueInteger / 100;
     }
 
     protected virtual void SubtractItemAttributes(ItemData itemData) {
+        if (itemData == null) {
+            return;
+        }
+
         SubtractIntegerAttributes(itemData);
         SubtractPercentAttributes(itemData);
 
@@ -73,9 +82,10 @@ public abstract class Attribute : ScriptableObject {
         foreach (AttributeData attribute in item.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
                 _percentOfAttribute -= attribute.value;
-                _valuePercent = _percentOfAttribute * _valueInteger / 100;
             }
         }
+
+        _valuePercent = _percentOfAttribute * _valueInteger / 100;
     }
 
     protected virtual void AddTemporaryAttribute(ItemData item) {
@@ -106,7 +116,7 @@ public abstract class Attribute : ScriptableObject {
         }
     }
 
-    protected void ResetData() {
+    protected virtual void ResetData() {
         _valueInteger = 0;
         _valuePercent = 0;
         _percentOfAttribute = 0;

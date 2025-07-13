@@ -12,7 +12,7 @@ public class MarketSlotView : SlotView, IPointerClickHandler {
         SetIcon();
     }
 
-    public override void TakeItem() {
+    public override void RemoveItem() {
         _itemData = null;
         SetIcon();
     }
@@ -27,5 +27,9 @@ public class MarketSlotView : SlotView, IPointerClickHandler {
             _market.BuyItem(_itemData);
             _market.RemoveItem(_itemData);
         }
+    }
+
+    public override bool IsCanPutItem(ItemData itemData) {
+        return true;
     }
 }

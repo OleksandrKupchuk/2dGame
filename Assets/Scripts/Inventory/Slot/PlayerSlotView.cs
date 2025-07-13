@@ -10,40 +10,42 @@ public class PlayerSlotView : SlotView {
 
     private void Awake() {
         SetIcon();
-        DragAndDrop.OnItemTaken += ChangeBorderColor;
-        DragAndDrop.OnItemPutted += ResetBorderColor;
+        DragAndDrop.OnItemDragged += ChangeBorderColor;
+        DragAndDrop.OnDragEnded += ResetBorderColor;
     }
 
     private void OnDestroy() {
-        DragAndDrop.OnItemTaken -= ChangeBorderColor;
-        DragAndDrop.OnItemPutted -= ResetBorderColor;
+        DragAndDrop.OnItemDragged -= ChangeBorderColor;
+        DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
     public override void PutItem(ItemData itemData) {
-        if (itemData is WearableItemData) {
-            var _item = itemData as WearableItemData;
-
-            if (_slotTypes.Contains(_item.ItemType)) {
-                _itemData = _item;
-                SetIcon();
-                EventManager.OnItemDressedHandler(_item);
-            }
-        }
-        else {
-            _itemData = null;
-            SetIcon();
-        }
+        var _item = itemData as WearableItemData;
+        _itemData = _item;
+        SetIcon();
+        EventManager.OnItemDressedHandler(_item);
     }
 
-    public override void TakeItem() {
+    public override bool IsCanPutItem(ItemData itemData) {
+        if (itemData == null) return true;
+
+        if (itemData is WearableItemData) {
+            var _item = itemData as WearableItemData;
+            return _slotTypes.Contains(_item.ItemType);
+        }
+
+        return false;
+    }
+
+    public override void RemoveItem() {
         EventManager.TakeAwayItemEventHandler(_itemData);
         _itemData = null;
         SetIcon();
     }
 
-    private void ChangeBorderColor(ItemData item) {
-        if (item is WearableItemData) {
-            var _item = item as WearableItemData;
+    private void ChangeBorderColor(ItemData itemData) {
+        if (itemData is WearableItemData) {
+            var _item = itemData as WearableItemData;
 
             if (_slotTypes.Contains(_item.ItemType)) {
                 SetBorderColor(Color.green);
@@ -52,7 +54,9 @@ public class PlayerSlotView : SlotView {
                 SetBorderColor(Color.red);
             }
         }
-
+        else {
+                SetBorderColor(Color.red);
+        }
     }
 
     private void ResetBorderColor() {

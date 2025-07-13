@@ -57,7 +57,7 @@ public class InventoryView : MonoBehaviour {
     private void RemoveItem(ItemData itemData) {
         foreach (var _slot in _slots) {
             if (!_slot.IsEmpty && _slot.ItemData == itemData) {
-                _slot.TakeItem();
+                _slot.RemoveItem();
                 return;
             }
         }

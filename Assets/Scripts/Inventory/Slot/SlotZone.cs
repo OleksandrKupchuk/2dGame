@@ -11,11 +11,14 @@ public class SlotZone : MonoBehaviour, IDropHandler {
         }
 
         if (eventData.pointerDrag.TryGetComponent(out DragAndDrop dragAndDrop)) {
-            ItemData _buffer = dragAndDrop.SlotView.ItemData;
+            ItemData _itemData = dragAndDrop.SlotView.ItemData;
 
-            dragAndDrop.SlotView.PutItem(_slotView.ItemData);
-
-            _slotView.PutItem(_buffer);
+            if (_slotView.IsCanPutItem(_itemData)) {
+                dragAndDrop.SlotView.RemoveItem();
+                dragAndDrop.SlotView.PutItem(_slotView.ItemData);
+                _slotView.RemoveItem();
+                _slotView.PutItem(_itemData);
+            }
         }
     }
 }

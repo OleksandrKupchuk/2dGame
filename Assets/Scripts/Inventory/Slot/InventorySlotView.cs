@@ -9,8 +9,6 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
     private Sprite _defaultBorder;
     [SerializeField]
     private Sprite _activeBorder;
-    [SerializeField]
-    private DragAndDrop _dragAndDrop;
 
     private void Awake() {
         DragAndDrop.OnDragStarted += ResetBorder;
@@ -25,7 +23,7 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
         SetIcon();
     }
 
-    public override void TakeItem() {
+    public override void RemoveItem() {
         _itemData = null;
         SetIcon();
     }
@@ -40,5 +38,9 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
 
     private void ResetBorder() {
         _border.sprite = _defaultBorder;
+    }
+
+    public override bool IsCanPutItem(ItemData itemData) {
+        return true;
     }
 }

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,27 +10,25 @@ public class UsageSlotView : SlotView {
     private Text _label;
 
     private void Awake() {
-        DragAndDrop.OnItemTaken += ChangeBorderColor;
-        DragAndDrop.OnItemPutted += ResetBorderColor;
+        DragAndDrop.OnItemDragged += ChangeBorderColor;
+        DragAndDrop.OnDragEnded += ResetBorderColor;
     }
 
     private void OnDestroy() {
-        DragAndDrop.OnItemTaken -= ChangeBorderColor;
-        DragAndDrop.OnItemPutted -= ResetBorderColor;
+        DragAndDrop.OnItemDragged -= ChangeBorderColor;
+        DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
     public override void PutItem(ItemData itemData) {
-        if (CanUseItem(itemData)) {
-            _itemData = itemData;
-            SetIcon();
-        }
-        else {
-            _itemData = null;
-            SetIcon();
-        }
+        _itemData = itemData;
+        SetIcon();
+        //else {
+        //    _itemData = null;
+        //    SetIcon();
+        //}
     }
 
-    public override void TakeItem() {
+    public override void RemoveItem() {
         _itemData = null;
         SetIcon();
     }
@@ -44,8 +41,16 @@ public class UsageSlotView : SlotView {
         return false;
     }
 
+    public override bool IsCanPutItem(ItemData itemData) {
+        if (itemData == null || itemData is UsableItemData) {
+            return true;
+        }
+
+        return false;
+    }
+
     private void ChangeBorderColor(ItemData itemData) {
-        if (CanUseItem(itemData)) {
+        if (IsCanPutItem(itemData)) {
             SetBorderColor(Color.green);
         }
         else {

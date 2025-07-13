@@ -9,7 +9,7 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (eventData.pointerDrag.TryGetComponent(out DragAndDrop dragAndDrop)) {
             Debug.Log("OnPointerEnter");
-            dragAndDrop.isDropZone = true;
+            dragAndDrop.SetDropZone(true);
         }
     }
 
@@ -20,7 +20,7 @@ public class DropZone : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (eventData.pointerDrag.TryGetComponent(out DragAndDrop dragAndDrop)) {
             Debug.Log("OnPointerExit");
-            dragAndDrop.isDropZone = false;
+            dragAndDrop.SetDropZone(false);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemTooltip : MonoBehaviour {
+public class ItemToolTip : MonoBehaviour {
     private RectTransform _backgroundRectTransform;
     private List<AttributeTooltip> _attributeTooltips = new List<AttributeTooltip>();
 
@@ -47,7 +47,7 @@ public class ItemTooltip : MonoBehaviour {
         }
     }
 
-    public void ShowTooltip(ItemData item, Vector2 positionCell, float heightCell) {
+    public void ShowToolTip(ItemData item, Vector2 positionCell, float heightCell) {
         _name.text = item.Name;
         _description.text = item.Description;
         InitAttributes(item);
@@ -55,7 +55,7 @@ public class ItemTooltip : MonoBehaviour {
         StartCoroutine(SetPosition(positionCell, heightCell));
     }
 
-    public void HideTooltip() {
+    public void HideToolTip() {
         foreach (AttributeTooltip attributeTooltip in _attributeTooltips) {
             attributeTooltip.gameObject.SetActive(false);
         }

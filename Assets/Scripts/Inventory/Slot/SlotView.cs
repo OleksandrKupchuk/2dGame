@@ -12,7 +12,9 @@ public abstract class SlotView : MonoBehaviour {
 
     public abstract void PutItem(ItemData itemData);
 
-    public abstract void TakeItem();
+    public abstract void RemoveItem();
+
+    public abstract bool IsCanPutItem(ItemData itemData);
 
     protected void SetIcon() {
         if (!IsEmpty) {

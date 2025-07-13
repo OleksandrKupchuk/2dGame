@@ -2,11 +2,17 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "DamageAttribute", menuName = "Attributes/Damage")]
 public class DamageAttribute : Attribute {
+    [SerializeField]
     private float _valueIntegerMin;
+    [SerializeField]
     private float _valueIntegerMax;
+    [SerializeField]
     private float _valuePercentMin;
+    [SerializeField]
     private float _valuePercentMax;
+    [SerializeField]
     private float _valueTemporaryMin;
+    [SerializeField]
     private float _valueTemporaryMax;
 
     public float Damage => Random.Range(DamageMin, DamageMax);
@@ -36,9 +42,10 @@ public class DamageAttribute : Attribute {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
                 _percentOfAttribute += attribute.value;
-                CalculationPercent();
             }
         }
+
+        CalculationPercent();
     }
 
     protected override void SubtractIntegerAttributes(ItemData itemData) {
@@ -54,9 +61,10 @@ public class DamageAttribute : Attribute {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
                 _percentOfAttribute -= attribute.value;
-                CalculationPercent();
             }
         }
+
+        CalculationPercent();
     }
 
     private void CalculationPercent() {
@@ -84,5 +92,15 @@ public class DamageAttribute : Attribute {
                 return;
             }
         }
+    }
+
+    protected override void ResetData() {
+        base.ResetData();
+        _valueIntegerMin = 0;
+        _valueIntegerMax = 0;
+        _valuePercentMin = 0;
+        _valuePercentMax = 0;
+        _valueTemporaryMin = 0;
+        _valueTemporaryMax = 0;
     }
 }
