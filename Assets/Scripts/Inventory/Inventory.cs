@@ -44,6 +44,11 @@ public class Inventory : ScriptableObject {
 
         _itemsData.Remove(itemData);
         OnRemoveItem?.Invoke(itemData);
+        SpawnItem(itemData);
+    }
+
+    private void SpawnItem(ItemData itemData) {
+
     }
 
     public void Open() {

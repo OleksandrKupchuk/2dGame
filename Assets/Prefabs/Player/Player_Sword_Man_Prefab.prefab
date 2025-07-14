@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5652064171342545477}
   - component: {fileID: 7264231251228489834}
   - component: {fileID: 6726485751713979336}
+  - component: {fileID: 4135743337817751516}
   m_Layer: 6
   m_Name: Player_Sword_Man_Prefab
   m_TagString: Player
@@ -245,6 +246,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 6843455573970313801}
+--- !u!114 &4135743337817751516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238491402704463331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6783f8c90019104da8af9063d4f20de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8195416127993697285, guid: 800276a36f70f3f4dbcb53559228afdf, type: 3}
+  _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
 --- !u!1 &7328863205628577472
 GameObject:
   m_ObjectHideFlags: 0

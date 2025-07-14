@@ -40,12 +40,12 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnEndDrag(PointerEventData eventData) {
         if (_isDropZone) {
-            //_inventoryController.RemoveItem(SlotView.ItemData);
-            //ResetPosition();
+            _inventoryController.RemoveItem(SlotView.ItemData);
+            ResetSlotPosition();
             print("Remove Item from Inventory");
         }
         else {
-            ResetPosition();
+            ResetSlotPosition();
         }
     }
 
@@ -53,7 +53,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         _isDropZone = isDropZone;
     }
 
-    private void ResetPosition() {
+    private void ResetSlotPosition() {
         transform.SetParent(_parent);
         transform.localPosition = Vector3.zero;
         _canvasGroup.blocksRaycasts = true;
