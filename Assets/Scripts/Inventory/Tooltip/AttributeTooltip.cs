@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AttributeTooltip : MonoBehaviour {
+public class AttributeToolTip : MonoBehaviour {
     [SerializeField]
     private Image _icon;
     [SerializeField]

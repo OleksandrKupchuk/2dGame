@@ -8,6 +8,25 @@ public class AttributeData : ScriptableObject {
     public float valueMin;
     public float valueMax;
     public Sprite icon;
+
+    public string GetValue() {
+        if (value > 0) {
+            if (valueType == ValueType.Integer) {
+                return $"+{value}";
+            }
+            else {
+                return $"+{value}%";
+            }
+        }
+        else {
+            if (valueType == ValueType.Integer) {
+                return $"+{valueMin}-{valueMax}";
+            }
+            else {
+                return $"+{valueMin}-{valueMax}%";
+            }
+        }
+    }
 }
 
 public enum AttributeType {

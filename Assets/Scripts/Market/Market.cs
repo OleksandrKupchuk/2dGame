@@ -22,10 +22,6 @@ public class Market : ScriptableObject {
     public event Action OnOpen;
     public event Action OnClose;
 
-    private void OnEnable() {
-        //GetRandomItems();
-    }
-
     private int GetRandomItems() {
         int _range = 0;
 

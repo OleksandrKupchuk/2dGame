@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : ScriptableObject
-{
+public class ItemData : ScriptableObject {
     [field: SerializeField]
     public string Name { get; protected set; }
     [field: SerializeField]

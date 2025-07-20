@@ -9,33 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47831a9a2b4d9324da7b39c5c01b7c66, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f1ee9c515bb2934ab127efbcd0b5249, type: 3}
   m_Name: King
   m_EditorClassIdentifier: 
-  <DialoguesData>k__BackingField:
+  _npcName: King
+  _dialoguesData:
   - _isDialogExpired: 0
     _isHaveConditionsToUnlockDialog: 0
     _conditions: []
-    _playerWords: Do you need a help?
-    _isNeedNpcWords: 1
-    _npcWords:
-    - Yes, help me
-    - But first go to room
-    _isNeedQuest: 0
-    _quest: {fileID: 0}
-    _playerWordsAfterQuestComplete: 
-    _npcWordsAfterQuestComplete: []
-    _isNeedDialogActions: 0
-    _dialogActions: []
-  - _isDialogExpired: 0
-    _isHaveConditionsToUnlockDialog: 0
-    _conditions: []
-    _playerWords: 
+    _playerWords: Market
     _isNeedNpcWords: 0
     _npcWords: []
     _isNeedQuest: 0
     _quest: {fileID: 0}
     _playerWordsAfterQuestComplete: 
     _npcWordsAfterQuestComplete: []
-    _isNeedDialogActions: 0
-    _dialogActions: []
+    _isNeedDialogActions: 1
+    _dialogActions:
+    - {fileID: 11400000, guid: 7810a25c1cb4f9d439e728d6cac3c0e8, type: 2}

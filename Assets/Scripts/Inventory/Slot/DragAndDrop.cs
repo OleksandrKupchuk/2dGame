@@ -30,6 +30,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         transform.SetParent(transform.root);
         _canvasGroup.blocksRaycasts = false;
         OnItemDragged?.Invoke(SlotView.ItemData);
+        print("OnDragStarted");
         OnDragStarted?.Invoke();
     }
 

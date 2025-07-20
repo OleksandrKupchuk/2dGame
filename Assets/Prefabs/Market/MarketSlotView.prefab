@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 2463462894001416663}
   _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
-  _playerInput: {fileID: 11400000, guid: 25426407f4cb3554bbd1e7c625672b1b, type: 2}
+  _playerInput: {fileID: 11400000, guid: 32b23d19312ac6b4c8689b0ae3ee01e7, type: 2}
 --- !u!1 &5022839378251454937
 GameObject:
   m_ObjectHideFlags: 0

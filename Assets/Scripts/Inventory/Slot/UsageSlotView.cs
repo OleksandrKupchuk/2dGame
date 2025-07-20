@@ -22,10 +22,6 @@ public class UsageSlotView : SlotView {
     public override void PutItem(ItemData itemData) {
         _itemData = itemData;
         SetIcon();
-        //else {
-        //    _itemData = null;
-        //    SetIcon();
-        //}
     }
 
     public override void RemoveItem() {
@@ -60,6 +56,7 @@ public class UsageSlotView : SlotView {
 
     private void ResetBorderColor() {
         SetBorderColor(Color.white);
+        //print("Usage slot reset border color");
     }
 
     private void SetBorderColor(Color color) {

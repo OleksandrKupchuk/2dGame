@@ -29,14 +29,17 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        //print("Inventory slot view ENTER");
         _border.sprite = _activeBorder;
     }
 
     public void OnPointerExit(PointerEventData eventData) {
+        //print("Inventory slot view EXIT");
         ResetBorder();
     }
 
     private void ResetBorder() {
+        //print("Inventory slot view reset border");
         _border.sprite = _defaultBorder;
     }
 
