@@ -17,6 +17,7 @@ public class MarketView : MonoBehaviour {
         GenerateCartItems();
         _market.OnOpen += Open;
         _market.OnClose += Close;
+        _market.OnAddItem += AddItem;
         _market.OnRemoveItem += RemoveItem;
 
         Close();
@@ -25,6 +26,7 @@ public class MarketView : MonoBehaviour {
     private void OnDestroy() {
         _market.OnOpen -= Open;
         _market.OnClose -= Close;
+        _market.OnAddItem -= AddItem;
         _market.OnRemoveItem -= RemoveItem;
     }
 
@@ -32,8 +34,8 @@ public class MarketView : MonoBehaviour {
         for (int i = 0; i < _market.AmountSlots; i++) {
             MarketSlotView _slotViewObject = Instantiate(_slotView, _content);
 
-            if (i < _market.RandomItemsData.Count) {
-                _slotViewObject.PutItem(_market.RandomItemsData[i]);
+            if (i < _market.Items.Count) {
+                _slotViewObject.PutItem(_market.Items[i]);
             }
             else {
                 _slotViewObject.PutItem(null);

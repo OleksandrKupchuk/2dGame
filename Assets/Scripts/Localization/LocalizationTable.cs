@@ -59,12 +59,12 @@ public class LocalizationTable {
 
             if (_detailedLocalizationTable == null) {
                 _table.AddEntry(key, value);
-                Debug.Log($"Added entry, key = {key}, value = {value}");
+                Debug.Log($"Added entry, key = {key}, Value = {value}");
             }
             else {
                 _table.RemoveEntry(key);
                 _table.AddEntry(key, value);
-                Debug.LogWarning($"Entry was overwritten, key = {key}, value = {value}");
+                Debug.LogWarning($"Entry was overwritten, key = {key}, Value = {value}");
             }
         }
     }

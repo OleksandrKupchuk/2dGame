@@ -41,7 +41,7 @@ public class DamageAttribute : Attribute {
     protected override void AddPercentAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
-                _percentOfAttribute += attribute.value;
+                _percentOfAttribute += attribute.Value;
             }
         }
 
@@ -60,7 +60,7 @@ public class DamageAttribute : Attribute {
     protected override void SubtractPercentAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
-                _percentOfAttribute -= attribute.value;
+                _percentOfAttribute -= attribute.Value;
             }
         }
 

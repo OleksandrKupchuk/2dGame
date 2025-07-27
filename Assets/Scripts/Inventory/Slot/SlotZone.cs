@@ -63,11 +63,11 @@ public class SlotZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             return;
         }
 
-        print("Exit slot zone");
+        //print("Exit slot zone");
         HideItemToolTip();
     }
 
-    private void HideItemToolTip() {
+    public void HideItemToolTip() {
         _itemToolTip.Hide();
     }
 }

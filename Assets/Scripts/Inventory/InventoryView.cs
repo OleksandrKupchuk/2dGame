@@ -38,10 +38,10 @@ public class InventoryView : MonoBehaviour {
 
     private void SpawnSlotsView() {
         for (int i = 0; i < _inventory.AmountSlots; i++) {
-            InventorySlotView _cell = Instantiate(_slotViewPrefab, _bag);
-            _cell.gameObject.name = _cell.gameObject.name + " " + i;
-            _cell.PutItem(null);
-            _slots.Add(_cell);
+            InventorySlotView _slot = Instantiate(_slotViewPrefab, _bag);
+            _slot.gameObject.name = _slot.gameObject.name + " " + i;
+            _slot.PutItem(null);
+            _slots.Add(_slot);
         }
     }
 

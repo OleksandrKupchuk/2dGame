@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfea680c9c901514eaf4a990b932e1e3, type: 3}
   m_Name: ItemToolTip
   m_EditorClassIdentifier: 
-  _itemToolTipView: {fileID: 0}
-  _containerAttributes: {fileID: 0}
-  _attributePrefab: {fileID: 0}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 9104990672612095067, guid: 6e8461e8150347842ac16358d7bff446, type: 3}

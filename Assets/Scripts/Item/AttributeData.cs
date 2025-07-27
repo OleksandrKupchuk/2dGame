@@ -2,20 +2,33 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "ItemData AttributeData", menuName = "ItemData AttributeData/AttributeData", order = 1)]
 public class AttributeData : ScriptableObject {
+    [SerializeField]
+    private float _minValueRange;
+    [SerializeField]
+    private float _maxValueRange;
+    [SerializeField]
+    private float _minValueMinRange;
+    [SerializeField]
+    private float _maxValueMinRange;
+    [SerializeField]
+    private float _minValueMaxRange;
+    [SerializeField]
+    private float _maxValueMaxRange;
+
     public AttributeType type = new AttributeType();
     public ValueType valueType = new ValueType();
-    public float value;
+    public float Value { get; private set; }
     public float valueMin;
     public float valueMax;
     public Sprite icon;
 
     public string GetValue() {
-        if (value > 0) {
+        if (Value > 0) {
             if (valueType == ValueType.Integer) {
-                return $"+{value}";
+                return $"+{Value}";
             }
             else {
-                return $"+{value}%";
+                return $"+{Value}%";
             }
         }
         else {
@@ -26,6 +39,10 @@ public class AttributeData : ScriptableObject {
                 return $"+{valueMin}-{valueMax}%";
             }
         }
+    }
+
+    public void GenerateValue() {
+        Value = Random.Range(_minValueRange, _maxValueRange);
     }
 }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu]
 public class Inventory : ScriptableObject {
+    [SerializeField]
+    [Unity.Collections.ReadOnly]
     private List<ItemData> _itemsData = new List<ItemData>();
 
     [field: SerializeField]
@@ -25,10 +27,10 @@ public class Inventory : ScriptableObject {
             Debug.Log("In Inventory there is not a place");
             return false;
         }
-        if(_itemsData.Contains(itemData)) {
-            Debug.Log("ItemData already add");
-            return false;
-        }
+        //if(_itemsData.Contains(itemData)) {
+        //    Debug.Log("ItemData already add");
+        //    return false;
+        //}
 
         _itemsData.Add(itemData);
         OnAddItem?.Invoke(itemData);
@@ -44,11 +46,6 @@ public class Inventory : ScriptableObject {
 
         _itemsData.Remove(itemData);
         OnRemoveItem?.Invoke(itemData);
-        SpawnItem(itemData);
-    }
-
-    private void SpawnItem(ItemData itemData) {
-
     }
 
     public void Open() {

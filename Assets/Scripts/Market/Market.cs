@@ -4,6 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Market")]
 public class Market : ScriptableObject {
+    [SerializeField]
     private List<ItemData> _randomItemsData;
     private int _commission;
 
@@ -16,7 +17,7 @@ public class Market : ScriptableObject {
 
     [field: SerializeField]
     public int AmountSlots { get; private set; }
-    public List<ItemData> RandomItemsData => _items;
+    public List<ItemData> Items => _items;
     public event Action<ItemData> OnAddItem;
     public event Action<ItemData> OnRemoveItem;
     public event Action OnOpen;
@@ -42,7 +43,7 @@ public class Market : ScriptableObject {
     }
 
     public void BuyItem(ItemData item) {
-        int _itemPrice = GetPriceWithTraderComission(item.Price);
+        int _itemPrice = GetPriceWithTraderCommission(item.Price);
 
         if (_playerConfig.coins >= _itemPrice) {
             _playerConfig.coins -= _itemPrice;
@@ -53,7 +54,7 @@ public class Market : ScriptableObject {
         }
     }
 
-    private int GetPriceWithTraderComission(int itemPrice) {
+    private int GetPriceWithTraderCommission(int itemPrice) {
         return itemPrice + (itemPrice * _commission / 100);
     }
 
@@ -69,13 +70,13 @@ public class Market : ScriptableObject {
         OnClose?.Invoke();
     }
 
-    public void AddItem(ItemData item) {
-        _randomItemsData.Add(item);
-        OnAddItem?.Invoke(item);
+    public void AddItem(ItemData itemData) {
+        _items.Add(itemData);
+        OnAddItem?.Invoke(itemData);
     }
 
-    public void RemoveItem(ItemData item) {
-        _randomItemsData.Remove(item);
-        OnRemoveItem?.Invoke(item);
+    public void RemoveItem(ItemData itemData) {
+        _items.Remove(itemData);
+        OnRemoveItem?.Invoke(itemData);
     }
 }

@@ -20,6 +20,8 @@ public class ItemToolTipView : MonoBehaviour {
     private AttributeToolTip _attributePrefab;
     [SerializeField]
     private RectTransform _rectTransform;
+    [SerializeField]
+    private Text _price;
 
     private void Awake() {
         _backgroundRectTransform = _background.GetComponent<RectTransform>();
@@ -47,11 +49,13 @@ public class ItemToolTipView : MonoBehaviour {
     }
 
     public void Enable(ItemData itemData, RectTransform rectTransform, float heightCell) {
-        print("GetView tool tip");
+        //print("GetView tool tip");
         _name.text = itemData.Name;
         _description.text = itemData.Description;
+        _price.text = itemData.Price.ToString();
+        _rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
         SetAndEnableAttributes(itemData);
-        EnableBachground();
+        EnableBackground();
         StartCoroutine(SetPosition(rectTransform, heightCell));
     }
 
@@ -62,13 +66,13 @@ public class ItemToolTipView : MonoBehaviour {
         }
     }
 
-    private void EnableBachground() {
+    private void EnableBackground() {
         _background.SetActive(true);
     }
 
     private IEnumerator SetPosition(RectTransform rectTransform, float height) {
         yield return StartCoroutine(WaitForEnableBackground());
-        _rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
+        //_rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
         float _halfSlotHeight = rectTransform.rect.height / 2;
         float _halfToolTipHeight = _backgroundRectTransform.rect.height / 2;
         float _spaceBetweenToolTipAndCell = 5f;
