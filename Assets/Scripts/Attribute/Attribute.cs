@@ -44,7 +44,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void AddIntegerAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Integer) {
-                _valueInteger += attribute.Value;
+                _valueInteger += attribute.value;
             }
         }
     }
@@ -52,7 +52,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void AddPercentAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
-                _percentOfAttribute += attribute.Value;
+                _percentOfAttribute += attribute.value;
             }
         }
 
@@ -73,7 +73,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void SubtractIntegerAttributes(ItemData itemData) {
         foreach (AttributeData attribute in itemData.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Integer) {
-                _valueInteger -= attribute.Value;
+                _valueInteger -= attribute.value;
             }
         }
     }
@@ -81,7 +81,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void SubtractPercentAttributes(ItemData item) {
         foreach (AttributeData attribute in item.Attributes) {
             if (attribute.type == AttributeType && attribute.valueType == ValueType.Percent) {
-                _percentOfAttribute -= attribute.Value;
+                _percentOfAttribute -= attribute.value;
             }
         }
 
@@ -91,7 +91,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void AddTemporaryAttribute(ItemData item) {
         foreach (AttributeData attribute in item.Attributes) {
             if (attribute.type == AttributeType) {
-                _valueTemporary += attribute.Value;
+                _valueTemporary += attribute.value;
                 CheckAttributeChange(item);
                 return;
             }
@@ -101,7 +101,7 @@ public abstract class Attribute : ScriptableObject {
     protected virtual void SubtractTemporaryAttribute(ItemData item) {
         foreach (AttributeData attribute in item.Attributes) {
             if (attribute.type == AttributeType) {
-                _valueTemporary -= attribute.Value;
+                _valueTemporary -= attribute.value;
                 CheckAttributeChange(item);
                 return;
             }

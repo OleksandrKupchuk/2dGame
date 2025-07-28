@@ -61,7 +61,7 @@ public class PlayerHealthController : ScriptableObject {
 
         CheckCurrentHealth();
 
-        Debug.Log("Health was added, Value = " + health);
+        Debug.Log("Health was added, value = " + health);
         EventManager.OnHealthChangedHandler();
     }
 

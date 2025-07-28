@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 761b771993ffcc542ab22de35807e19e, type: 3}
-  m_Name: Axe
+  m_Name: WearableItemData
   m_EditorClassIdentifier: 
-  _price: 88
-  <Name>k__BackingField: Axe
-  <Description>k__BackingField: Axe normal weapon
-  <MinPrice>k__BackingField: 40
-  <MaxPrice>k__BackingField: 100
+  <Name>k__BackingField: Axe Cool
+  <Description>k__BackingField: sdfsdf
+  <Price>k__BackingField: 230
   <Icon>k__BackingField: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
-  <Attributes>k__BackingField:
-  - {fileID: 11400000, guid: aa994891a1cc5c1458cb10121d46b9dd, type: 2}
-  - {fileID: 11400000, guid: 595e0cff869ba2c49bef6765add3f3b1, type: 2}
-  <AttributeDataBase>k__BackingField: []
+  <Attributes>k__BackingField: []
+  <AttributeDataBase>k__BackingField:
+  - {fileID: 11400000, guid: c646bf68501cd734b8f1529c17db0e66, type: 2}
+  - {fileID: 11400000, guid: 8f4e22c53f699f04a8b74885b2ff4185, type: 2}
+  - {fileID: 11400000, guid: ce38f21a413628d4f9cd142ab8d5cb2e, type: 2}
   <ItemType>k__BackingField: 4
-  <BodyType>k__BackingField: 2
+  <BodyType>k__BackingField: 0

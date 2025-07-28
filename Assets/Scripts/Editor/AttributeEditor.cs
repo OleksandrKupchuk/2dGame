@@ -13,7 +13,7 @@ public class AttributeEditor : Editor {
     public override void OnInspectorGUI() {
         _attributeTypeProperty = serializedObject.FindProperty("type");
         _valueTypeProperty = serializedObject.FindProperty("valueType");
-        _valueProperty = serializedObject.FindProperty("Value");
+        _valueProperty = serializedObject.FindProperty("value");
         _damageMinProperty = serializedObject.FindProperty("valueMin");
         _damageMaxProperty = serializedObject.FindProperty("valueMax");
         _iconProperty = serializedObject.FindProperty("icon");

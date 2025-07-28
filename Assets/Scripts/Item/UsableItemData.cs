@@ -7,10 +7,10 @@ public class UsableItemData : ItemData {
 
     public virtual void Use() {
         //EventManager.UseItemEventHandler(this);
-        //Invoke(nameof(SrartTimerDelay), Duration);
+        //Invoke(nameof(StartTimerDelay), Duration);
     }
 
-    private void SrartTimerDelay() {
+    private void StartTimerDelay() {
         //EventManager.ActionItemOverEventHandler(this);
     }
 }
