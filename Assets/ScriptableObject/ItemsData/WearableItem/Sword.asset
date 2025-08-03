@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761b771993ffcc542ab22de35807e19e, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  _price: 0
   <Name>k__BackingField: Sword
   <Description>k__BackingField: sword
-  <Price>k__BackingField: 50
+  <MinPrice>k__BackingField: 1
+  <MaxPrice>k__BackingField: 160
   <Icon>k__BackingField: {fileID: 21300000, guid: 08d5ec2d201ece949a5e428ba3ea0e63, type: 3}
   <Attributes>k__BackingField:
   - {fileID: 11400000, guid: bbd53c4a64b5bda40a8ca21a0f8bc28d, type: 2}
-  <AttributeDataBase>k__BackingField: []
+  <AttributeDataBase>k__BackingField:
+  - {fileID: 11400000, guid: c646bf68501cd734b8f1529c17db0e66, type: 2}
+  - {fileID: 11400000, guid: 8f4e22c53f699f04a8b74885b2ff4185, type: 2}
+  - {fileID: 11400000, guid: ce38f21a413628d4f9cd142ab8d5cb2e, type: 2}
   <ItemType>k__BackingField: 4
   <BodyType>k__BackingField: 2

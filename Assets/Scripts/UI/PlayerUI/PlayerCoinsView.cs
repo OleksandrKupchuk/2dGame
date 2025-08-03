@@ -21,6 +21,6 @@ public class PlayerCoinsView : MonoBehaviour {
     }
 
     public void UpdateCoins(ItemData item) {
-        _value.text = "" + _playerConfig.coins;
+        _value.text = "" + _playerConfig.Coins;
     }
 }

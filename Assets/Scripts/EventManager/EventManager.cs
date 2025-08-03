@@ -1,9 +1,9 @@
 using System;
 
 public class EventManager {
-    public static event Action<WearableItemData> OnItemDressed;
+    public static event Action<ItemData> OnItemDressed;
 
-    public static void OnItemDressedHandler(WearableItemData item) {
+    public static void OnItemDressedHandler(ItemData item) {
         OnItemDressed.Invoke(item);
     }
 

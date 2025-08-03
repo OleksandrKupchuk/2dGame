@@ -17,7 +17,7 @@ public class QuestBringItem : IQuest {
 
     public void GiveReward() {
         if (IsDone()) {
-            _playerConfig.coins += 50;
+            _playerConfig.Coins += 50;
             _isRewardTaken = true;
         }
     }

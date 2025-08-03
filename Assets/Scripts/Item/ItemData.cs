@@ -5,15 +5,14 @@ public class ItemData : ScriptableObject {
     [SerializeField]
     protected int _price;
 
-
     private void OnEnable() {
         _price = Random.Range(MinPrice, MaxPrice);
     }
 
     [field: SerializeField]
-    public string Name { get; set; }
+    public string Name { get; private set; }
     [field: SerializeField]
-    public string Description { get; set; }
+    public string Description { get; private set; }
     public int Price => _price;
     [field: SerializeField]
     public int MinPrice { get; private set; }

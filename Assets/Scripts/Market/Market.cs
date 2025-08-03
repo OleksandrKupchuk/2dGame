@@ -45,8 +45,8 @@ public class Market : ScriptableObject {
     public void BuyItem(ItemData item) {
         int _itemPrice = GetPriceWithTraderCommission(item.Price);
 
-        if (_playerConfig.coins >= _itemPrice) {
-            _playerConfig.coins -= _itemPrice;
+        if (_playerConfig.Coins >= _itemPrice) {
+            _playerConfig.Coins -= _itemPrice;
             _inventory.TryAddItem(item);
         }
         else {

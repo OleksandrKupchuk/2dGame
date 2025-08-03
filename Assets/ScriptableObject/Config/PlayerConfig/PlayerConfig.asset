@@ -16,8 +16,8 @@ MonoBehaviour:
   <Speed>k__BackingField: 12
   <JumpVelocity>k__BackingField: 16
   <Armor>k__BackingField: 3
-  <DamageMin>k__BackingField: 2
-  <DamageMax>k__BackingField: 5
+  <PhysicalDamageMin>k__BackingField: 2
+  <PhysicalDamageMax>k__BackingField: 5
   <HealthRegeneration>k__BackingField: 2
   <DelayHealthRegeneration>k__BackingField: 3
-  coins: 5000
+  <Coins>k__BackingField: 1000

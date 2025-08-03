@@ -28,16 +28,3 @@ public class AttributeData : ScriptableObject {
         }
     }
 }
-
-public enum AttributeType {
-    Armor,
-    Damage,
-    Health,
-    Speed,
-    HealthRegeneration
-}
-
-public enum ValueType {
-    Integer,
-    Percent
-}

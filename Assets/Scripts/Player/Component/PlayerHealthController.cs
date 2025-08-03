@@ -13,8 +13,10 @@ public class PlayerHealthController : ScriptableObject {
 
     [SerializeField]
     private InvulnerabilityStatus _invulnerabilityStatus;
+    //[SerializeField]
+    //private HealthRegenerationAttribute _healthRegenerationAttribute;
     [SerializeField]
-    private HealthRegenerationAttribute _healthRegenerationAttribute;
+    private AttributeInteger _healthRegenerationAttribute;
     [SerializeField]
     private HealthAttribute _healthAttribute;
     [SerializeField]
@@ -49,8 +51,8 @@ public class PlayerHealthController : ScriptableObject {
 
             if (_timeRegenerationHealth <= 0) {
                 _timeRegenerationHealth = 1;
-                AddHealth(_healthRegenerationAttribute.HealthRegeneration);
-                Debug.Log($"regeneration Health + <color=green>{_healthRegenerationAttribute.HealthRegeneration}</color>");
+                AddHealth(_healthRegenerationAttribute.Value);
+                Debug.Log($"regeneration Health + <color=green>{_healthRegenerationAttribute.Value}</color>");
                 Debug.Log($"Health after healing + <color=blue>{_healthAttribute.MaxHealth}</color>");
             }
         }

@@ -3,15 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AttributeDataInteger", menuName = "AttributeData/AttributeDataInteger", order = 1)]
 public class AttributeDataInteger : AttributeDataBase {
     [SerializeField]
-    private float _minValueRange;
+    private int _minValue;
     [SerializeField]
-    private float _maxValueRange;
+    private int _maxValue;
 
-    [field: SerializeField]
-    public float Value { get; private set; }
+    public int Value { get; private set; }
+
+    private void OnEnable() {
+        GenerateParameters();
+    }
 
     public override void GenerateParameters() {
-        Value = Random.Range(_minValueRange, _maxValueRange);
+        Value = Random.Range(_minValue, _maxValue);
     }
 
     public override string GetValue() {

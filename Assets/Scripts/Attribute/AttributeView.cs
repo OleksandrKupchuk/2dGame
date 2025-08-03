@@ -10,6 +10,8 @@ public class AttributeView : MonoBehaviour {
     protected Text _value;
     [SerializeField]
     private Attribute _attribute;
+    [SerializeField]
+    private AttributeBase _attributeBase;
 
     private void Awake() {
         EventManager.OnAttributeChanged += UpdateAttributeView;
@@ -24,15 +26,12 @@ public class AttributeView : MonoBehaviour {
         UpdateAttributeView(_attribute.AttributeType);
     }
 
-    public void UpdateAttributeView(AttributeType attributeType) {
-        if (_attribute.AttributeType != attributeType) {
+    private void UpdateAttributeView(AttributeType type) {
+        if (_attributeBase.Type != type) {
             return;
         }
-        else if (_attribute.IsValueTemporary) {
-            _value.text = $"<color=green>{_attribute.ValueString}</color>";
-        }
         else {
-            _value.text = $"{_attribute.ValueString}";
+            _value.text = $"{_attributeBase.GetValueString()}";
         }
     }
 }

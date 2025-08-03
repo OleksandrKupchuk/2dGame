@@ -22,7 +22,7 @@ public class AttributeEditor : Editor {
         EditorGUILayout.PropertyField(_attributeTypeProperty);
         EditorGUILayout.PropertyField(_valueTypeProperty);
 
-        if (_attributeTypeProperty.intValue == (int)AttributeType.Damage) {
+        if (_attributeTypeProperty.intValue == (int)AttributeType.PhysicalDamage) {
             if (_valueTypeProperty.intValue == (int)ValueType.Integer) {
                 EditorGUILayout.PropertyField(_damageMinProperty);
                 EditorGUILayout.PropertyField(_damageMaxProperty);

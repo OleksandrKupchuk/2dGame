@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -29,12 +30,13 @@ public class UsageSlotView : SlotView {
         SetIcon();
     }
 
-    private bool CanUseItem(ItemData itemData) {
-        if (itemData is UsableItemData) {
-            return true;
+    private void ChangeBorderColor(ItemData itemData) {
+        if (IsCanPutItem(itemData)) {
+            SetBorderColor(Color.green);
         }
-
-        return false;
+        else {
+            SetBorderColor(Color.red);
+        }
     }
 
     public override bool IsCanPutItem(ItemData itemData) {
@@ -43,15 +45,6 @@ public class UsageSlotView : SlotView {
         }
 
         return false;
-    }
-
-    private void ChangeBorderColor(ItemData itemData) {
-        if (IsCanPutItem(itemData)) {
-            SetBorderColor(Color.green);
-        }
-        else {
-            SetBorderColor(Color.red);
-        }
     }
 
     private void ResetBorderColor() {
@@ -63,14 +56,21 @@ public class UsageSlotView : SlotView {
         _border.color = color;
     }
 
-    //потрібно переробити
-    //private void Update() {
-    //    if (!HasItem) { return; }
+    private void Update() {
+        if (IsEmpty) { return; }
 
-    //    if (_inputAction.triggered) {
-    //        UseItem();
-    //    }
-    //}
+        if (_inputAction.triggered) {
+            UsableItemData _usableItemData = _itemData as UsableItemData;    
+            _usableItemData.Use();
+            StartCoroutine(StartTimerDelay(_usableItemData));
+            RemoveItem();
+        }
+    }
+
+    private IEnumerator StartTimerDelay(UsableItemData itemData) {
+        yield return new WaitForSeconds(itemData.Duration);
+        EventManager.TakeAwayItemEventHandler(itemData);
+    }
 
     public void SetInputAction(InputAction inputAction) {
         _inputAction = inputAction;

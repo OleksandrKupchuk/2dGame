@@ -1,15 +1,29 @@
 using UnityEngine;
 
-public class AttributeDataBase : ScriptableObject {
-    [SerializeField]
-    private AttributeType _type = new AttributeType();
-    [SerializeField]
-    public ValueType _valueType = new ValueType();
+public abstract class AttributeDataBase : ScriptableObject {
     [field: SerializeField]
-    public Sprite Icon { get; private set; }
+    public AttributeType AttributeType { get; protected set; } = new AttributeType();
+    [field: SerializeField]
+    public ValueType ValueType { get; protected set; } = new ValueType();
+    [field: SerializeField]
+    public Sprite Icon { get; protected set; }
+    public abstract string GetValue();
+    public abstract void GenerateParameters();
+}
 
-    public AttributeType Type => _type;
-    public ValueType ValueType => _valueType;
-    public virtual string GetValue() { return ""; }
-    public virtual void GenerateParameters() { }
+public enum AttributeType {
+    Armor,
+    Health,
+    Speed,
+    HealthRegeneration,
+    PhysicalDamage,
+    FireDamage,
+    FrostDamage,
+    PoisonDamage,
+    MagicDamage,
+}
+
+public enum ValueType {
+    Integer,
+    Percent
 }

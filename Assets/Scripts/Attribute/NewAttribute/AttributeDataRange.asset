@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9de5d6886fc0d47bae6dafe4fb7fa2, type: 3}
   m_Name: AttributeDataRange
   m_EditorClassIdentifier: 
-  _type: 1
-  _valueType: 0
-  <Icon>k__BackingField: {fileID: 21300000, guid: 59c203c833bb0894384b1c344e889244, type: 3}
-  _minValueMinRange: 1
-  _maxValueMinRange: 5
+  <AttributeType>k__BackingField: 4
+  <ValueType>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 21300000, guid: bf1aabd8052f97f41896842c39766751, type: 3}
+  _minValueMinRange: -5
+  _maxValueMinRange: -1
   _minValueMaxRange: 7
   _maxValueMaxRange: 12

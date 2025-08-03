@@ -11,12 +11,13 @@ public class PlayerConfig : ScriptableObject {
     [field: SerializeField]
     public float Armor { get; private set; }
     [field: SerializeField]
-    public float DamageMin { get; private set; }
+    public float PhysicalDamageMin { get; private set; }
     [field: SerializeField]
-    public float DamageMax { get; private set; }
+    public float PhysicalDamageMax { get; private set; }
     [field: SerializeField]
     public float HealthRegeneration { get; private set; }
     [field: SerializeField]
     public float DelayHealthRegeneration { get; private set; }
-    public int coins;
+    [field: SerializeField]
+    public int Coins { get; set; }
 }

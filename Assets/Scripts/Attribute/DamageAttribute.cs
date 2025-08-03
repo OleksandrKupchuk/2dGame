@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DamageAttribute", menuName = "Attributes/Damage")]
+[CreateAssetMenu(fileName = "DamageAttribute", menuName = "Attributes/PhysicalDamage")]
 public class DamageAttribute : Attribute {
     [SerializeField]
     private float _valueIntegerMin;
@@ -24,9 +24,9 @@ public class DamageAttribute : Attribute {
 
     private new void OnEnable() {
         base.OnEnable();
-        AttributeType = AttributeType.Damage;
-        _valueIntegerMin = _playerConfig.DamageMin;
-        _valueIntegerMax = _playerConfig.DamageMax;
+        AttributeType = AttributeType.PhysicalDamage;
+        _valueIntegerMin = _playerConfig.PhysicalDamageMin;
+        _valueIntegerMax = _playerConfig.PhysicalDamageMax;
     }
 
     protected override void AddIntegerAttributes(ItemData itemData) {

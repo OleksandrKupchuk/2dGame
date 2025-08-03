@@ -20,18 +20,18 @@ public class PlayerSlotView : SlotView {
     }
 
     public override void PutItem(ItemData itemData) {
-        var _item = itemData as WearableItemData;
-        _itemData = _item;
+        var _itemData = itemData as WearableItemData;
+        base._itemData = _itemData;
         SetIcon();
-        EventManager.OnItemDressedHandler(_item);
+        EventManager.OnItemDressedHandler(_itemData);
     }
 
     public override bool IsCanPutItem(ItemData itemData) {
         if (itemData == null) return true;
 
         if (itemData is WearableItemData) {
-            var _item = itemData as WearableItemData;
-            return _slotTypes.Contains(_item.ItemType);
+            var _itemData = itemData as WearableItemData;
+            return _slotTypes.Contains(_itemData.ItemType);
         }
 
         return false;
