@@ -9,9 +9,7 @@ public class AttributeView : MonoBehaviour {
     [SerializeField]
     protected Text _value;
     [SerializeField]
-    private Attribute _attribute;
-    [SerializeField]
-    private AttributeBase _attributeBase;
+    private PlayerAttribute _attribute;
 
     private void Awake() {
         EventManager.OnAttributeChanged += UpdateAttributeView;
@@ -27,11 +25,11 @@ public class AttributeView : MonoBehaviour {
     }
 
     private void UpdateAttributeView(AttributeType type) {
-        if (_attributeBase.Type != type) {
+        if (_attribute.AttributeType != type) {
             return;
         }
         else {
-            _value.text = $"{_attributeBase.GetValueString()}";
+            _value.text = $"{_attribute.GetValueString()}";
         }
     }
 }

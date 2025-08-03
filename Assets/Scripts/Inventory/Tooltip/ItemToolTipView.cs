@@ -65,8 +65,8 @@ public class ItemToolTipView : MonoBehaviour {
         //    _attributeTooltips[i].gameObject.SetActive(true);
         //}
 
-        for (int i = 0; i < itemData.AttributeDataBase.Count; i++) {
-            _attributeTooltips[i].Set(itemData.AttributeDataBase[i].Icon, itemData.AttributeDataBase[i].GetValue());
+        for (int i = 0; i < itemData.Attributes.Count; i++) {
+            _attributeTooltips[i].Set(itemData.Attributes[i].Icon, itemData.Attributes[i].GetValue());
             _attributeTooltips[i].gameObject.SetActive(true);
         }
     }

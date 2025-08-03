@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 0}
-  _instance: {fileID: 11400000, guid: a9da31dac00d6c74d9b5840cb12d9262, type: 2}
+  _instance: {fileID: 11400000, guid: e76f9fb17895089458854bcd4e9407e4, type: 2}
 --- !u!4 &71918186
 Transform:
   m_ObjectHideFlags: 0
@@ -5070,7 +5070,7 @@ PrefabInstance:
     - target: {fileID: -750749622094839454, guid: 1a1acbc61d864ef498a64b8d00d01b05, type: 3}
       propertyPath: <ItemData>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: a9da31dac00d6c74d9b5840cb12d9262, type: 2}
+      objectReference: {fileID: 11400000, guid: e76f9fb17895089458854bcd4e9407e4, type: 2}
     - target: {fileID: 3062570284460223176, guid: 1a1acbc61d864ef498a64b8d00d01b05, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -7677,7 +7677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c048f08fba03d5340b91e48c5180a100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerConfig: {fileID: 11400000, guid: a54ace36f66f2cb4dbac2f323babad9b, type: 2}
+  _playerConfig: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}
   _value: {fileID: 1337855157}
 --- !u!1 &1770697292
 GameObject:
@@ -8503,9 +8503,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1956218876629199986, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
-      propertyPath: _attributeBase
+      propertyPath: _attribute
       value: 
       objectReference: {fileID: 11400000, guid: c0d599bd7a9fe634aa415567ad350804, type: 2}
+    - target: {fileID: 1956218876629199986, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+      propertyPath: _attributeBase
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2264855273741596482, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8611,6 +8615,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4208224094070886666, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+      propertyPath: _attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: 89e25460542e59444bb920eda4309d58, type: 2}
+    - target: {fileID: 4208224094070886666, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _attributeBase
       value: 
       objectReference: {fileID: 11400000, guid: dfbfe7dc5469bf2458bd70f87df8d6a2, type: 2}
@@ -8699,6 +8707,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6611907184684837873, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+      propertyPath: _attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: 408912232466dbe41b8f130f8254bdc9, type: 2}
+    - target: {fileID: 6611907184684837873, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _attributeBase
       value: 
       objectReference: {fileID: 11400000, guid: bcac7eac9bbdb444eb45e9bb010e01aa, type: 2}
@@ -8775,9 +8787,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7866118640146278689, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
-      propertyPath: _attributeBase
+      propertyPath: _attribute
       value: 
       objectReference: {fileID: 11400000, guid: 147ac6a98cf5fe7418b0a32d7dbcb654, type: 2}
+    - target: {fileID: 7866118640146278689, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+      propertyPath: _attributeBase
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8083717218898086279, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8907,9 +8923,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9215233038258263497, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+      propertyPath: _attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c733eb87c3d9d14f92c21a3defbb96a, type: 2}
+    - target: {fileID: 9215233038258263497, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _attributeBase
       value: 
-      objectReference: {fileID: 11400000, guid: 2e09ad96538030a448af56ef4064c151, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -5,8 +5,8 @@ public class TestScriptableObject : MonoBehaviour {
     private AttributeData _attribute;
 
     void Start() {
-        if (_attribute.icon != null) {
-            Debug.Log("name sprite = " + _attribute.icon);
+        if (_attribute.Icon != null) {
+            Debug.Log("name sprite = " + _attribute.Icon);
         }
         else {
             Debug.Log("icon is null");

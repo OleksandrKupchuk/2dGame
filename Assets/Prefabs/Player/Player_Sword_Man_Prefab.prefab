@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e0e156320d70e4f912181c0c41ae2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerConfig: {fileID: 11400000, guid: a54ace36f66f2cb4dbac2f323babad9b, type: 2}
+  _playerConfig: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}
   _playerInputReader: {fileID: 11400000, guid: 32b23d19312ac6b4c8689b0ae3ee01e7, type: 2}
   _rigidbody: {fileID: 2123502423263786045}
   _boxCollider: {fileID: 2724809069109994693}

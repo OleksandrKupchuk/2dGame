@@ -21,7 +21,5 @@ public class ItemData : ScriptableObject {
     [field: SerializeField]
     public Sprite Icon { get; set; }
     [field: SerializeField]
-    public List<AttributeData> Attributes { get; protected set; } = new List<AttributeData>();
-    [field: SerializeField]
-    public List<AttributeDataBase> AttributeDataBase { get; set; } = new List<AttributeDataBase>();
+    public List<AttributeData> Attributes { get; set; } = new List<AttributeData>();
 }

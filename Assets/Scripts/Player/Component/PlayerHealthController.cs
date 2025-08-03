@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerHealthController")]
@@ -13,19 +12,17 @@ public class PlayerHealthController : ScriptableObject {
 
     [SerializeField]
     private InvulnerabilityStatus _invulnerabilityStatus;
-    //[SerializeField]
-    //private HealthRegenerationAttribute _healthRegenerationAttribute;
     [SerializeField]
-    private AttributeInteger _healthRegenerationAttribute;
+    private PlayerAttributeInteger _healthRegenerationAttribute;
     [SerializeField]
-    private HealthAttribute _healthAttribute;
+    private PlayerAttributeInteger _healthAttribute;
     [SerializeField]
-    private ArmorAttribute _armorAttribute;
+    private PlayerAttributeInteger _armorAttribute;
     [SerializeField]
     private PlayerConfig _config;
 
     public float CurrentHealth { get => _currentHealth; }
-    public float MaxHealth { get => _healthAttribute.MaxHealth; }
+    public float MaxHealth { get => _healthAttribute.Value; }
     public bool IsDead { get => CurrentHealth <= 0; }
 
     private void OnEnable() {
@@ -38,7 +35,7 @@ public class PlayerHealthController : ScriptableObject {
     }
 
     public void RegenerationHealth() {
-        if (_currentHealth >= _healthAttribute.MaxHealth) {
+        if (_currentHealth >= _healthAttribute.Value) {
             _delayBeforeRegenerationHealth = 0;
             return;
         }
@@ -53,7 +50,7 @@ public class PlayerHealthController : ScriptableObject {
                 _timeRegenerationHealth = 1;
                 AddHealth(_healthRegenerationAttribute.Value);
                 Debug.Log($"regeneration Health + <color=green>{_healthRegenerationAttribute.Value}</color>");
-                Debug.Log($"Health after healing + <color=blue>{_healthAttribute.MaxHealth}</color>");
+                Debug.Log($"Health after healing + <color=blue>{_healthAttribute.Value}</color>");
             }
         }
     }
@@ -68,8 +65,8 @@ public class PlayerHealthController : ScriptableObject {
     }
 
     private void CheckCurrentHealth() {
-        if (_currentHealth >= _healthAttribute.MaxHealth) {
-            _currentHealth = _healthAttribute.MaxHealth;
+        if (_currentHealth >= _healthAttribute.Value) {
+            _currentHealth = _healthAttribute.Value;
         }
     }
 
@@ -95,7 +92,7 @@ public class PlayerHealthController : ScriptableObject {
     }
 
     public void TakeDamage(float damage) {
-        float _cleanDamage = damage - GetBlockedDamage(_armorAttribute.Armor);
+        float _cleanDamage = damage - GetBlockedDamage(_armorAttribute.Value);
 
         if (_cleanDamage <= 0) {
             return;

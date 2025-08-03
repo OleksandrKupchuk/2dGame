@@ -5,14 +5,14 @@ public class CreationItem {
     public WearableItemData CreateWearableItemData(WearableItemData instance) {
         WearableItemData _itemData = ScriptableObject.Instantiate(instance);
 
-        List<AttributeDataBase> _attributes = new List<AttributeDataBase>();
+        List<AttributeData> _attributes = new List<AttributeData>();
 
-        foreach(AttributeDataBase attribute in _itemData.AttributeDataBase) {
-            AttributeDataBase _attribute = ScriptableObject.Instantiate(attribute);
+        foreach(AttributeData attribute in _itemData.Attributes) {
+            AttributeData _attribute = ScriptableObject.Instantiate(attribute);
             _attributes.Add(_attribute);
         }
 
-        _itemData.AttributeDataBase = _attributes;
+        _itemData.Attributes = _attributes;
 
         return _itemData;
     }
