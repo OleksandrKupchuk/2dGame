@@ -28,32 +28,32 @@ public class AttributeDataRange : AttributeData {
 
         if (ValueType.Equals(ValueType.Integer)) {
             if (ValueMin > 0) {
-                _value += $"<color=green>(+{ValueMin})</color>";
+                _value += $"<color=green>{ValueMin}</color>";
             }
             else {
-                _value += $"<color=red>({ValueMin})</color>";
+                _value += $"<color=red>{ValueMin}</color>";
             }
 
             if (ValueMax > 0) {
-                _value += $"<color=green>-(+{ValueMax})</color>";
+                _value += $"—<color=green>{ValueMax}</color>";
             }
             else {
-                _value += $"<color=red>-({ValueMax})</color>";
+                _value += $"—<color=red>({ValueMax})</color>";
             }
         }
         else {
             if (ValueMin > 0) {
-                _value += $"<color=green>(+{ValueMin}%)</color>";
+                _value += $"<color=green>{ValueMin}</color>";
             }
             else {
-                _value += $"<color=red>({ValueMin}%)</color>";
+                _value += $"<color=red>{ValueMin}</color>";
             }
 
             if (ValueMax > 0) {
-                _value += $"<color=green>-(+{ValueMax}%)</color>";
+                _value += $"—<color=green>{ValueMax}%</color>";
             }
             else {
-                _value += $"<color=red>-({ValueMax}%)</color>";
+                _value += $"—<color=red>{ValueMax}%</color>";
             }
         }
 

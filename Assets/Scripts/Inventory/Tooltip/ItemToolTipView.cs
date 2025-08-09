@@ -21,7 +21,13 @@ public class ItemToolTipView : MonoBehaviour {
     [SerializeField]
     private RectTransform _rectTransform;
     [SerializeField]
-    private Text _price;
+    private Text _priceValue;
+    [SerializeField]
+    private GameObject _containerDuration;
+    [SerializeField]
+    private Text _durationValue;
+
+    public bool IsActive => _background.activeSelf;
 
     private void Awake() {
         _backgroundRectTransform = _background.GetComponent<RectTransform>();
@@ -37,10 +43,10 @@ public class ItemToolTipView : MonoBehaviour {
         }
 
         _background.SetActive(false);
-        CreateAttributeTooltips();
+        CreateAttributeToolTips();
     }
 
-    private void CreateAttributeTooltips() {
+    private void CreateAttributeToolTips() {
         for (int i = 0; i < _amountAttributeToolTips; i++) {
             AttributeToolTip _attributeTooltip = Instantiate(_attributePrefab, _containerAttributes.transform);
             _attributeTooltip.gameObject.SetActive(false);
@@ -48,23 +54,36 @@ public class ItemToolTipView : MonoBehaviour {
         }
     }
 
-    public void Enable(ItemData itemData, RectTransform rectTransform, float heightCell) {
+    public void Enable(ItemData itemData, RectTransform rectTransform) {
         //print("GetView tool tip");
         _name.text = itemData.Name;
         _description.text = itemData.Description;
-        _price.text = itemData.Price.ToString();
+        _priceValue.text = itemData.Price.ToString();
+
+        if (itemData is UsableItemData) {
+            UsableItemData _usableItemData = itemData as UsableItemData;
+            ShowDuration(_usableItemData);
+        }
+        else {
+            HideDuration();
+        }
+
         _rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
         SetAndEnableAttributes(itemData);
         EnableBackground();
-        StartCoroutine(SetPosition(rectTransform, heightCell));
+        StartCoroutine(SetPosition(rectTransform));
+    }
+
+    private void ShowDuration(UsableItemData usableItemData) {
+        _durationValue.text = usableItemData.Duration.ToString();
+        _containerDuration.SetActive(true);
+    }
+
+    private void HideDuration() {
+        _containerDuration.SetActive(false);
     }
 
     private void SetAndEnableAttributes(ItemData itemData) {
-        //for (int i = 0; i < itemData.Attributes.Count; i++) {
-        //    _attributeTooltips[i].Set(itemData.Attributes[i].icon, itemData.Attributes[i].GetValue());
-        //    _attributeTooltips[i].gameObject.SetActive(true);
-        //}
-
         for (int i = 0; i < itemData.Attributes.Count; i++) {
             _attributeTooltips[i].Set(itemData.Attributes[i].Icon, itemData.Attributes[i].GetValue());
             _attributeTooltips[i].gameObject.SetActive(true);
@@ -75,9 +94,8 @@ public class ItemToolTipView : MonoBehaviour {
         _background.SetActive(true);
     }
 
-    private IEnumerator SetPosition(RectTransform rectTransform, float height) {
+    private IEnumerator SetPosition(RectTransform rectTransform) {
         yield return StartCoroutine(WaitForEnableBackground());
-        //_rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
         float _halfSlotHeight = rectTransform.rect.height / 2;
         float _halfToolTipHeight = _backgroundRectTransform.rect.height / 2;
         float _spaceBetweenToolTipAndCell = 5f;

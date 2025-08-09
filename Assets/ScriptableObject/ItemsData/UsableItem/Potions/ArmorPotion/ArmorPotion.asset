@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1353794ad37ddf04fa501b398811756c, type: 3}
   m_Name: ArmorPotion
   m_EditorClassIdentifier: 
-  _price: 0
-  <Name>k__BackingField: Armor super potion
-  <Description>k__BackingField: super potion
-  <MinPrice>k__BackingField: 0
-  <MaxPrice>k__BackingField: 0
+  _price: 15
+  <Name>k__BackingField: Armor potion
+  <Description>k__BackingField: potion
+  <MinPrice>k__BackingField: 15
+  <MaxPrice>k__BackingField: 15
   <Icon>k__BackingField: {fileID: 21300000, guid: 113934c42fa0f744396d41964ad7b6c9, type: 3}
-  <Attributes>k__BackingField: []
-  <AttributeDataBase>k__BackingField:
-  - {fileID: 11400000, guid: c561254f9e110ec4d88e97915e346e59, type: 2}
+  <Attributes>k__BackingField:
+  - {fileID: 11400000, guid: 911fa727a91086743b4fa1eeda8f810e, type: 2}
   <Duration>k__BackingField: 5

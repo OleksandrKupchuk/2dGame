@@ -9,6 +9,8 @@ public class UsageSlotView : SlotView {
     protected Image _border;
     [SerializeField]
     private Text _label;
+    [SerializeField]
+    private ItemToolTip _itemToolTip;
 
     private void Awake() {
         DragAndDrop.OnItemDragged += ChangeBorderColor;
@@ -62,8 +64,13 @@ public class UsageSlotView : SlotView {
         if (_inputAction.triggered) {
             UsableItemData _usableItemData = _itemData as UsableItemData;    
             _usableItemData.Use();
+            EventManager.UseItemEventHandler(_usableItemData);
             StartCoroutine(StartTimerDelay(_usableItemData));
             RemoveItem();
+
+            if (_itemToolTip.IsActive) {
+                _itemToolTip.Hide();
+            }
         }
     }
 

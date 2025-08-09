@@ -429,6 +429,7 @@ MonoBehaviour:
   _itemIcon: {fileID: 8907479184134568808}
   _border: {fileID: 4464416888167888382}
   _label: {fileID: 1438949040716573626}
+  _itemToolTip: {fileID: 11400000, guid: 4903c3a417e5e4943a2adff73560a9bd, type: 2}
 --- !u!114 &4212658585128661314
 MonoBehaviour:
   m_ObjectHideFlags: 0

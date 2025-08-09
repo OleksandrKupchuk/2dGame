@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: ItemToolTip
   m_EditorClassIdentifier: 
   _prefab: {fileID: 9104990672612095067, guid: 6e8461e8150347842ac16358d7bff446, type: 3}
+  _prefabUsable: {fileID: 6319223979090121467, guid: 7736ee1e697a70949add1588077f092c, type: 3}
+  _prefabWearable: {fileID: 4989454819355862198, guid: d5d3c5e5551788541aad488c369c051f, type: 3}
