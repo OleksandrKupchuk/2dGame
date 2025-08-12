@@ -2,26 +2,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreationItem {
-    public WearableItemData CreateWearableItemData(WearableItemData instance) {
-        WearableItemData _itemData = ScriptableObject.Instantiate(instance);
+    public void CreateItemData(Item instance) {
+        if (instance.ItemType.Equals(ItemType.Wearable)) {
+            WearableItem _itemData = ScriptableObject.Instantiate(instance as WearableItem);
 
-        List<AttributeData> _attributes = new List<AttributeData>();
+            List<ItemAttribute> _attributes = new List<ItemAttribute>();
 
-        foreach(AttributeData attribute in _itemData.Attributes) {
-            AttributeData _attribute = ScriptableObject.Instantiate(attribute);
+            foreach (ItemAttribute attribute in _itemData.Attributes) {
+                ItemAttribute _attribute = ScriptableObject.Instantiate(attribute);
+                _attributes.Add(_attribute);
+            }
+
+            _itemData.SetAttributes(_attributes);
+        }
+    }
+
+    public Item CreateWearableItemData(Item instance) {
+        Item _itemData = ScriptableObject.Instantiate(instance);
+
+        List<ItemAttribute> _attributes = new List<ItemAttribute>();
+
+        foreach(ItemAttribute attribute in _itemData.Attributes) {
+            ItemAttribute _attribute = ScriptableObject.Instantiate(attribute);
             _attributes.Add(_attribute);
         }
 
-        _itemData.Attributes = _attributes;
+        _itemData.SetAttributes(_attributes);
 
         return _itemData;
     }
 
     public void CreateUsableItemData() {
-
-    }
-
-    public void CreateItemData() {
 
     }
 }

@@ -6,7 +6,7 @@ public class PlayerSlotView : SlotView {
     [SerializeField]
     protected Image _border;
     [SerializeField]
-    private List<ItemType> _slotTypes = new List<ItemType>();
+    private List<ItemTypeAttribute> _slotTypes = new List<ItemTypeAttribute>();
 
     private void Awake() {
         SetIcon();
@@ -19,19 +19,19 @@ public class PlayerSlotView : SlotView {
         DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
-    public override void PutItem(ItemData itemData) {
-        var _itemData = itemData as WearableItemData;
+    public override void PutItem(Item itemData) {
+        var _itemData = itemData as WearableItem;
         base._itemData = _itemData;
         SetIcon();
         EventManager.OnItemDressedHandler(_itemData);
     }
 
-    public override bool IsCanPutItem(ItemData itemData) {
+    public override bool IsCanPutItem(Item itemData) {
         if (itemData == null) return true;
 
-        if (itemData is WearableItemData) {
-            var _itemData = itemData as WearableItemData;
-            return _slotTypes.Contains(_itemData.ItemType);
+        if (itemData is WearableItem) {
+            var _itemData = itemData as WearableItem;
+            return _slotTypes.Contains(_itemData.ItemTypeAttribute);
         }
 
         return false;
@@ -43,11 +43,11 @@ public class PlayerSlotView : SlotView {
         SetIcon();
     }
 
-    private void ChangeBorderColor(ItemData itemData) {
-        if (itemData is WearableItemData) {
-            var _item = itemData as WearableItemData;
+    private void ChangeBorderColor(Item itemData) {
+        if (itemData is WearableItem) {
+            var _item = itemData as WearableItem;
 
-            if (_slotTypes.Contains(_item.ItemType)) {
+            if (_slotTypes.Contains(_item.ItemTypeAttribute)) {
                 SetBorderColor(Color.green);
             }
             else {

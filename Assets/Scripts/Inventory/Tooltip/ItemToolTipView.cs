@@ -54,14 +54,14 @@ public class ItemToolTipView : MonoBehaviour {
         }
     }
 
-    public void Enable(ItemData itemData, RectTransform rectTransform) {
+    public void Enable(Item itemData, RectTransform rectTransform) {
         //print("GetView tool tip");
         _name.text = itemData.Name;
         _description.text = itemData.Description;
         _priceValue.text = itemData.Price.ToString();
 
-        if (itemData is UsableItemData) {
-            UsableItemData _usableItemData = itemData as UsableItemData;
+        if (itemData is UsableItem) {
+            UsableItem _usableItemData = itemData as UsableItem;
             ShowDuration(_usableItemData);
         }
         else {
@@ -74,7 +74,7 @@ public class ItemToolTipView : MonoBehaviour {
         StartCoroutine(SetPosition(rectTransform));
     }
 
-    private void ShowDuration(UsableItemData usableItemData) {
+    private void ShowDuration(UsableItem usableItemData) {
         _durationValue.text = usableItemData.Duration.ToString();
         _containerDuration.SetActive(true);
     }
@@ -83,7 +83,7 @@ public class ItemToolTipView : MonoBehaviour {
         _containerDuration.SetActive(false);
     }
 
-    private void SetAndEnableAttributes(ItemData itemData) {
+    private void SetAndEnableAttributes(Item itemData) {
         for (int i = 0; i < itemData.Attributes.Count; i++) {
             _attributeTooltips[i].Set(itemData.Attributes[i].Icon, itemData.Attributes[i].GetValue());
             _attributeTooltips[i].gameObject.SetActive(true);

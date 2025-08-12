@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MarketView : MonoBehaviour {
     private List<MarketSlotView> _slots = new List<MarketSlotView>();
+    private CreationItem _creationItem = new CreationItem();
 
     [SerializeField]
     private Market _market;
@@ -35,7 +36,8 @@ public class MarketView : MonoBehaviour {
             MarketSlotView _slotViewObject = Instantiate(_slotView, _content);
 
             if (i < _market.Items.Count) {
-                _slotViewObject.PutItem(_market.Items[i]);
+                Item _itemData = _creationItem.CreateWearableItemData(_market.Items[i]);
+                _slotViewObject.PutItem(_itemData);
             }
             else {
                 _slotViewObject.PutItem(null);
@@ -45,7 +47,7 @@ public class MarketView : MonoBehaviour {
         }
     }
 
-    private void AddItem(ItemData itemData) {
+    private void AddItem(Item itemData) {
         foreach (var slot in _slots) {
             if (slot.IsEmpty) {
                 slot.PutItem(itemData);
@@ -54,7 +56,7 @@ public class MarketView : MonoBehaviour {
         }
     }
 
-    private void RemoveItem(ItemData itemData) {
+    private void RemoveItem(Item itemData) {
         foreach (var slot in _slots) {
             if (slot.ItemData == itemData) {
                 slot.RemoveItem();

@@ -1,25 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : ScriptableObject {
-    [SerializeField]
-    protected int _price;
+[System.Serializable]
+public class ItemData {
+    public string itemType;
+    public string name;
+    public string description;
+    public Sprite icon;
+    public int price;
+    public List<ItemAttributeData> itemsAttributes = new List<ItemAttributeData>();
+    public string itemTypeAttribute;
+    public string bodyType;
+    public float duration;
+}
 
-    private void OnEnable() {
-        _price = Random.Range(MinPrice, MaxPrice);
-    }
-
-    [field: SerializeField]
-    public string Name { get; private set; }
-    [field: SerializeField]
-    public string Description { get; private set; }
-    public int Price => _price;
-    [field: SerializeField]
-    public int MinPrice { get; private set; }
-    [field: SerializeField]
-    public int MaxPrice { get; private set; }
-    [field: SerializeField]
-    public Sprite Icon { get; set; }
-    [field: SerializeField]
-    public List<AttributeData> Attributes { get; set; } = new List<AttributeData>();
+[System.Serializable]
+public class ItemAttributeData {
+    public bool isRangeAttribute;
+    public Sprite icon;
+    public string attributeType;
+    public string valueType;
+    public float value;
+    public float valueMinRange;
+    public float valueMaxRange;
 }

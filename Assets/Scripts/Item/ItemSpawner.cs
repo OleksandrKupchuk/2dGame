@@ -14,7 +14,7 @@ public class ItemSpawner : MonoBehaviour {
         _inventory.OnRemoveItem -= SpawnItem;
     }
 
-    public void SpawnItem(ItemData itemData) {
+    public void SpawnItem(Item itemData) {
         ItemView _itemView = Instantiate(_prefab, new Vector3(0, 0, 10), Quaternion.identity);
         _itemView.SetItemData(itemData);
         _itemView.SetIcon();

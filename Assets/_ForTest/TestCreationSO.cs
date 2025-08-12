@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class TestCreationSO : MonoBehaviour {
     [SerializeField]
-    private WearableItemData _item;
+    private Item _item;
     [SerializeField]
-    private WearableItemData _instance;
+    private Item _instance;
 
     private void Start() {
         CreationItem _creationItem = new CreationItem();

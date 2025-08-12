@@ -5,13 +5,13 @@ public class ItemView : MonoBehaviour {
     private SpriteRenderer _icon;
 
     [field: SerializeField]
-    public ItemData ItemData { get; private set; }
+    public Item ItemData { get; private set; }
 
     private void OnEnable() {
         //SetIcon();
     }
 
-    public void SetItemData(ItemData itemData) {
+    public void SetItemData(Item itemData) {
         ItemData = itemData;
     }
 

@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerAttributeRange", menuName = "PlayerAttribute/Range")]
@@ -14,7 +15,7 @@ public class PlayerAttributeRange : PlayerAttribute {
     public float Damage => Random.Range(DamageMin, DamageMax);
 
     public override string GetValueString() {
-        return $"{DamageMin}-{DamageMax}";
+        return $"{string.Format("{0:0.0}", DamageMin)}-{string.Format("{0:0.0}", DamageMax)}";
     }
 
     protected void OnEnable() {
@@ -45,7 +46,7 @@ public class PlayerAttributeRange : PlayerAttribute {
         EventManager.TakeAwayItem -= SubtractItemAttributes;
     }
 
-    protected override void AddItemAttributes(ItemData itemData) {
+    protected override void AddItemAttributes(Item itemData) {
         if (itemData == null) {
             return;
         }
@@ -56,22 +57,22 @@ public class PlayerAttributeRange : PlayerAttribute {
         CheckAttributeChange(itemData);
     }
 
-    private void AddIntegerAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void AddIntegerAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
-                AttributeDataRange _attributeData = attribute as AttributeDataRange;
-                _valueIntegerMin += _attributeData.ValueMin;
-                _valueIntegerMax += _attributeData.ValueMax;
+                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
+                _valueIntegerMin += _attributeData.ValueMinRange;
+                _valueIntegerMax += _attributeData.ValueMaxRange;
             }
         }
     }
 
-    private void AddPercentAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void AddPercentAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                AttributeDataRange _attributeData = attribute as AttributeDataRange;
-                _valueMinPercent += _attributeData.ValueMin;
-                _valueMaxPercent += _attributeData.ValueMax;
+                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
+                _valueMinPercent += _attributeData.ValueMinRange;
+                _valueMaxPercent += _attributeData.ValueMaxRange;
             }
         }
 
@@ -83,15 +84,15 @@ public class PlayerAttributeRange : PlayerAttribute {
         _valueFromPercentMax = _valueMaxPercent * _valueIntegerMax / 100;
     }
 
-    protected override void CheckAttributeChange(ItemData item) {
-        foreach (AttributeData attributeData in item.Attributes) {
+    protected override void CheckAttributeChange(Item item) {
+        foreach (ItemAttribute attributeData in item.Attributes) {
             if (attributeData.AttributeType == AttributeType) {
                 EventManager.OnAttributeChangedHandler(AttributeType);
             }
         }
     }
 
-    protected override void SubtractItemAttributes(ItemData itemData) {
+    protected override void SubtractItemAttributes(Item itemData) {
         if (itemData == null) {
             return;
         }
@@ -102,22 +103,22 @@ public class PlayerAttributeRange : PlayerAttribute {
         CheckAttributeChange(itemData);
     }
 
-    private void SubtractIntegerAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void SubtractIntegerAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
-                AttributeDataRange _attributeData = attribute as AttributeDataRange;
-                _valueIntegerMin -= _attributeData.ValueMin;
-                _valueIntegerMax -= _attributeData.ValueMax;
+                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
+                _valueIntegerMin -= _attributeData.ValueMinRange;
+                _valueIntegerMax -= _attributeData.ValueMaxRange;
             }
         }
     }
 
-    private void SubtractPercentAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void SubtractPercentAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                AttributeDataRange _attributeData = attribute as AttributeDataRange;
-                _valueMinPercent -= _attributeData.ValueMin;
-                _valueMaxPercent -= _attributeData.ValueMax;
+                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
+                _valueMinPercent -= _attributeData.ValueMinRange;
+                _valueMaxPercent -= _attributeData.ValueMaxRange;
             }
         }
 

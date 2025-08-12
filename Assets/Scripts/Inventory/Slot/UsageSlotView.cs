@@ -22,7 +22,7 @@ public class UsageSlotView : SlotView {
         DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
-    public override void PutItem(ItemData itemData) {
+    public override void PutItem(Item itemData) {
         _itemData = itemData;
         SetIcon();
     }
@@ -32,7 +32,7 @@ public class UsageSlotView : SlotView {
         SetIcon();
     }
 
-    private void ChangeBorderColor(ItemData itemData) {
+    private void ChangeBorderColor(Item itemData) {
         if (IsCanPutItem(itemData)) {
             SetBorderColor(Color.green);
         }
@@ -41,8 +41,8 @@ public class UsageSlotView : SlotView {
         }
     }
 
-    public override bool IsCanPutItem(ItemData itemData) {
-        if (itemData == null || itemData is UsableItemData) {
+    public override bool IsCanPutItem(Item itemData) {
+        if (itemData == null || itemData is UsableItem) {
             return true;
         }
 
@@ -62,7 +62,7 @@ public class UsageSlotView : SlotView {
         if (IsEmpty) { return; }
 
         if (_inputAction.triggered) {
-            UsableItemData _usableItemData = _itemData as UsableItemData;    
+            UsableItem _usableItemData = _itemData as UsableItem;    
             _usableItemData.Use();
             EventManager.UseItemEventHandler(_usableItemData);
             StartCoroutine(StartTimerDelay(_usableItemData));
@@ -74,7 +74,7 @@ public class UsageSlotView : SlotView {
         }
     }
 
-    private IEnumerator StartTimerDelay(UsableItemData itemData) {
+    private IEnumerator StartTimerDelay(UsableItem itemData) {
         yield return new WaitForSeconds(itemData.Duration);
         EventManager.TakeAwayItemEventHandler(itemData);
     }

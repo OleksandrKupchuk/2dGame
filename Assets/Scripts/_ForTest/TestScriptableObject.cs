@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TestScriptableObject : MonoBehaviour {
     [SerializeField]
-    private AttributeData _attribute;
+    private ItemAttribute _attribute;
 
     void Start() {
         if (_attribute.Icon != null) {

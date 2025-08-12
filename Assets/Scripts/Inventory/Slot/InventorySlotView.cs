@@ -18,7 +18,7 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
         DragAndDrop.OnDragStarted -= ResetBorder;
     }
 
-    public override void PutItem(ItemData itemData) {
+    public override void PutItem(Item itemData) {
         _itemData = itemData;
         SetIcon();
     }
@@ -43,7 +43,7 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
         _border.sprite = _defaultBorder;
     }
 
-    public override bool IsCanPutItem(ItemData itemData) {
+    public override bool IsCanPutItem(Item itemData) {
         return true;
     }
 }

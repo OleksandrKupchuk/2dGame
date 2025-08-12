@@ -44,7 +44,7 @@ public class PlayerAttributeInteger : PlayerAttribute {
         EventManager.TakeAwayItem -= SubtractItemAttributes;
     }
 
-    protected override void AddItemAttributes(ItemData itemData) {
+    protected override void AddItemAttributes(Item itemData) {
         if (itemData == null) {
             return;
         }
@@ -55,19 +55,19 @@ public class PlayerAttributeInteger : PlayerAttribute {
         CheckAttributeChange(itemData);
     }
 
-    private void AddIntegerAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void AddIntegerAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
-                AttributeDataInteger _attributeData = attribute as AttributeDataInteger;
+                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valueInteger += _attributeData.Value;
             }
         }
     }
 
-    private void AddPercentAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void AddPercentAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                AttributeDataInteger _attributeData = attribute as AttributeDataInteger;
+                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valuePercent += _attributeData.Value;
             }
         }
@@ -75,7 +75,7 @@ public class PlayerAttributeInteger : PlayerAttribute {
         _valueFromPercent = _valuePercent * _valueInteger / 100;
     }
 
-    protected override void SubtractItemAttributes(ItemData itemData) {
+    protected override void SubtractItemAttributes(Item itemData) {
         if (itemData == null) {
             return;
         }
@@ -86,19 +86,19 @@ public class PlayerAttributeInteger : PlayerAttribute {
         CheckAttributeChange(itemData);
     }
 
-    private void SubtractIntegerAttributes(ItemData itemData) {
-        foreach (AttributeData attribute in itemData.Attributes) {
+    private void SubtractIntegerAttributes(Item itemData) {
+        foreach (ItemAttribute attribute in itemData.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
-                AttributeDataInteger _attributeData = attribute as AttributeDataInteger;
+                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valueInteger -= _attributeData.Value;
             }
         }
     }
 
-    private void SubtractPercentAttributes(ItemData item) {
-        foreach (AttributeData attribute in item.Attributes) {
+    private void SubtractPercentAttributes(Item item) {
+        foreach (ItemAttribute attribute in item.Attributes) {
             if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                AttributeDataInteger _attributeData = attribute as AttributeDataInteger;
+                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valuePercent -= _attributeData.Value;
             }
         }
@@ -106,8 +106,8 @@ public class PlayerAttributeInteger : PlayerAttribute {
         _valueFromPercent = _valuePercent * _valueInteger / 100;
     }
 
-    protected override void CheckAttributeChange(ItemData item) {
-        foreach (AttributeData attributeData in item.Attributes) {
+    protected override void CheckAttributeChange(Item item) {
+        foreach (ItemAttribute attributeData in item.Attributes) {
             if (attributeData.AttributeType == AttributeType) {
                 EventManager.OnAttributeChangedHandler(AttributeType);
             }
@@ -121,6 +121,6 @@ public class PlayerAttributeInteger : PlayerAttribute {
     }
 
     public override string GetValueString() {
-        return (_valueInteger + _valueFromPercent).ToString();
+        return string.Format("{0:0.0}", _valueInteger + _valueFromPercent);
     }
 }

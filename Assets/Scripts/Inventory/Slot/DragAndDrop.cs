@@ -17,7 +17,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public SlotView SlotView { get; private set; }
 
     public static event Action OnDragStarted;
-    public static event Action<ItemData> OnItemDragged;
+    public static event Action<Item> OnItemDragged;
     public static event Action OnDragEnded;
 
     private void Awake() {

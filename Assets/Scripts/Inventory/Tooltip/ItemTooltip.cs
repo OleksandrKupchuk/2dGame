@@ -10,7 +10,7 @@ public class ItemToolTip : ScriptableObject {
 
     public bool IsActive => _itemToolTipView != null && _itemToolTipView.IsActive;
 
-    public void Show(ItemData itemData, RectTransform rectTransform) {
+    public void Show(Item itemData, RectTransform rectTransform) {
         if (_itemToolTipView == null) {
             _parent = FindObjectOfType<Canvas>();
             _itemToolTipView = Instantiate(_prefab, _parent.transform);
