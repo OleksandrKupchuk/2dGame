@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
-[System.Serializable]
+[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item", order = 0)]
 public class Item : ScriptableObject {
     [SerializeField, HideInInspector]
     protected int _price;
@@ -23,8 +22,14 @@ public class Item : ScriptableObject {
     protected int _maxPrice;
     [SerializeField]
     protected Sprite _icon;
-    [SerializeField, SerializeReference]
+    [SerializeField]
     protected List<ItemAttribute> _attributes;
+    [SerializeField]
+    private float _duration;
+    [SerializeField]
+    private ItemTypeAttribute _itemTypeAttribute;
+    [SerializeField]
+    private BodyType _bodyType;
 
     public ItemType ItemType => _itemType;
     public string Name => _name;
@@ -32,20 +37,31 @@ public class Item : ScriptableObject {
     public int Price => _price;
     public Sprite Icon => _icon;
     public List<ItemAttribute> Attributes => _attributes;
+    public float Duration => _duration;
+    public ItemTypeAttribute ItemTypeAttribute => _itemTypeAttribute;
+    public BodyType BodyType => _bodyType;
+
+    public void Use() {
+        EventManager.OnItemDressedHandler(this);
+    }
 
     public void SetAttributes(List<ItemAttribute> attributes) {
         _attributes = attributes;
-    }
-
-    [ContextMenu("Save to JSON")]
-    public void SaveToJson() {
-        string json = JsonUtility.ToJson(this, true);
-        File.WriteAllText(Application.persistentDataPath + "/myData.json", json);
-        Debug.Log("Saved to JSON");
     }
 }
 
 public enum ItemType {
     Wearable,
     Usable,
+}
+
+public enum ItemTypeAttribute {
+    None,
+    Helmet,
+    Armor,
+    Ring,
+    Amulet,
+    Weapon,
+    Belt,
+    Shield
 }

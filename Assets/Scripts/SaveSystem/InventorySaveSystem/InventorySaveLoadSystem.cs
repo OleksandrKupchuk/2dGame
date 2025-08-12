@@ -13,9 +13,6 @@ public class InventorySaveLoadSystem : MonoBehaviour {
         File.Delete(_filePath);
 
         foreach (Item item in _inventory.ItemsData) {
-            //string _json = JsonUtility.ToJson(GetItemData(item), true);
-            //File.AppendAllText(_filePath, _json);
-
             _saveLoadJsonSystem.Save("Inventory", GetItemData(item));
         }
 
@@ -33,16 +30,11 @@ public class InventorySaveLoadSystem : MonoBehaviour {
         _itemData.itemsAttributes = GetItemsAttributesData(item.Attributes);
 
         if (item.ItemType.Equals(ItemType.Wearable)) {
-            WearableItem _wearableItem = item as WearableItem;
-
-            if (_wearableItem != null) {
-                _itemData.itemTypeAttribute = _wearableItem.ItemTypeAttribute.ToString();
-                _itemData.bodyType = _wearableItem.BodyType.ToString();
-            }
+            _itemData.itemTypeAttribute = item.ItemTypeAttribute.ToString();
+            _itemData.bodyType = item.BodyType.ToString();
         }
         else {
-            UsableItem _usableItem = item as UsableItem;
-            _itemData.duration = _usableItem.Duration;
+            _itemData.duration = item.Duration;
         }
 
 

@@ -23,12 +23,12 @@ public class MarketSlotView : SlotView, IPointerClickHandler, IPointerEnterHandl
     }
 
     public override void PutItem(Item itemData) {
-        _itemData = itemData;
+        _item = itemData;
         SetIcon();
     }
 
     public override void RemoveItem() {
-        _itemData = null;
+        _item = null;
         SetIcon();
     }
 
@@ -39,8 +39,8 @@ public class MarketSlotView : SlotView, IPointerClickHandler, IPointerEnterHandl
             }
 
             Debug.Log("BuyItem item");
-            _market.BuyItem(_itemData);
-            _market.RemoveItem(_itemData);
+            _market.BuyItem(_item);
+            _market.RemoveItem(_item);
         }
     }
 

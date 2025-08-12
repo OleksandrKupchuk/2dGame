@@ -54,28 +54,27 @@ public class ItemToolTipView : MonoBehaviour {
         }
     }
 
-    public void Enable(Item itemData, RectTransform rectTransform) {
+    public void Enable(Item item, RectTransform rectTransform) {
         //print("GetView tool tip");
-        _name.text = itemData.Name;
-        _description.text = itemData.Description;
-        _priceValue.text = itemData.Price.ToString();
+        _name.text = item.Name;
+        _description.text = item.Description;
+        _priceValue.text = item.Price.ToString();
 
-        if (itemData is UsableItem) {
-            UsableItem _usableItemData = itemData as UsableItem;
-            ShowDuration(_usableItemData);
+        if (item.ItemType.Equals(ItemType.Usable)) {
+            ShowDuration(item);
         }
         else {
             HideDuration();
         }
 
         _rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y);
-        SetAndEnableAttributes(itemData);
+        SetAndEnableAttributes(item);
         EnableBackground();
         StartCoroutine(SetPosition(rectTransform));
     }
 
-    private void ShowDuration(UsableItem usableItemData) {
-        _durationValue.text = usableItemData.Duration.ToString();
+    private void ShowDuration(Item item) {
+        _durationValue.text = item.Duration.ToString();
         _containerDuration.SetActive(true);
     }
 

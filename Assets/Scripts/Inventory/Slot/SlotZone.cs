@@ -36,14 +36,14 @@ public class SlotZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
 
         if (eventData.pointerDrag.TryGetComponent(out DragAndDrop dragAndDrop)) {
-            Item _itemData = dragAndDrop.SlotView.ItemData;
+            Item _itemData = dragAndDrop.SlotView.Item;
 
             if (_slotView.IsCanPutItem(_itemData)) {
                 dragAndDrop.SlotView.RemoveItem();
-                dragAndDrop.SlotView.PutItem(_slotView.ItemData);
+                dragAndDrop.SlotView.PutItem(_slotView.Item);
                 _slotView.RemoveItem();
                 _slotView.PutItem(_itemData);
-                _itemToolTip.Show(_slotView.ItemData, _rectTransform);
+                _itemToolTip.Show(_slotView.Item, _rectTransform);
             }
         }
     }
@@ -54,7 +54,7 @@ public class SlotZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
 
         if (_canShowToolTip) {
-            _itemToolTip.Show(_slotView.ItemData, _rectTransform);
+            _itemToolTip.Show(_slotView.Item, _rectTransform);
         }
     }
 

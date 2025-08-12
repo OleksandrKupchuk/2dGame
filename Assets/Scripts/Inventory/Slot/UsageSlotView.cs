@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class UsageSlotView : SlotView {
     private InputAction _inputAction;
@@ -22,13 +23,13 @@ public class UsageSlotView : SlotView {
         DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
-    public override void PutItem(Item itemData) {
-        _itemData = itemData;
+    public override void PutItem(Item item) {
+        _item = item;
         SetIcon();
     }
 
     public override void RemoveItem() {
-        _itemData = null;
+        _item = null;
         SetIcon();
     }
 
@@ -41,8 +42,8 @@ public class UsageSlotView : SlotView {
         }
     }
 
-    public override bool IsCanPutItem(Item itemData) {
-        if (itemData == null || itemData is UsableItem) {
+    public override bool IsCanPutItem(Item item) {
+        if (item == null || item.ItemType.Equals(ItemType.Usable)) {
             return true;
         }
 
@@ -62,10 +63,9 @@ public class UsageSlotView : SlotView {
         if (IsEmpty) { return; }
 
         if (_inputAction.triggered) {
-            UsableItem _usableItemData = _itemData as UsableItem;    
-            _usableItemData.Use();
-            EventManager.UseItemEventHandler(_usableItemData);
-            StartCoroutine(StartTimerDelay(_usableItemData));
+            _item.Use();
+            EventManager.UseItemEventHandler(_item);
+            StartCoroutine(StartTimerDelay(_item));
             RemoveItem();
 
             if (_itemToolTip.IsActive) {
@@ -74,9 +74,9 @@ public class UsageSlotView : SlotView {
         }
     }
 
-    private IEnumerator StartTimerDelay(UsableItem itemData) {
-        yield return new WaitForSeconds(itemData.Duration);
-        EventManager.TakeAwayItemEventHandler(itemData);
+    private IEnumerator StartTimerDelay(Item item) {
+        yield return new WaitForSeconds(item.Duration);
+        EventManager.TakeAwayItemEventHandler(item);
     }
 
     public void SetInputAction(InputAction inputAction) {

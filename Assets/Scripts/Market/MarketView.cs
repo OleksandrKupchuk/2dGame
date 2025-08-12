@@ -58,7 +58,7 @@ public class MarketView : MonoBehaviour {
 
     private void RemoveItem(Item itemData) {
         foreach (var slot in _slots) {
-            if (slot.ItemData == itemData) {
+            if (slot.Item == itemData) {
                 slot.RemoveItem();
                 return;
             }

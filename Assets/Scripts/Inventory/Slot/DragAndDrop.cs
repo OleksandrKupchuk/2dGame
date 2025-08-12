@@ -29,7 +29,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (SlotView.IsEmpty) { return; }
         transform.SetParent(transform.root);
         _canvasGroup.blocksRaycasts = false;
-        OnItemDragged?.Invoke(SlotView.ItemData);
+        OnItemDragged?.Invoke(SlotView.Item);
         print("OnDragStarted");
         OnDragStarted?.Invoke();
     }
@@ -41,7 +41,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnEndDrag(PointerEventData eventData) {
         if (_isDropZone) {
-            _inventoryController.RemoveItem(SlotView.ItemData);
+            _inventoryController.RemoveItem(SlotView.Item);
             ResetSlotPosition();
             print("Remove Item from Inventory");
         }

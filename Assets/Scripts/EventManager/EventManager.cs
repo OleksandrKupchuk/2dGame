@@ -17,9 +17,9 @@ public class EventManager {
         TakeAwayItem.Invoke(item);
     }
 
-    public static event Action<UsableItem> UseItem;
+    public static event Action<Item> UseItem;
 
-    public static void UseItemEventHandler(UsableItem item) {
+    public static void UseItemEventHandler(Item item) {
         UseItem.Invoke(item);
     }
 

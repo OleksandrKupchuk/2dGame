@@ -12286,7 +12286,7 @@ PrefabInstance:
     - target: {fileID: -7739704852953929580, guid: ba4bd23bfc3594449a81c0d12c0fe0a9, type: 3}
       propertyPath: <ItemData>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 7949ad8818eb83b4f8248f1bafded640, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b7d7464d37fcd540b69404fa9e42858, type: 2}
     - target: {fileID: 2779285724816536027, guid: ba4bd23bfc3594449a81c0d12c0fe0a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

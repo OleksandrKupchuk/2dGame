@@ -19,12 +19,12 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
     }
 
     public override void PutItem(Item itemData) {
-        _itemData = itemData;
+        _item = itemData;
         SetIcon();
     }
 
     public override void RemoveItem() {
-        _itemData = null;
+        _item = null;
         SetIcon();
     }
 

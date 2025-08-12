@@ -13,8 +13,8 @@ public class BuyItem : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData) {
         if (eventData.button == PointerEventData.InputButton.Right) {
-            _inventory.TryAddItem(_slotView.ItemData);
-            _market.RemoveItem(_slotView.ItemData);
+            _inventory.TryAddItem(_slotView.Item);
+            _market.RemoveItem(_slotView.Item);
             _slotZone.HideItemToolTip();
         }
     }

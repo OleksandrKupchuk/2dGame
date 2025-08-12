@@ -16,12 +16,10 @@ public class ChangeSkin : MonoBehaviour {
     }
 
     public void Change(Item item) {
-        if (item is WearableItem) {
-            var _item = item as WearableItem;
-
+        if (item.ItemType.Equals(ItemType.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
-                if (_item.BodyType == bodyPart.Type) {
-                    bodyPart.ChangeSkin(_item);
+                if (item.BodyType == bodyPart.Type) {
+                    bodyPart.ChangeSkin(item);
                 }
             }
 
@@ -29,12 +27,10 @@ public class ChangeSkin : MonoBehaviour {
     }
 
     public void Reset(Item item) {
-        if (item is WearableItem) {
-            var _item = item as WearableItem;
-
+        if (item.ItemType.Equals(ItemType.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
-                if (_item.BodyType == bodyPart.Type) {
-                    bodyPart.ResetSkin(_item);
+                if (item.BodyType == bodyPart.Type) {
+                    bodyPart.ResetSkin(item);
                 }
             }
         }

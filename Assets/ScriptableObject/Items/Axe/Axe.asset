@@ -9,16 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd6da6367499dc4991716d070a30206, type: 3}
+  m_Script: {fileID: 11500000, guid: 566ee5ccdd93cdd4daf2562555818545, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
+  _price: 0
   _itemType: 0
   _name: Axe
-  _description: asd
-  _minPrice: 10
+  _description: Desc
+  _minPrice: 20
   _maxPrice: 50
   _icon: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
   _attributes:
   - {fileID: 11400000, guid: 3284695d96d29a148968692c0597098d, type: 2}
-  _itemTypeAttribute: 4
-  _bodyType: 0
+  _duration: 0
+  _itemTypeAttribute: 5
+  _bodyType: 2
