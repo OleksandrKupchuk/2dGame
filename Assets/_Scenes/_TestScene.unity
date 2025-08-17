@@ -9624,7 +9624,6 @@ GameObject:
   - component: {fileID: 2022751158}
   - component: {fileID: 2022751157}
   - component: {fileID: 2022751156}
-  - component: {fileID: 2022751159}
   m_Layer: 5
   m_Name: LoadInventory
   m_TagString: Untagged
@@ -9696,7 +9695,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2022751159}
+      - m_Target: {fileID: 919931821}
         m_TargetAssemblyTypeName: InventorySaveLoadSystem, Assembly-CSharp
         m_MethodName: LoadInventory
         m_Mode: 1
@@ -9746,19 +9745,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022751154}
   m_CullTransparentMesh: 1
---- !u!114 &2022751159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022751154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af4c3d2ad8e5924ba7b9c9c69d6b06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
 --- !u!1 &2036244911
 GameObject:
   m_ObjectHideFlags: 0
@@ -12381,7 +12367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7783609211246636534, guid: ba4bd23bfc3594449a81c0d12c0fe0a9, type: 3}
       propertyPath: m_Name
-      value: Potion_Armor
+      value: Armor_Potion
       objectReference: {fileID: 0}
     - target: {fileID: 7783609211246636534, guid: ba4bd23bfc3594449a81c0d12c0fe0a9, type: 3}
       propertyPath: m_IsActive

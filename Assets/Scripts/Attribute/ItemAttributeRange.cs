@@ -11,8 +11,8 @@ public class ItemAttributeRange : ItemAttribute {
     [SerializeField]
     private float _maxValueMaxRange;
 
-    public float ValueMinRange { get; private set; }
-    public float ValueMaxRange { get; private set; }
+    public float ValueMinRange { get; set; }
+    public float ValueMaxRange { get; set; }
 
     private void Awake() {
         _isRangeAttribute = true;

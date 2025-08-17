@@ -11,10 +11,10 @@ public abstract class ItemAttribute : ScriptableObject {
     [SerializeField]
     protected ValueType _valueType;
 
-    public bool IsRangeAttribute => _isRangeAttribute;
-    public AttributeType AttributeType => _attributeType;
-    public ValueType ValueType => _valueType;
-    public Sprite Icon => _icon;
+    public bool IsRangeAttribute { get => _isRangeAttribute; set => _isRangeAttribute = value; }
+    public AttributeType AttributeType { get => _attributeType; set => _attributeType = value; }
+    public ValueType ValueType { get => _valueType; set => _valueType = value; }
+    public Sprite Icon { get => _icon; set => _icon = value; }
 
     protected void OnEnable() {
         GenerateParameters();

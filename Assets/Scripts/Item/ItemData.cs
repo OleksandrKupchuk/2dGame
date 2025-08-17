@@ -1,5 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public class ItemsData {
+    public List<ItemData> itemsData = new List<ItemData>();
+}
 
 [System.Serializable]
 public class ItemData {
@@ -8,7 +14,7 @@ public class ItemData {
     public string description;
     public Sprite icon;
     public int price;
-    public List<ItemAttributeData> itemsAttributes = new List<ItemAttributeData>();
+    public List<ItemAttributeData> itemsAttributesData = new List<ItemAttributeData>();
     public string itemTypeAttribute;
     public string bodyType;
     public float duration;

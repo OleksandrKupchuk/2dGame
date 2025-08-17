@@ -31,15 +31,15 @@ public class Item : ScriptableObject {
     [SerializeField]
     private BodyType _bodyType;
 
-    public ItemType ItemType => _itemType;
-    public string Name => _name;
-    public string Description => _description;
-    public int Price => _price;
-    public Sprite Icon => _icon;
-    public List<ItemAttribute> Attributes => _attributes;
-    public float Duration => _duration;
-    public ItemTypeAttribute ItemTypeAttribute => _itemTypeAttribute;
-    public BodyType BodyType => _bodyType;
+    public ItemType ItemType { get => _itemType; set => _itemType = value; }
+    public string Name { get => _name; set => _name = value; }
+    public string Description { get => _description; set => _description = value; }
+    public int Price { get => _price; set => _price = value; }
+    public Sprite Icon { get => _icon; set => _icon = value; }
+    public List<ItemAttribute> Attributes { get => _attributes; set => _attributes = value; }
+    public float Duration { get => _duration; set => _duration = value; }
+    public ItemTypeAttribute ItemTypeAttribute { get => _itemTypeAttribute; set => _itemTypeAttribute = value; }
+    public BodyType BodyType { get => _bodyType; set => _bodyType = value; }
 
     public void Use() {
         EventManager.OnItemDressedHandler(this);
@@ -56,7 +56,7 @@ public enum ItemType {
 }
 
 public enum ItemTypeAttribute {
-    None,
+    NoneNoy,
     Helmet,
     Armor,
     Ring,
