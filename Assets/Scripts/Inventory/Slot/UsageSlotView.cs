@@ -2,12 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class UsageSlotView : SlotView {
     private InputAction _inputAction;
-    [SerializeField]
-    protected Image _border;
     [SerializeField]
     private Text _label;
     [SerializeField]

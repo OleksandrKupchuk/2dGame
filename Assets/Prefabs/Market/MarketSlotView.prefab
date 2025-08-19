@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 2463462894001416663}
-  _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
-  _playerInput: {fileID: 11400000, guid: 32b23d19312ac6b4c8689b0ae3ee01e7, type: 2}
-  _borderImage: {fileID: 4022095468491554464}
+  _border: {fileID: 4022095468491554464}
   _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
   _activeBorder: {fileID: 21300000, guid: b9b05ad1d692f23429022efc0fe145d6, type: 3}
+  _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
+  _playerInput: {fileID: 11400000, guid: 32b23d19312ac6b4c8689b0ae3ee01e7, type: 2}
 --- !u!114 &2941244948598861490
 MonoBehaviour:
   m_ObjectHideFlags: 0

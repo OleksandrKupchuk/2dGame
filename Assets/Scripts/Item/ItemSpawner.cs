@@ -7,11 +7,11 @@ public class ItemSpawner : MonoBehaviour {
     private Inventory _inventory;
 
     private void Awake() {
-        _inventory.OnRemoveItem += SpawnItem;
+        //_inventory.OnRemoveItem += SpawnItem;
     }
 
     private void OnDestroy() {
-        _inventory.OnRemoveItem -= SpawnItem;
+        //_inventory.OnRemoveItem -= SpawnItem;
     }
 
     public void SpawnItem(Item itemData) {

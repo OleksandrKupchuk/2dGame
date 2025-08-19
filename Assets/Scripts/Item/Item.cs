@@ -56,7 +56,7 @@ public enum ItemType {
 }
 
 public enum ItemTypeAttribute {
-    NoneNoy,
+    None,
     Helmet,
     Armor,
     Ring,

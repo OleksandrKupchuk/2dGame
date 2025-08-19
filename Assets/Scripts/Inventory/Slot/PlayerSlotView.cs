@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerSlotView : SlotView {
-    [SerializeField]
-    protected Image _border;
     [SerializeField]
     private List<ItemTypeAttribute> _slotTypes = new List<ItemTypeAttribute>();
 
@@ -43,7 +40,7 @@ public class PlayerSlotView : SlotView {
 
     private void ChangeBorderColor(Item item) {
         if (item.ItemType.Equals(ItemType.Wearable)) {
-            if (_slotTypes.Contains(_item.ItemTypeAttribute)) {
+            if (_slotTypes.Contains(item.ItemTypeAttribute)) {
                 SetBorderColor(Color.green);
             }
             else {
@@ -51,7 +48,7 @@ public class PlayerSlotView : SlotView {
             }
         }
         else {
-                SetBorderColor(Color.red);
+            SetBorderColor(Color.red);
         }
     }
 

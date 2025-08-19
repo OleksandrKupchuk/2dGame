@@ -1,15 +1,4 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHandler {
-    [SerializeField]
-    private Image _border;
-    [SerializeField]
-    private Sprite _defaultBorder;
-    [SerializeField]
-    private Sprite _activeBorder;
-
+public class InventorySlotView : SlotView{
     private void Awake() {
         DragAndDrop.OnDragStarted += ResetBorder;
     }
@@ -26,21 +15,6 @@ public class InventorySlotView : SlotView, IPointerEnterHandler, IPointerExitHan
     public override void RemoveItem() {
         _item = null;
         SetIcon();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData) {
-        //print("Inventory slot view ENTER");
-        _border.sprite = _activeBorder;
-    }
-
-    public void OnPointerExit(PointerEventData eventData) {
-        //print("Inventory slot view EXIT");
-        ResetBorder();
-    }
-
-    private void ResetBorder() {
-        //print("Inventory slot view reset border");
-        _border.sprite = _defaultBorder;
     }
 
     public override bool IsCanPutItem(Item itemData) {
