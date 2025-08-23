@@ -8,11 +8,11 @@ public class ItemView : MonoBehaviour {
     public Item ItemData { get; private set; }
 
     private void OnEnable() {
-        //SetIcon();
+        gameObject.layer = LayerMask.NameToLayer("Item");
     }
 
-    public void SetItemData(Item itemData) {
-        ItemData = itemData;
+    public void SetItem(Item item) {
+        ItemData = item;
     }
 
     public void SetIcon() {

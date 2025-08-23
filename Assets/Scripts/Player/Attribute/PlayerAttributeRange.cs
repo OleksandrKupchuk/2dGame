@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerAttributeRange", menuName = "PlayerAttribute/Range")]
@@ -34,6 +33,18 @@ public class PlayerAttributeRange : PlayerAttribute {
             case AttributeType.PhysicalDamage:
                 _valueIntegerMin = _playerConfig.PhysicalDamageMin;
                 _valueIntegerMax = _playerConfig.PhysicalDamageMax;
+                break;
+            case AttributeType.FireDamage:
+                _valueIntegerMin = _playerConfig.FireDamageMin;
+                _valueIntegerMax = _playerConfig.FireDamageMax;
+                break;
+            case AttributeType.FrostDamage:
+                _valueIntegerMin = _playerConfig.FrostDamageMin;
+                _valueIntegerMax = _playerConfig.FrostDamageMax;
+                break;
+            case AttributeType.PoisonDamage:
+                _valueIntegerMin = _playerConfig.PoisonDamageMin;
+                _valueIntegerMax = _playerConfig.PoisonDamageMax;
                 break;
             default:
                 Debug.LogError($"PlayerAttribute type {AttributeType} is not supported in PlayerAttributeRange.");
@@ -87,7 +98,7 @@ public class PlayerAttributeRange : PlayerAttribute {
     protected override void CheckAttributeChange(Item item) {
         foreach (ItemAttribute attributeData in item.Attributes) {
             if (attributeData.AttributeType == AttributeType) {
-                EventManager.OnAttributeChangedHandler(AttributeType);
+                OnAttributeChangedHandler();
             }
         }
     }

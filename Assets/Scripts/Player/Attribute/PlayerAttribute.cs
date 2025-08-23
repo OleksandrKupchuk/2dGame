@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public abstract class PlayerAttribute : ScriptableObject {
     [SerializeField]
@@ -7,9 +7,15 @@ public abstract class PlayerAttribute : ScriptableObject {
     [SerializeField]
     protected PlayerConfig _playerConfig;
 
-    public bool IsRangeAttribute => _isRangeAttribute;
     [field: SerializeField]
     public AttributeType AttributeType { get; protected set; } = new AttributeType();
+
+    public event Action OnAttributeChanged;
+    public bool IsRangeAttribute => _isRangeAttribute;
+
+    public void OnAttributeChangedHandler() {
+        OnAttributeChanged.Invoke();
+    }
 
     public abstract string GetValueString();
     protected abstract void AddItemAttributes(Item itemData);

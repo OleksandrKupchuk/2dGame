@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/Item", order = 0)]
@@ -25,11 +26,15 @@ public class Item : ScriptableObject {
     [SerializeField]
     protected List<ItemAttribute> _attributes;
     [SerializeField]
-    private float _duration;
+    protected float _duration;
     [SerializeField]
-    private ItemTypeAttribute _itemTypeAttribute;
+    protected ItemTypeAttribute _itemTypeAttribute;
     [SerializeField]
-    private BodyType _bodyType;
+    protected BodyType _bodyType;
+    [SerializeField]
+    private bool _isNeedActions = false;
+    [SerializeField]
+    protected List<ItemAction> _itemActions = new List<ItemAction>();
 
     public ItemType ItemType { get => _itemType; set => _itemType = value; }
     public string Name { get => _name; set => _name = value; }
@@ -42,7 +47,7 @@ public class Item : ScriptableObject {
     public BodyType BodyType { get => _bodyType; set => _bodyType = value; }
 
     public void Use() {
-        EventManager.OnItemDressedHandler(this);
+        _itemActions.ToList().ForEach(action => action.Execute());
     }
 
     public void SetAttributes(List<ItemAttribute> attributes) {

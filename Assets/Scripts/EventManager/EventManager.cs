@@ -51,9 +51,8 @@ public class EventManager {
         OnHit.Invoke();
     }
 
-    public static event Action<AttributeType> OnAttributeChanged;
-
-    public static void OnAttributeChangedHandler(AttributeType attributeType) {
-        OnAttributeChanged.Invoke(attributeType);
+    public static event Action<Item> OnItemDrop;
+    public static void OnItemDropHandler(Item item) {
+        OnItemDrop?.Invoke(item);
     }
 }

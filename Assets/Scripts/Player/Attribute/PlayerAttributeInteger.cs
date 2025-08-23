@@ -109,7 +109,7 @@ public class PlayerAttributeInteger : PlayerAttribute {
     protected override void CheckAttributeChange(Item item) {
         foreach (ItemAttribute attributeData in item.Attributes) {
             if (attributeData.AttributeType == AttributeType) {
-                EventManager.OnAttributeChangedHandler(AttributeType);
+                OnAttributeChangedHandler();
             }
         }
     }

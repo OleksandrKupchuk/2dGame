@@ -36,7 +36,7 @@ public class MarketView : MonoBehaviour {
             MarketSlotView _slotViewObject = Instantiate(_slotView, _content);
 
             if (i < _market.Items.Count) {
-                Item _itemData = _creationItem.CreateWearableItemData(_market.Items[i]);
+                Item _itemData = _creationItem.GetCreatedItem(_market.Items[i]);
                 _slotViewObject.PutItem(_itemData);
             }
             else {

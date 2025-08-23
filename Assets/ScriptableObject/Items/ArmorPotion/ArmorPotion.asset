@@ -24,3 +24,6 @@ MonoBehaviour:
   _duration: 10
   _itemTypeAttribute: 0
   _bodyType: 0
+  _isNeedActions: 0
+  _itemActions:
+  - {fileID: 11400000, guid: 6075e993fcac8e744a4f9e2ba29c86a1, type: 2}
