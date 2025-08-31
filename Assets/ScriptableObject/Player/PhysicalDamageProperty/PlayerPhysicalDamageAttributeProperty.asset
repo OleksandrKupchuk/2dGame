@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerPhysicalDamageAttributeProperty
   m_EditorClassIdentifier: 
   <DamageAttribute>k__BackingField: {fileID: 11400000, guid: 6eb7ed6f9fd4ecc4c8c698a55180a344, type: 2}
-  <DamageAttributeResistance>k__BackingField: {fileID: 11400000, guid: 00b43b12d33d99048a07bc4b713682bd, type: 2}
+  <ResistanceAttribute>k__BackingField: {fileID: 11400000, guid: 00b43b12d33d99048a07bc4b713682bd, type: 2}
   <BlockedDamagePerOneResistance>k__BackingField: 0.2
-  <DamageImmunity>k__BackingField: 0
+  <Immunity>k__BackingField: 0
+  <Color>k__BackingField: {r: 0.88835347, g: 1, b: 0, a: 1}

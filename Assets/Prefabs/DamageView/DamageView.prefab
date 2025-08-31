@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2391556133694536424}
   - component: {fileID: 8302517059350713150}
   m_Layer: 5
-  m_Name: PhysicalDamageView
+  m_Name: DamageView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,14 +1,8 @@
 using UnityEngine;
 
 public class Damage : MonoBehaviour {
-    private float _damage;
-    public float minDamage;
-    public float maxDamage;
-
-    public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.TryGetComponent(out PlayerBodyPart playerBodyPart)) {
-            _damage = Random.Range(minDamage, maxDamage);
-            playerBodyPart.TakeDamage(_damage, this);
-        }
-    }
+    [field: SerializeField]
+    public BoxCollider2D BoxCollider2D { get; private set; }
+    [field: SerializeField]
+    public Attributes Attributes { get; private set; }
 }

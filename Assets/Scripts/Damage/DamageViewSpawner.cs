@@ -10,7 +10,7 @@ public class DamageViewSpawner : MonoBehaviour {
     private HealthController _healthController;
 
     private void Awake() {
-        _parent = FindObjectOfType<Canvas>();
+        _parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         _healthController.OnTakeDamage += SpawnDamageView;
         _poolDamageView = new ObjectPool<DamageView>(_prefab, _parent.transform);
     }

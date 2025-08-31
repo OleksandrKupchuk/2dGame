@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HealthController", menuName = "Components/HealthController")]
@@ -8,12 +7,9 @@ public class HealthController : ScriptableObject {
     private float _delayBeforeRegenerationHealth;
     private float _timeRegenerationHealth;
     private float _currentHealth;
-    private List<Damage> _objectsAttack = new List<Damage>();
 
     [SerializeField]
     private float _delayHealthRegenerationInSeconds;
-    [SerializeField]
-    private InvulnerabilityStatus _invulnerabilityStatus;
     [SerializeField]
     private AttributeInteger _healthRegenerationAttribute;
     [SerializeField]
@@ -26,6 +22,7 @@ public class HealthController : ScriptableObject {
     public bool IsDead { get => CurrentHealth <= 0; }
 
     public event Action<float, Color> OnTakeDamage;
+    public event Action OnHit;
 
     private void OnEnable() {
         EventManager.OnHealthChanged += CheckCurrentHealth;
@@ -72,27 +69,6 @@ public class HealthController : ScriptableObject {
         }
     }
 
-    public void CheckTakeDamage(List<DamageAttributeProperty> damageProperties, Damage damageObject) {
-        if (_objectsAttack.Contains(damageObject)) {
-            Task.Delay(System.TimeSpan.FromSeconds(2d)).ContinueWith(task => UnregisteredDamageObject(damageObject));
-        }
-        else if (_invulnerabilityStatus.IsInvulnerability) {
-            Debug.Log("Player IsInvulnerability");
-        }
-        else {
-            RegisterDamageObject(damageObject);
-            TakeDamage(damageProperties);
-        }
-    }
-
-    private void UnregisteredDamageObject(Damage damageObject) {
-        _objectsAttack.Remove(damageObject);
-    }
-
-    private void RegisterDamageObject(Damage damageObject) {
-        _objectsAttack.Add(damageObject);
-    }
-
     public void TakeDamage(List<DamageAttributeProperty> damageProperties) {
         foreach (var damageProperty in damageProperties) {
             float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.ResistanceAttribute.Value * damageProperty.BlockedDamagePerOneResistance);
@@ -109,7 +85,8 @@ public class HealthController : ScriptableObject {
                 _currentHealth -= _damage;
                 OnTakeDamage.Invoke(_damage, damageProperty.Color);
                 _delayBeforeRegenerationHealth = 0;
-                EventManager.OnHitHandler();
+                OnHit?.Invoke();
+                //EventManager.OnHitHandler();
                 EventManager.OnHealthChangedHandler();
             }
         }

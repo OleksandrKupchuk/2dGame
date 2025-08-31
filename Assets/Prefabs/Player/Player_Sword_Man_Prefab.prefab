@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6726485751713979336}
   - component: {fileID: 4135743337817751516}
   - component: {fileID: 2986762258273929629}
+  - component: {fileID: 8257386875142595318}
   m_Layer: 6
   m_Name: Player_Sword_Man_Prefab
   m_TagString: Player
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d635c5f95b15741b967b039595fdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 607727161519057064}
+  _weapon: {fileID: 810523384619220801}
   _frameRateInAttackAnimationForEnableCollider: 25
   _frameRateInAttackAnimationForDisableCollider: 30
   _attackAnimation: {fileID: 7400000, guid: fb30f15524b4a2d4b83dc65fe81c33fd, type: 2}
@@ -280,6 +281,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2391556133694536424, guid: 986ba7df9a503e748889c91e22aa0987, type: 3}
   _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
+--- !u!114 &8257386875142595318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238491402704463331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3c76a00a6ba584e80916be4dc78109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
+  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
 --- !u!1 &7328863205628577472
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,9 +305,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8131857798149475145}
   - component: {fileID: 8185496335760780153}
-  - component: {fileID: 607727161519057064}
   - component: {fileID: 5244960924419892184}
-  m_Layer: 6
+  - component: {fileID: 810523384619220801}
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -366,21 +381,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &607727161519057064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7328863205628577472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 132b9ca54ba837648b52da14050653f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <BoxCollider2D>k__BackingField: {fileID: 5244960924419892184}
-  _player: {fileID: 7139910950940667720}
-  _damageAttribute: {fileID: 11400000, guid: 5dad5dd0cdf1e8046bf5c679c5b7e5d6, type: 2}
 --- !u!61 &5244960924419892184
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -426,6 +426,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64660287, y: 1.9189789}
   m_EdgeRadius: 0
+--- !u!114 &810523384619220801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328863205628577472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36475e85fe5906f42802ade164a8360a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BoxCollider2D>k__BackingField: {fileID: 5244960924419892184}
+  <Attributes>k__BackingField: {fileID: 11400000, guid: 3a5ab716c6727a346899faa5440d3952, type: 2}
 --- !u!1001 &1639847481028110335
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class PlayerWeaponController : MonoBehaviour {
     private AnimationEvent _attackEvent = new AnimationEvent();
 
     [SerializeField]
-    private Weapon _weapon;
+    private Damage _weapon;
     [SerializeField]
     protected int _frameRateInAttackAnimationForEnableCollider;
     [SerializeField]

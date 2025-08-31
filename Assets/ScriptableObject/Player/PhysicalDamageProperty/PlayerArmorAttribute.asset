@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerArmorAttribute
   m_EditorClassIdentifier: 
   _isRangeAttribute: 0
-  _playerConfig: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}
+  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}
   <AttributeType>k__BackingField: 0

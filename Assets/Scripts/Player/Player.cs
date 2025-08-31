@@ -39,11 +39,16 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         PlayerWeaponController.Init();
-        EventManager.OnHit += () => StateMachine.ChangeState(HitState);
-        EventManager.OnHit += () => {
+        _healthController.OnHit += () => StateMachine.ChangeState(HitState);
+        _healthController.OnHit += () => {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
+        //EventManager.OnHit += () => StateMachine.ChangeState(HitState);
+        //EventManager.OnHit += () => {
+        //    StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
+        //    StartCoroutine(BlinkAnimation());
+        //};
         EventManager.OnDead += () => StateMachine.ChangeState(DeadState);
 
         IdleState = new PlayerIdleState();
@@ -59,11 +64,16 @@ public class Player : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        EventManager.OnHit -= () => StateMachine.ChangeState(HitState);
-        EventManager.OnHit -= () => {
+        _healthController.OnHit += () => StateMachine.ChangeState(HitState);
+        _healthController.OnHit += () => {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
+        //EventManager.OnHit -= () => StateMachine.ChangeState(HitState);
+        //EventManager.OnHit -= () => {
+        //    StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
+        //    StartCoroutine(BlinkAnimation());
+        //};
         EventManager.OnDead -= () => StateMachine.ChangeState(DeadState);
     }
 
