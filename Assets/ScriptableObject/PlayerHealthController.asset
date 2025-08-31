@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803d4ddb252d01045baeb18252e0e9d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 92dec01a1d83a644faa7616c5be64edb, type: 3}
   m_Name: PlayerHealthController
   m_EditorClassIdentifier: 
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
-  _healthRegenerationAttribute: {fileID: 11400000, guid: 89e25460542e59444bb920eda4309d58, type: 2}
-  _healthAttribute: {fileID: 11400000, guid: 7c733eb87c3d9d14f92c21a3defbb96a, type: 2}
-  _armorAttribute: {fileID: 11400000, guid: c0d599bd7a9fe634aa415567ad350804, type: 2}
+  _healthRegenerationAttribute: {fileID: 11400000, guid: f6b0c37b63448ff41933c268d91f49f6, type: 2}
+  _healthAttribute: {fileID: 11400000, guid: 39a307f2085613c4088e6bf029f11e5c, type: 2}
   _config: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}

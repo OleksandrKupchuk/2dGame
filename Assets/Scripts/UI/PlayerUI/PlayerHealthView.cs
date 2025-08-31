@@ -7,7 +7,7 @@ public class PlayerHealthView : MonoBehaviour {
     [SerializeField]
     private Image _healthBar;
     [SerializeField]
-    private PlayerHealthController _healthController;
+    private HealthController _healthController;
 
     private void Awake() {
         EventManager.ActionItemOver += UpdateHealthBar;

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635fd4ef5cbadae4295629327a1fee66, type: 3}
   m_Name: DialogController
   m_EditorClassIdentifier: 
-  _questSystem: {fileID: 11400000, guid: 103abdf9ad0489b4cafeed509210c50f, type: 2}
+  _questController: {fileID: 11400000, guid: c2438d47f18000e4cb32edf3de11ba18, type: 2}

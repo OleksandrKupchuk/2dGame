@@ -7,10 +7,6 @@ public class EventManager {
         OnItemDressed.Invoke(item);
     }
 
-    public static void OnItemDressedHandler() {
-        OnItemDressed.Invoke(null);
-    }
-
     public static event Action<Item> TakeAwayItem;
 
     public static void TakeAwayItemEventHandler(Item item) {
@@ -49,11 +45,5 @@ public class EventManager {
     public static event Action OnHit;
     public static void OnHitHandler() {
         OnHit.Invoke();
-    }
-
-    public static event Action<AttributeType> OnAttributeChanged;
-
-    public static void OnAttributeChangedHandler(AttributeType attributeType) {
-        OnAttributeChanged.Invoke(attributeType);
     }
 }

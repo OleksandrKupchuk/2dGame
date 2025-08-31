@@ -6,7 +6,7 @@ public class ResourcesPath : MonoBehaviour
     //Folders
     public static readonly string FolderPrefabs = "Prefabs/";
     public static readonly string FolderFieldOfView = FolderPrefabs + "FieldOfView/";
-    public static readonly string FolderTooltip = "Sprites/Attributes/";
+    public static readonly string FolderTooltip = "Sprites/AttributesProperty/";
     public static readonly string FolderPlayerConfig = "Config/PlayerConfig/";
 
     //Prefabs

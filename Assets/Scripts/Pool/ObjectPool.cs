@@ -41,6 +41,24 @@ public class ObjectPool<T> where T : Component {
         return _instance;
     }
 
+    public T GetDisabled() {
+        T _instance = null;
+
+        foreach (T newObject in _objects) {
+            if (!newObject.gameObject.activeSelf) {
+                _instance = newObject;
+                return _instance;
+            }
+        }
+
+        if (_instance == null) {
+            _instance = Object.Instantiate(_prefab, _parent);
+            _objects.Add(_instance);
+        }
+
+        return _instance;
+    }
+
     public void PutAndDisabled(T instance) {
         if (instance.gameObject.activeSelf) {
             instance.gameObject.SetActive(false);

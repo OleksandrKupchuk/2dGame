@@ -9,19 +9,21 @@ public class AttributeView : MonoBehaviour {
     [SerializeField]
     protected Text _value;
     [SerializeField]
-    private PlayerAttribute _attribute;
+    private Attribute _attribute;
 
     private void Awake() {
-        EventManager.OnAttributeChanged += UpdateAttributeView;
+        //EventManager.OnAttributeChanged += UpdateAttributeView;
+        _attribute.OnAttributeChanged += UpdateAttributeView;
     }
 
     private void OnDestroy() {
-        EventManager.OnAttributeChanged -= UpdateAttributeView;
+        //EventManager.OnAttributeChanged -= UpdateAttributeView;
+        _attribute.OnAttributeChanged -= UpdateAttributeView;
     }
 
     private void Start() {
         _icon.sprite = _spriteAttribute;
-        UpdateAttributeView(_attribute.AttributeType);
+        UpdateAttributeView();
     }
 
     private void UpdateAttributeView(AttributeType type) {
@@ -31,5 +33,9 @@ public class AttributeView : MonoBehaviour {
         else {
             _value.text = $"{_attribute.GetValueString()}";
         }
+    }
+
+    private void UpdateAttributeView() {
+        _value.text = $"{_attribute.GetValueString()}";
     }
 }

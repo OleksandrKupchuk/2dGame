@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "Config/PlayerConfig")]
+[CreateAssetMenu(fileName = "PlayerConfig", menuName = "Config/PlayerConfig")]
 public class PlayerConfig : ScriptableObject {
     [field: SerializeField]
     public float Health { get; private set; }
@@ -20,4 +20,8 @@ public class PlayerConfig : ScriptableObject {
     public float DelayHealthRegeneration { get; private set; }
     [field: SerializeField]
     public int Coins { get; set; }
+    [field: SerializeField]
+    public float BlockedDamagePerOneArmor { get; private set; }
+    [field: SerializeField]
+    public float BlockedFireDamagePerOneFireResistance { get; private set; }
 }

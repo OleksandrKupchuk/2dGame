@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 5238491402704463331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 247315288}
   _delayBllinkAnimationInSeconds: 2
   _sprites: []
-  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
+  _healthController: {fileID: 11400000, guid: f4741d4df7ee3a347ada53d88cd8d4a8, type: 2}
   <InvulnerableStatus>k__BackingField: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   <PlayerMovement>k__BackingField: {fileID: 5652064171342545477}
   <PlayerWeaponController>k__BackingField: {fileID: 7264231251228489834}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
-  _questSystem: {fileID: 11400000, guid: 103abdf9ad0489b4cafeed509210c50f, type: 2}
+  _questController: {fileID: 11400000, guid: c2438d47f18000e4cb32edf3de11ba18, type: 2}
 --- !u!114 &2377159792989392474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 8185496335760780153}
   - component: {fileID: 607727161519057064}
   - component: {fileID: 5244960924419892184}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Weapon
   m_TagString: Player
   m_Icon: {fileID: 0}

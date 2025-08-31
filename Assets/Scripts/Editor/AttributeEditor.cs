@@ -3,7 +3,7 @@ using UnityEngine;
 
 //[CustomEditor(typeof(ItemAttribute))]
 public class AttributeEditor : Editor {
-    private const string _spritesPath = "Sprites/Attributes/";
+    private const string _spritesPath = "Sprites/AttributesProperty/";
     private SerializedProperty _isRangeAttributeProperty;
     private SerializedProperty _valueMinProperty;
     private SerializedProperty _valueMaxProperty;

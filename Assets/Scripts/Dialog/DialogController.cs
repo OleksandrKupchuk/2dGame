@@ -10,7 +10,7 @@ public class DialogController : ScriptableObject {
     private List<string> _paragraphs;
 
     [SerializeField]
-    private QuestSystem _questSystem;
+    private QuestController _questController;
 
     public event Action<string, List<DialogData>> OnDialoguesOpened;
     public event Action OnDialoguesClosed;
@@ -102,7 +102,7 @@ public class DialogController : ScriptableObject {
         }
 
         if (dialogData.Quest != null) {
-            _questSystem.AddQuest(dialogData.Quest);
+            _questController.AddQuest(dialogData.Quest);
         }
     }
 

@@ -7,11 +7,13 @@ public class TakeAwayPlayerHealth : MonoBehaviour {
     [SerializeField]
     private Button _addHealthButton;
     [SerializeField]
-    private PlayerHealthController _healthController;
+    private HealthController _healthController;
+    [SerializeField]
+    private AttributesProperty _attributesProperty;
 
     private void Start() {
         _addHealthButton.onClick.AddListener(() => {
-            _healthController.TakeDamage(_health);
+            _healthController.TakeDamage(_attributesProperty.DamageProperties);
         });
     }
 }
