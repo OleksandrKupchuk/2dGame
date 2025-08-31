@@ -18,6 +18,12 @@ MonoBehaviour:
   <Armor>k__BackingField: 3
   <PhysicalDamageMin>k__BackingField: 2
   <PhysicalDamageMax>k__BackingField: 5
+  <FireDamageMin>k__BackingField: 1
+  <FireDamageMax>k__BackingField: 2
+  <FrostDamageMin>k__BackingField: 1
+  <FrostDamageMax>k__BackingField: 2
+  <PoisonDamageMin>k__BackingField: 1
+  <PoisonDamageMax>k__BackingField: 2
   <HealthRegeneration>k__BackingField: 2
   <DelayHealthRegeneration>k__BackingField: 3
   <Coins>k__BackingField: 1000

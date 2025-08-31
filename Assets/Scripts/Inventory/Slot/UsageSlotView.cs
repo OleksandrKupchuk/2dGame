@@ -1,10 +1,10 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UsageSlotView : SlotView {
     private InputAction _inputAction;
+
     [SerializeField]
     private Text _label;
     [SerializeField]
@@ -61,19 +61,12 @@ public class UsageSlotView : SlotView {
 
         if (_inputAction.triggered) {
             _item.Use();
-            EventManager.UseItemEventHandler(_item);
-            StartCoroutine(StartTimerDelay(_item));
             RemoveItem();
 
             if (_itemToolTip.IsActive) {
                 _itemToolTip.Hide();
             }
         }
-    }
-
-    private IEnumerator StartTimerDelay(Item item) {
-        yield return new WaitForSeconds(item.Duration);
-        EventManager.TakeAwayItemEventHandler(item);
     }
 
     public void SetInputAction(InputAction inputAction) {

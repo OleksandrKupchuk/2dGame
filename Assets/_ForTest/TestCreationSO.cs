@@ -8,6 +8,6 @@ public class TestCreationSO : MonoBehaviour {
 
     private void Start() {
         CreationItem _creationItem = new CreationItem();
-        _item = _creationItem.CreateWearableItemData(_instance);
+        _item = _creationItem.GetCreatedItem(_instance);
     }
 }

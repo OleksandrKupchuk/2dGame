@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -34,6 +33,7 @@ public enum AttributeType {
     PhysicalDamage,
     FireDamage,
     FrostDamage,
+    LightingDamage,
     PoisonDamage,
     LightingDamage,
     MagicDamage,

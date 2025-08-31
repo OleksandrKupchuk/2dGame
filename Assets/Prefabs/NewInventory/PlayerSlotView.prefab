@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3106707538152983922}
   - component: {fileID: 2897405252041831967}
   m_Layer: 5
-  m_Name: ItemIcon
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 3106707538152983922}
-  _inventoryController: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
+  _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
   <SlotView>k__BackingField: {fileID: 1029556401762828396}
 --- !u!1 &4082701389449364007
 GameObject:

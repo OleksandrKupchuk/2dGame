@@ -15,7 +15,7 @@ public class InventorySaveLoadSystem : MonoBehaviour {
 
         ItemsData _wraperItemsData = new ItemsData();
 
-        foreach (Item item in _inventory.ItemsData) {
+        foreach (Item item in _inventory.Items) {
             _wraperItemsData.itemsData.Add(GetItemData(item));
         }
 

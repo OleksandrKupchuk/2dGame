@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     private RaycastHit2D _raycastHit;
     private Vector2 _inputDirection;
-    private float _deafaultGravityScale;
+    private float _defaultGravityScale;
 
     [SerializeField]
     private PlayerConfig _playerConfig;
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Awake() {
         _playerInputReader.OnMoved += Move;
-        _deafaultGravityScale = _rigidbody.gravityScale;
+        _defaultGravityScale = _rigidbody.gravityScale;
     }
 
     private void OnDestroy() {
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void ResetGravityScaleToDefault() {
-        _rigidbody.gravityScale = _deafaultGravityScale;
+        _rigidbody.gravityScale = _defaultGravityScale;
     }
 
     public void ResetRigidbodyVelocity() {

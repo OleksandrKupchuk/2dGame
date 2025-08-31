@@ -36,13 +36,13 @@ public class SlotZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
 
         if (eventData.pointerDrag.TryGetComponent(out DragAndDrop dragAndDrop)) {
-            Item _itemData = dragAndDrop.SlotView.Item;
+            Item _item = dragAndDrop.SlotView.Item;
 
-            if (_slotView.IsCanPutItem(_itemData)) {
+            if (_slotView.IsCanPutItem(_item)) {
                 dragAndDrop.SlotView.RemoveItem();
                 dragAndDrop.SlotView.PutItem(_slotView.Item);
                 _slotView.RemoveItem();
-                _slotView.PutItem(_itemData);
+                _slotView.PutItem(_item);
                 _itemToolTip.Show(_slotView.Item, _rectTransform);
             }
         }

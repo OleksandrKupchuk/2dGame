@@ -11,7 +11,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     [SerializeField]
     private CanvasGroup _canvasGroup;
     [SerializeField]
-    private Inventory _inventoryController;
+    private Inventory _inventory;
 
     [field: SerializeField]
     public SlotView SlotView { get; private set; }
@@ -41,9 +41,9 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnEndDrag(PointerEventData eventData) {
         if (_isDropZone) {
-            _inventoryController.RemoveItem(SlotView.Item);
+            EventManager.OnItemDropHandler(SlotView.Item);
             ResetSlotPosition();
-            print("Remove Item from Inventory");
+            print("Drop Item from Inventory");
         }
         else {
             ResetSlotPosition();

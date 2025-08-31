@@ -46,4 +46,12 @@ public class EventManager {
     public static void OnHitHandler() {
         OnHit.Invoke();
     }
+<<<<<<< HEAD
+=======
+
+    public static event Action<Item> OnItemDrop;
+    public static void OnItemDropHandler(Item item) {
+        OnItemDrop?.Invoke(item);
+    }
+>>>>>>> d84f61f28eae6158f881ef62479366b326da010c
 }

@@ -22,8 +22,8 @@ public class InventoryView : MonoBehaviour {
         SpawnSlotsView();
         _inventory.OnOpen += Open;
         _inventory.OnClose += Close;
-        _inventory.OnAddItem += AddItem;
-        _inventory.OnRemoveItem += RemoveItem;
+        _inventory.OnItemAdd += AddItem;
+        _inventory.OnItemRemove += RemoveItem;
         _closeButton.onClick.AddListener(() => { Close(); _market.Close(); });
 
         Close();
@@ -32,8 +32,8 @@ public class InventoryView : MonoBehaviour {
     private void OnDestroy() {
         _inventory.OnOpen -= Open;
         _inventory.OnClose -= Close;
-        _inventory.OnAddItem -= AddItem;
-        _inventory.OnRemoveItem -= RemoveItem;
+        _inventory.OnItemAdd -= AddItem;
+        _inventory.OnItemRemove -= RemoveItem;
     }
 
     private void SpawnSlotsView() {

@@ -39,6 +39,18 @@ public class AttributeRange : Attribute {
                 _valueIntegerMin = _config.PhysicalDamageMin;
                 _valueIntegerMax = _config.PhysicalDamageMax;
                 break;
+            case AttributeType.FireDamage:
+                _valueIntegerMin = _playerConfig.FireDamageMin;
+                _valueIntegerMax = _playerConfig.FireDamageMax;
+                break;
+            case AttributeType.FrostDamage:
+                _valueIntegerMin = _playerConfig.FrostDamageMin;
+                _valueIntegerMax = _playerConfig.FrostDamageMax;
+                break;
+            case AttributeType.PoisonDamage:
+                _valueIntegerMin = _playerConfig.PoisonDamageMin;
+                _valueIntegerMax = _playerConfig.PoisonDamageMax;
+                break;
             default:
                 Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeRange.");
                 break;
