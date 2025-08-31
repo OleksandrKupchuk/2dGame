@@ -75,7 +75,7 @@ public class DialogView : MonoBehaviour {
         UpdatePositionAndSizeBackground(dialogues.Count);
 
         foreach (var dialog in dialogues) {
-            StartDialogButton _startDialogButton = _startDialogButtonsPool.GetEnabled();
+            StartDialogButton _startDialogButton = _startDialogButtonsPool.GetEnabledObject();
             _startDialogButton.Init(dialog);
         }
     }

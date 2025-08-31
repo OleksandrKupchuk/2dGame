@@ -22,16 +22,16 @@ public class AttributeInteger : Attribute {
     private void CheckAttributeType() {
         switch (AttributeType) {
             case AttributeType.Health:
-                _valueInteger = _playerConfig.Health;
+                _valueInteger = _config.Health;
                 break;
             case AttributeType.HealthRegeneration:
-                _valueInteger = _playerConfig.HealthRegeneration;
+                _valueInteger = _config.HealthRegeneration;
                 break;
             case AttributeType.Armor:
-                _valueInteger = _playerConfig.Armor;
+                _valueInteger = _config.Armor;
                 break;
             case AttributeType.Speed:
-                _valueInteger = _playerConfig.Speed;
+                _valueInteger = _config.Speed;
                 break;
             default:
                 Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeInteger.");

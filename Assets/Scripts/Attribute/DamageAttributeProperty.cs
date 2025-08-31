@@ -5,7 +5,11 @@ public class DamageAttributeProperty : ScriptableObject {
     [field: SerializeField]
     public AttributeRange DamageAttribute { get; private set; }
     [field: SerializeField]
-    public AttributeInteger DamageAttributeResistance { get; private set; }
+    public AttributeInteger ResistanceAttribute { get; private set; }
     [field: SerializeField]
     public float BlockedDamagePerOneResistance { get; private set; }
+    [field: SerializeField]
+    public float Immunity { get; private set; }
+    [field: SerializeField]
+    public Color Color { get; private set; }
 }

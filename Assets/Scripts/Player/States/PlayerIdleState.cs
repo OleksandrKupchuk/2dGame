@@ -11,9 +11,9 @@ public class PlayerIdleState : IState<Player> {
     }
 
     public void Update() {
-        //Debug.Log("info = " + _playerConfig.Animator.GetCurrentAnimatorStateInfo(0).IsName(PlayerAnimationName.Attack));
+        //Debug.Log("info = " + _config.Animator.GetCurrentAnimatorStateInfo(0).IsName(PlayerAnimationName.Attack));
         //Debug.Log($"<color=yellow>idle execute</color>");
-        //Debug.Log("jump button press = " + _playerConfig.Jump.action.triggered);
+        //Debug.Log("jump button press = " + _config.Jump.action.triggered);
         if (!_player.PlayerMovement.IsGround()) {
             _player.StateMachine.ChangeState(_player.JumpDownState);
         }

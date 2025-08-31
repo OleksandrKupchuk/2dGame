@@ -5,6 +5,6 @@ public class PlayerBodyPart : MonoBehaviour {
     private HealthController _playerHealthController;
 
     public void TakeDamage(float damage, Damage damageObject) {
-        _playerHealthController.CheckTakeDamage(damage, damageObject);
+        //_playerHealthController.CheckTakeDamage(damage, damageObject);
     }
 }

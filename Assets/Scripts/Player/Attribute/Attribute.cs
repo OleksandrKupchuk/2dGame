@@ -5,7 +5,7 @@ public abstract class Attribute : ScriptableObject {
     [SerializeField]
     protected bool _isRangeAttribute;
     [SerializeField]
-    protected PlayerConfig _playerConfig;
+    protected AttributesConfig _config;
 
     [field: SerializeField]
     public AttributeType AttributeType { get; protected set; } = new AttributeType();

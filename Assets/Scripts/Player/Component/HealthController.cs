@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,8 +9,9 @@ public class HealthController : ScriptableObject {
     private float _timeRegenerationHealth;
     private float _currentHealth;
     private List<Damage> _objectsAttack = new List<Damage>();
-    private float _blockedDamagePerOneArmor = 0.2f;
 
+    [SerializeField]
+    private float _delayHealthRegenerationInSeconds;
     [SerializeField]
     private InvulnerabilityStatus _invulnerabilityStatus;
     [SerializeField]
@@ -17,13 +19,13 @@ public class HealthController : ScriptableObject {
     [SerializeField]
     private AttributeInteger _healthAttribute;
     [SerializeField]
-    private AttributeInteger _armorAttribute;
-    [SerializeField]
-    private PlayerConfig _config;
+    private AttributesConfig _config;
 
     public float CurrentHealth { get => _currentHealth; }
     public float MaxHealth { get => _healthAttribute.Value; }
     public bool IsDead { get => CurrentHealth <= 0; }
+
+    public event Action<float, Color> OnTakeDamage;
 
     private void OnEnable() {
         EventManager.OnHealthChanged += CheckCurrentHealth;
@@ -42,7 +44,7 @@ public class HealthController : ScriptableObject {
 
         _delayBeforeRegenerationHealth += Time.deltaTime;
 
-        if (_delayBeforeRegenerationHealth >= _config.DelayHealthRegeneration) {
+        if (_delayBeforeRegenerationHealth >= _delayHealthRegenerationInSeconds) {
 
             _timeRegenerationHealth -= Time.deltaTime;
 
@@ -70,7 +72,7 @@ public class HealthController : ScriptableObject {
         }
     }
 
-    public void CheckTakeDamage(float damage, Damage damageObject) {
+    public void CheckTakeDamage(List<DamageAttributeProperty> damageProperties, Damage damageObject) {
         if (_objectsAttack.Contains(damageObject)) {
             Task.Delay(System.TimeSpan.FromSeconds(2d)).ContinueWith(task => UnregisteredDamageObject(damageObject));
         }
@@ -79,7 +81,7 @@ public class HealthController : ScriptableObject {
         }
         else {
             RegisterDamageObject(damageObject);
-            TakeDamage(damage);
+            TakeDamage(damageProperties);
         }
     }
 
@@ -91,49 +93,25 @@ public class HealthController : ScriptableObject {
         _objectsAttack.Add(damageObject);
     }
 
-    public void TakeDamage(float damage) {
-        float _cleanDamage = damage - GetBlockedDamage(_armorAttribute.Value);
-
-        if (_cleanDamage <= 0) {
-            return;
-        }
-
-        _currentHealth -= _cleanDamage;
-
-        if (IsDead) {
-            EventManager.OnDeadHandler();
-        }
-        else {
-            _delayBeforeRegenerationHealth = 0;
-            EventManager.OnHitHandler();
-            EventManager.OnHealthChangedHandler();
-        }
-    }
-
     public void TakeDamage(List<DamageAttributeProperty> damageProperties) {
         foreach (var damageProperty in damageProperties) {
-            float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.DamageAttributeResistance.Value * damageProperty.BlockedDamagePerOneResistance);
-            
+            float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.ResistanceAttribute.Value * damageProperty.BlockedDamagePerOneResistance);
+
             if (_damage <= 0) {
                 return;
             }
-
-            _currentHealth -= _damage;
 
             if (IsDead) {
                 EventManager.OnDeadHandler();
                 return;
             }
             else {
+                _currentHealth -= _damage;
+                OnTakeDamage.Invoke(_damage, damageProperty.Color);
                 _delayBeforeRegenerationHealth = 0;
                 EventManager.OnHitHandler();
                 EventManager.OnHealthChangedHandler();
             }
         }
-    }
-
-    public float GetBlockedDamage(float armor) {
-        float _blockedDamage = armor * _blockedDamagePerOneArmor;
-        return _blockedDamage;
     }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92dec01a1d83a644faa7616c5be64edb, type: 3}
   m_Name: PlayerHealthController
   m_EditorClassIdentifier: 
+  _delayHealthRegenerationInSeconds: 3
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
-  _healthRegenerationAttribute: {fileID: 0}
-  _healthAttribute: {fileID: 0}
-  _armorAttribute: {fileID: 0}
-  _config: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}
+  _healthRegenerationAttribute: {fileID: 11400000, guid: f735878febb4aad4cb30fb2f9c8c5b3b, type: 2}
+  _healthAttribute: {fileID: 11400000, guid: 03aa56e05c8f15349be2dc29d0593703, type: 2}
+  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}

@@ -1336,7 +1336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _addHealthButton: {fileID: 224425481}
-  _healthController: {fileID: 11400000, guid: f4741d4df7ee3a347ada53d88cd8d4a8, type: 2}
+  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
+  _attributes: {fileID: 11400000, guid: 3a5ab716c6727a346899faa5440d3952, type: 2}
 --- !u!114 &224425481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4413,7 +4414,7 @@ GameObject:
   - component: {fileID: 954409350}
   - component: {fileID: 954409349}
   m_Layer: 5
-  m_Name: PlayerUI
+  m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8071,7 +8072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValue: {fileID: 427808155}
   _healthBar: {fileID: 499673736}
-  _healthController: {fileID: 0}
+  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
 --- !u!114 &1737287507
 MonoBehaviour:
   m_ObjectHideFlags: 0
