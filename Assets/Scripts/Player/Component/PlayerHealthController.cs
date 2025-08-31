@@ -13,11 +13,11 @@ public class PlayerHealthController : ScriptableObject {
     [SerializeField]
     private InvulnerabilityStatus _invulnerabilityStatus;
     [SerializeField]
-    private PlayerAttributeInteger _healthRegenerationAttribute;
+    private AttributeInteger _healthRegenerationAttribute;
     [SerializeField]
-    private PlayerAttributeInteger _healthAttribute;
+    private AttributeInteger _healthAttribute;
     [SerializeField]
-    private PlayerAttributeInteger _armorAttribute;
+    private AttributeInteger _armorAttribute;
     [SerializeField]
     private PlayerConfig _config;
 

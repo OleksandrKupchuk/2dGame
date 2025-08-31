@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerAttributeInteger", menuName = "Attribute/Integer")]
-public class PlayerAttributeInteger : Attribute {
+[CreateAssetMenu(fileName = "AttributeInteger", menuName = "Attribute/Integer")]
+public class AttributeInteger : Attribute {
     private float _valueInteger;
     private float _valuePercent;
     private float _valueFromPercent;
@@ -34,7 +34,7 @@ public class PlayerAttributeInteger : Attribute {
                 _valueInteger = _playerConfig.Speed;
                 break;
             default:
-                Debug.LogError($"Attribute type {AttributeType} is not supported in PlayerAttributeInteger.");
+                Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeInteger.");
                 break;
         }
     }
