@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerAttributeRange", menuName = "PlayerAttribute/Range")]
-public class PlayerAttributeRange : PlayerAttribute {
+[CreateAssetMenu(fileName = "PlayerAttributeRange", menuName = "Attribute/Range")]
+public class PlayerAttributeRange : Attribute {
     private float _valueIntegerMin;
     private float _valueIntegerMax;
     private float _valueFromPercentMin;
@@ -47,7 +47,7 @@ public class PlayerAttributeRange : PlayerAttribute {
                 _valueIntegerMax = _playerConfig.PoisonDamageMax;
                 break;
             default:
-                Debug.LogError($"PlayerAttribute type {AttributeType} is not supported in PlayerAttributeRange.");
+                Debug.LogError($"Attribute type {AttributeType} is not supported in PlayerAttributeRange.");
                 break;
         }
     }

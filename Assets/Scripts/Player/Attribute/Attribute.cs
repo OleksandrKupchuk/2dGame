@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class PlayerAttribute : ScriptableObject {
+public abstract class Attribute : ScriptableObject {
     [SerializeField]
     protected bool _isRangeAttribute;
     [SerializeField]

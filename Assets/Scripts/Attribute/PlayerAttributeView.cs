@@ -9,7 +9,7 @@ public class PlayerAttributeView : MonoBehaviour {
     [SerializeField]
     protected Text _value;
     [SerializeField]
-    private PlayerAttribute _playerAttribute;
+    private Attribute _playerAttribute;
 
     private void Awake() {
         _playerAttribute.OnAttributeChanged += UpdateAttributeView;
