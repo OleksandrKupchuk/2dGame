@@ -8071,7 +8071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValue: {fileID: 427808155}
   _healthBar: {fileID: 499673736}
-  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
+  _healthController: {fileID: 0}
 --- !u!114 &1737287507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8982,7 +8982,7 @@ PrefabInstance:
     - target: {fileID: 1956218876629199986, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _playerAttribute
       value: 
-      objectReference: {fileID: 11400000, guid: c0d599bd7a9fe634aa415567ad350804, type: 2}
+      objectReference: {fileID: 11400000, guid: 00b43b12d33d99048a07bc4b713682bd, type: 2}
     - target: {fileID: 2264855273741596482, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9106,7 +9106,7 @@ PrefabInstance:
     - target: {fileID: 4208224094070886666, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _playerAttribute
       value: 
-      objectReference: {fileID: 11400000, guid: 89e25460542e59444bb920eda4309d58, type: 2}
+      objectReference: {fileID: 11400000, guid: f735878febb4aad4cb30fb2f9c8c5b3b, type: 2}
     - target: {fileID: 4339980200198946206, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_Name
       value: Panels
@@ -9262,7 +9262,7 @@ PrefabInstance:
     - target: {fileID: 6611907184684837873, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _playerAttribute
       value: 
-      objectReference: {fileID: 11400000, guid: 408912232466dbe41b8f130f8254bdc9, type: 2}
+      objectReference: {fileID: 11400000, guid: 6eb7ed6f9fd4ecc4c8c698a55180a344, type: 2}
     - target: {fileID: 6990979453904295760, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9410,7 +9410,7 @@ PrefabInstance:
     - target: {fileID: 7866118640146278689, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _playerAttribute
       value: 
-      objectReference: {fileID: 11400000, guid: 147ac6a98cf5fe7418b0a32d7dbcb654, type: 2}
+      objectReference: {fileID: 11400000, guid: 0f561d4fef41bd34eb8f30bb8e3589a9, type: 2}
     - target: {fileID: 8083717218898086279, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9618,9 +9618,12 @@ PrefabInstance:
     - target: {fileID: 9215233038258263497, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
       propertyPath: _playerAttribute
       value: 
-      objectReference: {fileID: 11400000, guid: 7c733eb87c3d9d14f92c21a3defbb96a, type: 2}
+      objectReference: {fileID: 11400000, guid: 03aa56e05c8f15349be2dc29d0593703, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9136770042799625168, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+    - {fileID: 6990979455117055954, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
+    - {fileID: 359801639248453893, guid: 88dbf23780da4554ea97c9a569812673, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88dbf23780da4554ea97c9a569812673, type: 3}

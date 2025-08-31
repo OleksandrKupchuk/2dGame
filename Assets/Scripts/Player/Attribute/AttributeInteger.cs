@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttributeInteger", menuName = "Attribute/Integer")]
+[CreateAssetMenu(fileName = "AttributeInteger", menuName = "Attributes/AttributeInteger")]
 public class AttributeInteger : Attribute {
     private float _valueInteger;
     private float _valuePercent;

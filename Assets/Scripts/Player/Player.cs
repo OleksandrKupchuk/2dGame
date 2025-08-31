@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private List<SpriteRenderer> _sprites = new List<SpriteRenderer>();
     [SerializeField]
-    public PlayerHealthController _healthController;
+    public HealthController _healthController;
 
     public List<Collider2D> CollidesForIgnored { get => _collidersForIgnored; }
     public PlayerIdleState IdleState { get; private set; }

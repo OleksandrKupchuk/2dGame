@@ -7,7 +7,7 @@ public class TakeAwayPlayerHealth : MonoBehaviour {
     [SerializeField]
     private Button _addHealthButton;
     [SerializeField]
-    private PlayerHealthController _healthController;
+    private HealthController _healthController;
 
     private void Start() {
         _addHealthButton.onClick.AddListener(() => {

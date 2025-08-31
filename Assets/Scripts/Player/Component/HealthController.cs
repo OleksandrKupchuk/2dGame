@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerHealthController")]
-public class PlayerHealthController : ScriptableObject {
+[CreateAssetMenu(fileName = "HealthController", menuName = "Components/HealthController")]
+public class HealthController : ScriptableObject {
     private float _delayBeforeRegenerationHealth;
     private float _timeRegenerationHealth;
     private float _currentHealth;
@@ -107,6 +107,28 @@ public class PlayerHealthController : ScriptableObject {
             _delayBeforeRegenerationHealth = 0;
             EventManager.OnHitHandler();
             EventManager.OnHealthChangedHandler();
+        }
+    }
+
+    public void TakeDamage(List<DamageAttributeProperty> damageProperties) {
+        foreach (var damageProperty in damageProperties) {
+            float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.DamageAttributeResistance.Value * damageProperty.BlockedDamagePerOneResistance);
+            
+            if (_damage <= 0) {
+                return;
+            }
+
+            _currentHealth -= _damage;
+
+            if (IsDead) {
+                EventManager.OnDeadHandler();
+                return;
+            }
+            else {
+                _delayBeforeRegenerationHealth = 0;
+                EventManager.OnHitHandler();
+                EventManager.OnHealthChangedHandler();
+            }
         }
     }
 
