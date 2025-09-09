@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92dec01a1d83a644faa7616c5be64edb, type: 3}
-  m_Name: DummyHealthController
+  m_Script: {fileID: 11500000, guid: 0c206b6caf9d4784e955607a25d963d4, type: 3}
+  m_Name: DummyHealthAttribute
   m_EditorClassIdentifier: 
-  _delayHealthRegenerationInSeconds: 3
-  _healthRegenerationAttribute: {fileID: 11400000, guid: f735878febb4aad4cb30fb2f9c8c5b3b, type: 2}
-  _healthAttribute: {fileID: 11400000, guid: 59e559ca681a07341b7bfc10f973cb50, type: 2}
+  _isRangeAttribute: 0
   _config: {fileID: 11400000, guid: 05e9bacc93d946d46b6bfe3d046e1834, type: 2}
+  <AttributeType>k__BackingField: 1

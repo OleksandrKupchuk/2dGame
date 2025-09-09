@@ -58,7 +58,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808eed9409ff27b4aad51e839bda9a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rectTransform: {fileID: 3933669529202100646}
   _damage: {fileID: 8302517059350713150}
+  _minOffsetY: 30
+  _maxOffsetY: 50
+  _minOffsetX: -15
+  _maxOffsetX: 15
+  _animationDuration: 1
 --- !u!114 &8302517059350713150
 MonoBehaviour:
   m_ObjectHideFlags: 0

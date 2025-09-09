@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1293828c42ca77e40b493028f6f590db, type: 3}
   m_Name: DummyAttributesConfig
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  <HealthRegeneration>k__BackingField: 0
+  <Health>k__BackingField: 1000
+  <HealthRegeneration>k__BackingField: 100
   <Speed>k__BackingField: 0
   <Armor>k__BackingField: 0
   <PhysicalDamageMin>k__BackingField: 0

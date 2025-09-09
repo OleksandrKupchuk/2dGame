@@ -21,7 +21,7 @@ public class DamageViewSpawner : MonoBehaviour {
 
     public void SpawnDamageView(float damage, Color color) {
         DamageView _damageView = _poolDamageView.GetEnabledObject();
+        _damageView.transform.position = new Vector2(transform.position.x, transform.position.y + 4f);
         _damageView.ShowDamage(damage, color);
-        _damageView.transform.position = new Vector2(transform.position.x, transform.position.y + 5f);
     }
 }

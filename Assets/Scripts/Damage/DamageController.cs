@@ -9,6 +9,8 @@ public class DamageController : MonoBehaviour {
     private InvulnerabilityStatus _invulnerabilityStatus;
     [SerializeField]
     private HealthController _healthController;
+    [SerializeField]
+    private float _invulnerabilityTime;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.TryGetComponent(out Damage damage)) {
@@ -30,7 +32,7 @@ public class DamageController : MonoBehaviour {
     }
 
     private IEnumerator UnregisteredDamageObject(Damage damageObject) {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_invulnerabilityTime);
         _objectsAttack.Remove(damageObject);
         Debug.Log($"Object {damageObject.name} unregistered");
     }

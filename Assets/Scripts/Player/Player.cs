@@ -44,11 +44,7 @@ public class Player : MonoBehaviour {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
-        //EventManager.OnHit += () => StateMachine.ChangeState(HitState);
-        //EventManager.OnHit += () => {
-        //    StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
-        //    StartCoroutine(BlinkAnimation());
-        //};
+
         EventManager.OnDead += () => StateMachine.ChangeState(DeadState);
 
         IdleState = new PlayerIdleState();
@@ -69,11 +65,6 @@ public class Player : MonoBehaviour {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
-        //EventManager.OnHit -= () => StateMachine.ChangeState(HitState);
-        //EventManager.OnHit -= () => {
-        //    StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
-        //    StartCoroutine(BlinkAnimation());
-        //};
         EventManager.OnDead -= () => StateMachine.ChangeState(DeadState);
     }
 
