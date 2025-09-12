@@ -26,6 +26,8 @@ public class DamageView : MonoBehaviour {
     }
 
     public void PlayAnimation() {
+        transform.localScale = new Vector2(0.7f, 0.7f);
+
         float _axisY = Random.Range(_minOffsetY, _maxOffsetY);
         float _axisX = Random.Range(_minOffsetX, _maxOffsetX);
         Debug.Log($"axisY = {_axisY}, axisX = {_axisX}");

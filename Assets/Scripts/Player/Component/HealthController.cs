@@ -86,9 +86,21 @@ public class HealthController : ScriptableObject {
                 OnTakeDamage.Invoke(_damage, damageProperty.Color);
                 _delayBeforeRegenerationHealth = 0;
                 OnHit?.Invoke();
-                //EventManager.OnHitHandler();
                 EventManager.OnHealthChangedHandler();
             }
+        }
+    }
+
+    public void TakeDamage(float damage) {
+        if (IsDead) {
+            EventManager.OnDeadHandler();
+            //return;
+        }
+        else {
+            _currentHealth -= damage;
+            _delayBeforeRegenerationHealth = 0;
+            OnHit?.Invoke();
+            EventManager.OnHealthChangedHandler();
         }
     }
 }

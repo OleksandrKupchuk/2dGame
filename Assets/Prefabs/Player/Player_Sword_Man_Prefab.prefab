@@ -296,6 +296,7 @@ MonoBehaviour:
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
   _invulnerabilityTime: 1
+  _damageViewSpawner: {fileID: 2986762258273929629}
 --- !u!1 &7328863205628577472
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ MonoBehaviour:
   _maxOffsetY: 50
   _minOffsetX: -15
   _maxOffsetX: 15
-  _animationDuration: 1
+  _animationDuration: 0.7
 --- !u!114 &8302517059350713150
 MonoBehaviour:
   m_ObjectHideFlags: 0

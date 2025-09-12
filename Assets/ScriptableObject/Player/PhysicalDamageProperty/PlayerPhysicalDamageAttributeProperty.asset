@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1baf7b898e9e704ea56f46323c67ebe, type: 3}
   m_Name: PlayerPhysicalDamageAttributeProperty
   m_EditorClassIdentifier: 
+  _isDealDurationDamage: 0
   <DamageAttribute>k__BackingField: {fileID: 11400000, guid: 6eb7ed6f9fd4ecc4c8c698a55180a344, type: 2}
   <ResistanceAttribute>k__BackingField: {fileID: 11400000, guid: 00b43b12d33d99048a07bc4b713682bd, type: 2}
   <BlockedDamagePerOneResistance>k__BackingField: 0.2
   <Immunity>k__BackingField: 0
   <Color>k__BackingField: {r: 0.88835347, g: 1, b: 0, a: 1}
+  <ChanceApplyDurationDamage>k__BackingField: 0
+  <DurationDamage>k__BackingField: {fileID: 11400000, guid: 1b6c1050759679440b03fe8d63dd02eb, type: 2}

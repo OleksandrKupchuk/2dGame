@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 940091061672692885}
@@ -121,18 +121,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0082963705, y: 0.9805033}
+  m_Offset: {x: 0.003338337, y: 1.7093381}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.46875, y: 2.09375}
+    oldSize: {x: 2.9375, y: 4.1875}
     newSize: {x: 1.4375, y: 2.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0207412, y: 0.9820242}
+  m_Size: {x: 1.1893158, y: 2.4396937}
   m_EdgeRadius: 0
 --- !u!58 &2217818535853681478
 CircleCollider2D:
@@ -166,9 +166,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.7935565}
+  m_Offset: {x: 0, y: 3.5635846}
   serializedVersion: 2
-  m_Radius: 0.30019355
+  m_Radius: 0.62246776
 --- !u!114 &1527426272246356628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +184,7 @@ MonoBehaviour:
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   _healthController: {fileID: 11400000, guid: 40b5950b79057ed4484eef0c469ee19f, type: 2}
   _invulnerabilityTime: 0.5
+  _damageViewSpawner: {fileID: 4526501068211151005}
 --- !u!114 &4526501068211151005
 MonoBehaviour:
   m_ObjectHideFlags: 0

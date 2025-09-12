@@ -11,6 +11,8 @@ public class DamageController : MonoBehaviour {
     private HealthController _healthController;
     [SerializeField]
     private float _invulnerabilityTime;
+    [SerializeField]
+    private DamageViewSpawner _damageViewSpawner;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.TryGetComponent(out Damage damage)) {
@@ -27,8 +29,30 @@ public class DamageController : MonoBehaviour {
         }
         else {
             RegisterDamageObject(damageObject);
-            _healthController.TakeDamage(damageProperties);
+
+            foreach (var damageProperty in damageProperties) {
+                float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.ResistanceAttribute.Value * damageProperty.BlockedDamagePerOneResistance);
+
+                if (_damage <= 0) {
+                    return;
+                }
+
+                _healthController.TakeDamage(_damage);
+                TryCallDurationDamage(damageProperty, _damage);
+                _damageViewSpawner.SpawnDamageView(_damage, damageProperty.Color);
+            }
         }
+    }
+
+    private void TryCallDurationDamage(DamageAttributeProperty damageProperty, float baseDamage) {
+        if (damageProperty.IsDealDurationDamage) {
+            Debug.Log($"Duration damage already deal");
+            return;
+        }
+
+        float _durationDamage = damageProperty.DurationDamage.PercentFromBaseDamage * baseDamage/ 100;
+
+        StartCoroutine(damageProperty.DealDurationDamage(_healthController, _durationDamage));
     }
 
     private IEnumerator UnregisteredDamageObject(Damage damageObject) {
