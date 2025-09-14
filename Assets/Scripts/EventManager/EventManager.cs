@@ -41,11 +41,6 @@ public class EventManager {
         OnHealthChanged.Invoke();
     }
 
-    public static event Action OnDead;
-    public static void OnDeadHandler() {
-        OnDead.Invoke();
-    }
-
     public static event Action<Item> OnItemDrop;
     public static void OnItemDropHandler(Item item) {
         OnItemDrop?.Invoke(item);

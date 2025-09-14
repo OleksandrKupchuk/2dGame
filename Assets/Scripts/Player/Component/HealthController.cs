@@ -23,6 +23,7 @@ public class HealthController : ScriptableObject {
 
     public event Action<float, Color> OnTakeDamage;
     public event Action OnHit;
+    public event Action OnDead;
 
     private void OnEnable() {
         EventManager.OnHealthChanged += CheckCurrentHealth;
@@ -78,7 +79,7 @@ public class HealthController : ScriptableObject {
             }
 
             if (IsDead) {
-                EventManager.OnDeadHandler();
+                OnDead.Invoke();
                 return;
             }
             else {
@@ -93,7 +94,7 @@ public class HealthController : ScriptableObject {
 
     public void TakeDamage(float damage) {
         if (IsDead) {
-            EventManager.OnDeadHandler();
+            OnDead.Invoke();
             //return;
         }
         else {

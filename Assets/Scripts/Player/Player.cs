@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
             StartCoroutine(BlinkAnimation());
         };
 
-        EventManager.OnDead += () => StateMachine.ChangeState(DeadState);
+        _healthController.OnDead += () => StateMachine.ChangeState(DeadState);
 
         IdleState = new PlayerIdleState();
         RunState = new PlayerRunState();
@@ -65,7 +65,8 @@ public class Player : MonoBehaviour {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
-        EventManager.OnDead -= () => StateMachine.ChangeState(DeadState);
+
+        _healthController.OnDead -= () => StateMachine.ChangeState(DeadState);
     }
 
     private void CheckComponentOnNull() {
