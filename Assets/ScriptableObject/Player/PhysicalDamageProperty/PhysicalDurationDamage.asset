@@ -15,3 +15,4 @@ MonoBehaviour:
   <Duration>k__BackingField: 5
   <DamageFrequency>k__BackingField: 1
   <PercentFromBaseDamage>k__BackingField: 200
+  <DamageViewSpawner>k__BackingField: {fileID: 11400000, guid: 3bcc50bffddcb2d4eb59b49bea166a7f, type: 2}

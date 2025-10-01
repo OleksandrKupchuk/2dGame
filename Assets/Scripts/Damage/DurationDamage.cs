@@ -8,4 +8,6 @@ public class DurationDamage : ScriptableObject {
     public float DamageFrequency { get; private set; }
     [field: SerializeField]
     public float PercentFromBaseDamage { get; private set; }
+    [field: SerializeField]
+    public DamageViewSpawner DamageViewSpawner { get; private set; }
 }

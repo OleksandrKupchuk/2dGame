@@ -32,8 +32,6 @@ public class Item : ScriptableObject {
     [SerializeField]
     protected BodyType _bodyType;
     [SerializeField]
-    private bool _isNeedActions = false;
-    [SerializeField]
     protected List<ItemAction> _itemActions = new List<ItemAction>();
 
     public ItemType ItemType { get => _itemType; set => _itemType = value; }
@@ -45,6 +43,7 @@ public class Item : ScriptableObject {
     public float Duration { get => _duration; set => _duration = value; }
     public ItemTypeAttribute ItemTypeAttribute { get => _itemTypeAttribute; set => _itemTypeAttribute = value; }
     public BodyType BodyType { get => _bodyType; set => _bodyType = value; }
+    public List<ItemAction> ItemActions { get => _itemActions; }
 
     public void Use() {
         _itemActions.ToList().ForEach(action => action.Execute());

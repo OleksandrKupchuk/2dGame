@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 7264231251228489834}
   - component: {fileID: 6726485751713979336}
   - component: {fileID: 4135743337817751516}
-  - component: {fileID: 2986762258273929629}
   - component: {fileID: 8257386875142595318}
   m_Layer: 6
   m_Name: Player_Sword_Man_Prefab
@@ -267,20 +266,6 @@ MonoBehaviour:
   _layersTrigger:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &2986762258273929629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5238491402704463331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c978fb91e773654ab347892f3d52d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 2391556133694536424, guid: 986ba7df9a503e748889c91e22aa0987, type: 3}
-  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
 --- !u!114 &8257386875142595318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +281,7 @@ MonoBehaviour:
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
   _invulnerabilityTime: 1
-  _damageViewSpawner: {fileID: 2986762258273929629}
+  _damageViewSpawner: {fileID: 11400000, guid: 3bcc50bffddcb2d4eb59b49bea166a7f, type: 2}
 --- !u!1 &7328863205628577472
 GameObject:
   m_ObjectHideFlags: 0

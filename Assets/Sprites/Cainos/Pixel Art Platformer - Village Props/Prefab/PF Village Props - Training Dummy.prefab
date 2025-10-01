@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5784134005358857301}
   - component: {fileID: 2217818535853681478}
   - component: {fileID: 1527426272246356628}
-  - component: {fileID: 4526501068211151005}
   m_Layer: 0
   m_Name: PF Village Props - Training Dummy
   m_TagString: Untagged
@@ -184,21 +183,7 @@ MonoBehaviour:
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   _healthController: {fileID: 11400000, guid: 40b5950b79057ed4484eef0c469ee19f, type: 2}
   _invulnerabilityTime: 0.5
-  _damageViewSpawner: {fileID: 4526501068211151005}
---- !u!114 &4526501068211151005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4106967144069191874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c978fb91e773654ab347892f3d52d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 2391556133694536424, guid: 986ba7df9a503e748889c91e22aa0987, type: 3}
-  _healthController: {fileID: 11400000, guid: 40b5950b79057ed4484eef0c469ee19f, type: 2}
+  _damageViewSpawner: {fileID: 11400000, guid: 3bcc50bffddcb2d4eb59b49bea166a7f, type: 2}
 --- !u!1 &6780732548275416107
 GameObject:
   m_ObjectHideFlags: 0

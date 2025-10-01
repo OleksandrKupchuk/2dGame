@@ -22,14 +22,18 @@ public class DamageAttributeProperty : ScriptableObject {
     public DurationDamage DurationDamage { get; private set; }
     public bool IsDealDurationDamage => _isDealDurationDamage;
 
-    public IEnumerator DealDurationDamage(HealthController healthController, float damage) {
+    public IEnumerator DealDurationDamage(HealthController healthController, Vector2 spawnPosition) {
         _isDealDurationDamage = true;
         int _amountDamageReceiver = (int)(DurationDamage.Duration / DurationDamage.DamageFrequency);
 
         for (int i = 0; i < _amountDamageReceiver; i++) {
-            healthController.TakeDamage(damage);
-            Debug.Log("Take Duration damage = " + damage);
-            yield return new WaitForSeconds(DurationDamage.DamageFrequency);
+            if (!healthController.IsDead) {
+                yield return new WaitForSeconds(DurationDamage.DamageFrequency);
+                float _damage = DurationDamage.PercentFromBaseDamage * DamageAttribute.Damage / 100;
+                Debug.Log("Take Duration damage = " + _damage);
+                healthController.TakeDamage(_damage);
+                DurationDamage.DamageViewSpawner.SpawnDamageView(_damage, Color, spawnPosition, 0.4f, 0.7f);
+            }
         }
 
         _isDealDurationDamage = false;

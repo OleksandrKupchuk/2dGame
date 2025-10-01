@@ -11,16 +11,12 @@ public class PlayerHealthView : MonoBehaviour {
 
     private void Awake() {
         EventManager.ActionItemOver += UpdateHealthBar;
-        EventManager.OnHealthChanged += UpdateHealthBar;
+        _healthController.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDestroy() {
         EventManager.ActionItemOver -= UpdateHealthBar;
-        EventManager.OnHealthChanged -= UpdateHealthBar;
-    }
-
-    private void Start() {
-        //UpdateHealthBar();
+        _healthController.OnHealthChanged -= UpdateHealthBar;
     }
 
     public void UpdateHealthBar(Item item) {

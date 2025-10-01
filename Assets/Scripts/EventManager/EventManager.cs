@@ -35,12 +35,6 @@ public class EventManager {
         BuyItem.Invoke(item);
     }
 
-    public static event Action OnHealthChanged;
-
-    public static void OnHealthChangedHandler() {
-        OnHealthChanged.Invoke();
-    }
-
     public static event Action<Item> OnItemDrop;
     public static void OnItemDropHandler(Item item) {
         OnItemDrop?.Invoke(item);

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HealthController", menuName = "Components/HealthController")]
@@ -21,20 +20,24 @@ public class HealthController : ScriptableObject {
     public float MaxHealth { get => _healthAttribute.Value; }
     public bool IsDead { get => CurrentHealth <= 0; }
 
-    public event Action<float, Color> OnTakeDamage;
     public event Action OnHit;
     public event Action OnDead;
+    public event Action OnHealthChanged;
 
     private void OnEnable() {
-        EventManager.OnHealthChanged += CheckCurrentHealth;
+        OnHealthChanged += CheckCurrentHealth;
         _currentHealth = _config.Health;
     }
 
     private void OnDisable() {
-        EventManager.OnHealthChanged -= CheckCurrentHealth;
+        OnHealthChanged -= CheckCurrentHealth;
     }
 
     public void RegenerationHealth() {
+        if (IsDead) {
+            return;
+        }
+
         if (_currentHealth >= _healthAttribute.Value) {
             _delayBeforeRegenerationHealth = 0;
             return;
@@ -61,7 +64,7 @@ public class HealthController : ScriptableObject {
         CheckCurrentHealth();
 
         Debug.Log("Health was added, value = " + health);
-        EventManager.OnHealthChangedHandler();
+        OnHealthChanged.Invoke();
     }
 
     private void CheckCurrentHealth() {
@@ -70,38 +73,16 @@ public class HealthController : ScriptableObject {
         }
     }
 
-    public void TakeDamage(List<DamageAttributeProperty> damageProperties) {
-        foreach (var damageProperty in damageProperties) {
-            float _damage = damageProperty.DamageAttribute.Damage - (damageProperty.ResistanceAttribute.Value * damageProperty.BlockedDamagePerOneResistance);
-
-            if (_damage <= 0) {
-                return;
-            }
-
-            if (IsDead) {
-                OnDead.Invoke();
-                return;
-            }
-            else {
-                _currentHealth -= _damage;
-                OnTakeDamage.Invoke(_damage, damageProperty.Color);
-                _delayBeforeRegenerationHealth = 0;
-                OnHit?.Invoke();
-                EventManager.OnHealthChangedHandler();
-            }
-        }
-    }
-
     public void TakeDamage(float damage) {
+        _currentHealth -= damage;
+        OnHealthChanged.Invoke();
+
         if (IsDead) {
             OnDead.Invoke();
-            //return;
+            return;
         }
-        else {
-            _currentHealth -= damage;
-            _delayBeforeRegenerationHealth = 0;
-            OnHit?.Invoke();
-            EventManager.OnHealthChangedHandler();
-        }
+
+        _delayBeforeRegenerationHealth = 0;
+        OnHit?.Invoke();
     }
 }

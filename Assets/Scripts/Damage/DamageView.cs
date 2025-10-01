@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 
 public class DamageView : MonoBehaviour {
+    private float _startScale;
+    private float _endScale;
+
     [SerializeField]
     private RectTransform _rectTransform;
     [SerializeField]
@@ -26,7 +29,7 @@ public class DamageView : MonoBehaviour {
     }
 
     public void PlayAnimation() {
-        transform.localScale = new Vector2(0.7f, 0.7f);
+        transform.localScale = new Vector2(_startScale, _startScale);
 
         float _axisY = Random.Range(_minOffsetY, _maxOffsetY);
         float _axisX = Random.Range(_minOffsetX, _maxOffsetX);
@@ -36,7 +39,8 @@ public class DamageView : MonoBehaviour {
         {
             _rectTransform.localPosition,
             new Vector3(_rectTransform.localPosition.x, _rectTransform.localPosition.y + _axisY, 0f),
-            new Vector3(_rectTransform.localPosition.x + _axisX, _rectTransform.localPosition.y + _axisY, 0f)
+            new Vector3(_rectTransform.localPosition.x + _axisX, _rectTransform.localPosition.y + _axisY, 0f),
+            new Vector3(_rectTransform.localPosition.x + _axisX, (_rectTransform.localPosition.y + _axisY) - 15f, 0f)
         };
 
         _path.ToList().ForEach(point => Debug.Log($"x = {point.x}, y = {point.y}"));
@@ -46,9 +50,14 @@ public class DamageView : MonoBehaviour {
         _sequence.Append(_rectTransform.DOLocalPath(_path, _animationDuration, PathType.CatmullRom, PathMode.TopDown2D)
             .SetEase(Ease.OutExpo));
 
-        _sequence.Join(_rectTransform.DOScale(new Vector3(1.2f, 1.2f, 0f), _animationDuration)
+        _sequence.Join(_rectTransform.DOScale(new Vector3(_endScale, _endScale, 0f), _animationDuration)
             .SetEase(Ease.OutBounce));
 
         _sequence.OnComplete(() => gameObject.SetActive(false));
+    }
+
+    public void SetScale(float startScale, float endScale) {
+        _startScale = startScale;
+        _endScale = endScale;
     }
 }
