@@ -10,20 +10,11 @@ public class PlayerHealthView : MonoBehaviour {
     private HealthController _healthController;
 
     private void Awake() {
-        EventManager.ActionItemOver += UpdateHealthBar;
         _healthController.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDestroy() {
-        EventManager.ActionItemOver -= UpdateHealthBar;
         _healthController.OnHealthChanged -= UpdateHealthBar;
-    }
-
-    public void UpdateHealthBar(Item item) {
-        float _value = _healthController.CurrentHealth / _healthController.MaxHealth;
-        _healthBar.fillAmount = _value;
-        _healthValue.text = string.Format("{0:0.0}", _healthController.CurrentHealth) + "/" +
-            string.Format("{0:0.0}", _healthController.MaxHealth);
     }
 
     public void UpdateHealthBar() {

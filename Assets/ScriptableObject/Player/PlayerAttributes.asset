@@ -17,3 +17,4 @@ MonoBehaviour:
   <Speed>k__BackingField: {fileID: 11400000, guid: 0f561d4fef41bd34eb8f30bb8e3589a9, type: 2}
   <DamageAttributeProperties>k__BackingField:
   - {fileID: 11400000, guid: fc2f5fa9e6c8e7d4480e6e92b7a0a655, type: 2}
+  - {fileID: 11400000, guid: 35a04f39c2a7c0c499f964e412b6bedd, type: 2}

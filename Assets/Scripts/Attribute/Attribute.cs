@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 
 public abstract class Attribute : ScriptableObject {
-    [SerializeField]
     protected bool _isRangeAttribute;
+
     [SerializeField]
     protected AttributesConfig _config;
 
@@ -14,12 +14,11 @@ public abstract class Attribute : ScriptableObject {
     public bool IsRangeAttribute => _isRangeAttribute;
 
     public void OnAttributeChangedHandler() {
-        OnAttributeChanged.Invoke();
+        OnAttributeChanged?.Invoke();
     }
 
     public abstract string GetValueString();
     protected abstract void AddItemAttributes(Item itemData);
     protected abstract void SubtractItemAttributes(Item itemData);
-    protected abstract void CheckAttributeChange(Item itemData);
     protected abstract void ResetData();
 }

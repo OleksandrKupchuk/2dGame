@@ -23,6 +23,7 @@ public class AttributeRange : Attribute {
         EventManager.OnItemDressed += AddItemAttributes;
         EventManager.TakeAwayItem += SubtractItemAttributes;
         CheckAttributeType();
+        _isRangeAttribute = true;
     }
 
     private void OnValidate() {
@@ -58,7 +59,7 @@ public class AttributeRange : Attribute {
         AddIntegerAttributes(itemData);
         AddPercentAttributes(itemData);
 
-        CheckAttributeChange(itemData);
+        OnAttributeChangedHandler();
     }
 
     private void AddIntegerAttributes(Item itemData) {
@@ -88,14 +89,6 @@ public class AttributeRange : Attribute {
         _valueFromPercentMax = _valueMaxPercent * _valueIntegerMax / 100;
     }
 
-    protected override void CheckAttributeChange(Item item) {
-        foreach (ItemAttribute attributeData in item.Attributes) {
-            if (attributeData.AttributeType == AttributeType) {
-                OnAttributeChangedHandler();
-            }
-        }
-    }
-
     protected override void SubtractItemAttributes(Item itemData) {
         if (itemData == null) {
             return;
@@ -104,7 +97,7 @@ public class AttributeRange : Attribute {
         SubtractIntegerAttributes(itemData);
         SubtractPercentAttributes(itemData);
 
-        CheckAttributeChange(itemData);
+        OnAttributeChangedHandler();
     }
 
     private void SubtractIntegerAttributes(Item itemData) {

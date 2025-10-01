@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf9d020bd67e5d4bb3985c3ca4975ad, type: 3}
-  m_Name: Armor
+  m_Script: {fileID: 11500000, guid: 6d9027f77eff196458e22f03d6cb55e6, type: 3}
+  m_Name: HealthPotionAddHealthAction
   m_EditorClassIdentifier: 
-  _isRangeAttribute: 0
-  _icon: {fileID: 21300000, guid: 59c203c833bb0894384b1c344e889244, type: 3}
-  _attributeType: 0
-  _valueType: 0
-  _minValue: 5
-  _maxValue: 5
+  _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
+  _potionAttribute: {fileID: 11400000, guid: 08403ff1df1c0d24cacbcb03470ea050, type: 2}

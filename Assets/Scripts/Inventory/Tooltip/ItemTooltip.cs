@@ -12,7 +12,7 @@ public class ItemToolTip : ScriptableObject {
 
     public void Show(Item itemData, RectTransform rectTransform) {
         if (_itemToolTipView == null) {
-            _parent = FindObjectOfType<Canvas>();
+            _parent = GameObject.FindGameObjectWithTag("PlayerCanvas").GetComponent<Canvas>();
             _itemToolTipView = Instantiate(_prefab, _parent.transform);
         }
 

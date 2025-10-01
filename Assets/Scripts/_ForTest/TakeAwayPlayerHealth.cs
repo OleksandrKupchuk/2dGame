@@ -5,8 +5,6 @@ public class TakeAwayPlayerHealth : MonoBehaviour {
     [SerializeField]
     private Button _addHealthButton;
     [SerializeField]
-    private HealthController _healthController;
-    [SerializeField]
     private Attributes _attributes;
     [SerializeField]
     private Damage _damage;

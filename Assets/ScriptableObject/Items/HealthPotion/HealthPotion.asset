@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 566ee5ccdd93cdd4daf2562555818545, type: 3}
-  m_Name: ArmorPotion
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
   _price: 10
   _itemType: 1
-  _name: Armor potion
+  _name: Health potion
   _description: Desc
   _minPrice: 10
   _maxPrice: 10
-  _icon: {fileID: 21300000, guid: 113934c42fa0f744396d41964ad7b6c9, type: 3}
+  _icon: {fileID: 21300000, guid: 0ef9601a19a20064e9b391bf0543df5a, type: 3}
   _attributes:
-  - {fileID: 11400000, guid: 6860210a22b3684448a2012bada63704, type: 2}
-  _isNeedDuration: 1
-  _duration: 10
+  - {fileID: 11400000, guid: 08403ff1df1c0d24cacbcb03470ea050, type: 2}
+  _isNeedDuration: 0
+  _duration: 0
   _itemTypeAttribute: 0
   _bodyType: 0
   _itemActions:
-  - {fileID: 11400000, guid: 6075e993fcac8e744a4f9e2ba29c86a1, type: 2}
+  - {fileID: 11400000, guid: 1719fc7329735f04dab2d5d66a614c46, type: 2}

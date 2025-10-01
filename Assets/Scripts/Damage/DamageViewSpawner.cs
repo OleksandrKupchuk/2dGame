@@ -1,24 +1,22 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DamageViewSpawner", menuName = "Damage/DamageViewSpawner")]
-public class DamageViewSpawner : ScriptableObject {
-    private Canvas _parent;
+public class DamageViewSpawner : MonoBehaviour {
     private ObjectPool<DamageView> _poolDamageView;
 
     [SerializeField]
     private DamageView _prefab;
+    [SerializeField]
+    private Transform _parent;
+    [SerializeField]
+    private Transform _spawnPoint;
 
-    public void SpawnDamageView(float damage, Color color, Vector2 spawnPosition, float startScale, float endScale) {
-        if (_parent == null) {
-            _parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
-        }
+    private void Awake() {
+        _poolDamageView = new ObjectPool<DamageView>(_prefab, _parent.transform);
+    }
 
-        if(_poolDamageView == null) {
-            _poolDamageView = new ObjectPool<DamageView>(_prefab, _parent.transform);
-        }
-
+    public void SpawnDamageView(float damage, Color color, float startScale, float endScale) {
         DamageView _damageView = _poolDamageView.GetEnabledObject();
-        _damageView.transform.position = new Vector2(spawnPosition.x, spawnPosition.y + 4f);
+        _damageView.transform.position = _spawnPoint.position;
         _damageView.SetScale(startScale, endScale);
         _damageView.ShowDamage(damage, color);
     }

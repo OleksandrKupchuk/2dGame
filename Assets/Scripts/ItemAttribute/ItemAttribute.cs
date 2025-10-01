@@ -36,6 +36,7 @@ public enum AttributeType {
     LightingDamage,
     PoisonDamage,
     MagicDamage,
+    FireResistance,
 }
 
 public enum ValueType {

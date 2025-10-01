@@ -18,5 +18,6 @@ MonoBehaviour:
   <Armor>k__BackingField: 3
   <PhysicalDamageMin>k__BackingField: 1
   <PhysicalDamageMax>k__BackingField: 5
-  <FireDamageMin>k__BackingField: 0
-  <FireDamageMax>k__BackingField: 0
+  <FireDamageMin>k__BackingField: 2
+  <FireDamageMax>k__BackingField: 4
+  <FireResistance>k__BackingField: 1

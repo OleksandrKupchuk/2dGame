@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc2ebecd53b1fca408ebfe1c6fd14c66, type: 3}
-  m_Name: PhysicalDurationDamage
+  m_Script: {fileID: 11500000, guid: b15d279af2958c747be6ba53d774ba0f, type: 3}
+  m_Name: FireAttributeRange
   m_EditorClassIdentifier: 
-  <Duration>k__BackingField: 5
-  <DamageFrequency>k__BackingField: 1
-  <PercentFromBaseDamage>k__BackingField: 50
+  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}
+  <AttributeType>k__BackingField: 5

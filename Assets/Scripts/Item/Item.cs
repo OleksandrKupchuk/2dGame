@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item", order = 0)]
+[CreateAssetMenu(fileName = "Item", menuName = "Items/Item", order = 0)]
 public class Item : ScriptableObject {
     [SerializeField, HideInInspector]
     protected int _price;
@@ -25,6 +25,8 @@ public class Item : ScriptableObject {
     protected Sprite _icon;
     [SerializeField]
     protected List<ItemAttribute> _attributes;
+    [SerializeField]
+    private bool _isNeedDuration;
     [SerializeField]
     protected float _duration;
     [SerializeField]

@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2309925813978026017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3322252602846191788}
+  - component: {fileID: 3608344203540896980}
+  m_Layer: 5
+  m_Name: DamageViewSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3322252602846191788
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309925813978026017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 940091061672692885}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 270}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3608344203540896980
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309925813978026017}
+  m_CullTransparentMesh: 1
 --- !u!1 &4106967144069191874
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +57,7 @@ GameObject:
   - component: {fileID: 5784134005358857301}
   - component: {fileID: 2217818535853681478}
   - component: {fileID: 1527426272246356628}
+  - component: {fileID: 1584933599900560498}
   m_Layer: 0
   m_Name: PF Village Props - Training Dummy
   m_TagString: Untagged
@@ -183,7 +228,22 @@ MonoBehaviour:
   _invulnerabilityStatus: {fileID: 11400000, guid: 8faea2073053f064f8a9814a6d8be089, type: 2}
   _healthController: {fileID: 11400000, guid: 40b5950b79057ed4484eef0c469ee19f, type: 2}
   _invulnerabilityTime: 0.5
-  _damageViewSpawner: {fileID: 11400000, guid: 3bcc50bffddcb2d4eb59b49bea166a7f, type: 2}
+  _damageViewSpawner: {fileID: 1584933599900560498}
+--- !u!114 &1584933599900560498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106967144069191874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c978fb91e773654ab347892f3d52d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 2391556133694536424, guid: 986ba7df9a503e748889c91e22aa0987, type: 3}
+  _parent: {fileID: 940091061672692885}
+  _spawnPoint: {fileID: 3322252602846191788}
 --- !u!1 &6780732548275416107
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,13 +274,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.016, y: 0.016, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3322252602846191788}
   m_Father: {fileID: 4106967144069191872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 4}
+  m_SizeDelta: {x: 100, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8472347519755336259
 Canvas:

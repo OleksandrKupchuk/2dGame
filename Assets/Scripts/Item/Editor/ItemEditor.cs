@@ -1,6 +1,6 @@
 using UnityEditor;
 
-//[CustomEditor(typeof(Item))]
+[CustomEditor(typeof(Item))]
 public class ItemEditor : Editor {
     private SerializedProperty _itemTypeProperty;
     private SerializedProperty _nameProperty;
@@ -9,6 +9,7 @@ public class ItemEditor : Editor {
     private SerializedProperty _maxPriceProperty;
     private SerializedProperty _iconProperty;
     private SerializedProperty _attributesProperty;
+    private SerializedProperty _isNeedDurationProperty;
     private SerializedProperty _durationProperty;
     private SerializedProperty _itemTypeAttributeProperty;
     private SerializedProperty _bodyTypeProperty;
@@ -22,6 +23,7 @@ public class ItemEditor : Editor {
         _maxPriceProperty = serializedObject.FindProperty("_maxPrice");
         _iconProperty = serializedObject.FindProperty("_icon");
         _attributesProperty = serializedObject.FindProperty("_attributes");
+        _isNeedDurationProperty = serializedObject.FindProperty("_isNeedDuration");
         _durationProperty = serializedObject.FindProperty("_duration");
         _itemTypeAttributeProperty = serializedObject.FindProperty("_itemTypeAttribute");
         _bodyTypeProperty = serializedObject.FindProperty("_bodyType");
@@ -40,8 +42,15 @@ public class ItemEditor : Editor {
         EditorGUILayout.PropertyField(_bodyTypeProperty);
 
         if (_itemTypeProperty.intValue == (int)ItemType.Usable) {
-            EditorGUILayout.PropertyField(_durationProperty);
             EditorGUILayout.PropertyField(_itemActionsProperty);
+            EditorGUILayout.PropertyField(_isNeedDurationProperty);
+
+            if (_isNeedDurationProperty.boolValue) {
+                EditorGUILayout.PropertyField(_durationProperty);
+            }
+            else {
+                _durationProperty.floatValue = 0f;
+            }
         }
 
         serializedObject.ApplyModifiedProperties();

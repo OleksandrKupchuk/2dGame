@@ -18,4 +18,6 @@ public class AttributesConfig : ScriptableObject {
     public float FireDamageMin { get; private set; }
     [field: SerializeField]
     public float FireDamageMax { get; private set; }
+    [field: SerializeField]
+    public float FireResistance { get; private set; }
 }

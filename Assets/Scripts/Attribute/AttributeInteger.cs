@@ -13,6 +13,7 @@ public class AttributeInteger : Attribute {
         EventManager.OnItemDressed += AddItemAttributes;
         EventManager.TakeAwayItem += SubtractItemAttributes;
         CheckAttributeType();
+        _isRangeAttribute = false;
     }
 
     private void OnValidate() {
@@ -33,6 +34,9 @@ public class AttributeInteger : Attribute {
             case AttributeType.Speed:
                 _valueInteger = _config.Speed;
                 break;
+            case AttributeType.FireResistance:
+                _valueInteger = _config.FireResistance;
+                break;
             default:
                 Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeInteger.");
                 break;
@@ -52,7 +56,7 @@ public class AttributeInteger : Attribute {
         AddIntegerAttributes(itemData);
         AddPercentAttributes(itemData);
 
-        CheckAttributeChange(itemData);
+        OnAttributeChangedHandler();
     }
 
     private void AddIntegerAttributes(Item itemData) {
@@ -83,7 +87,7 @@ public class AttributeInteger : Attribute {
         SubtractIntegerAttributes(itemData);
         SubtractPercentAttributes(itemData);
 
-        CheckAttributeChange(itemData);
+        OnAttributeChangedHandler();
     }
 
     private void SubtractIntegerAttributes(Item itemData) {
@@ -104,14 +108,6 @@ public class AttributeInteger : Attribute {
         }
 
         _valueFromPercent = _valuePercent * _valueInteger / 100;
-    }
-
-    protected override void CheckAttributeChange(Item item) {
-        foreach (ItemAttribute attributeData in item.Attributes) {
-            if (attributeData.AttributeType == AttributeType) {
-                OnAttributeChangedHandler();
-            }
-        }
     }
 
     protected override void ResetData() {

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc2ebecd53b1fca408ebfe1c6fd14c66, type: 3}
-  m_Name: PhysicalDurationDamage
+  m_Name: FireDurationDamage
   m_EditorClassIdentifier: 
-  <Duration>k__BackingField: 5
+  <Duration>k__BackingField: 3
   <DamageFrequency>k__BackingField: 1
   <PercentFromBaseDamage>k__BackingField: 50

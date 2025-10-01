@@ -22,7 +22,7 @@ public class DamageAttributeProperty : ScriptableObject {
     public DurationDamage DurationDamage { get; private set; }
     public bool IsDealDurationDamage => _isDealDurationDamage;
 
-    public IEnumerator DealDurationDamage(HealthController healthController, Vector2 spawnPosition) {
+    public IEnumerator DealDurationDamage(HealthController healthController, DamageViewSpawner damageViewSpawner) {
         _isDealDurationDamage = true;
         int _amountDamageReceiver = (int)(DurationDamage.Duration / DurationDamage.DamageFrequency);
 
@@ -32,7 +32,7 @@ public class DamageAttributeProperty : ScriptableObject {
                 float _damage = DurationDamage.PercentFromBaseDamage * DamageAttribute.Damage / 100;
                 Debug.Log("Take Duration damage = " + _damage);
                 healthController.TakeDamage(_damage);
-                DurationDamage.DamageViewSpawner.SpawnDamageView(_damage, Color, spawnPosition, 0.4f, 0.7f);
+                damageViewSpawner.SpawnDamageView(_damage, Color, 0.4f, 0.7f);
             }
         }
 

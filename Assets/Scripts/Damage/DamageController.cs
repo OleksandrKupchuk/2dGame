@@ -39,7 +39,7 @@ public class DamageController : MonoBehaviour {
 
                 _healthController.TakeDamage(_damage);
                 TryCallDurationDamage(damageProperty, _damage);
-                _damageViewSpawner.SpawnDamageView(_damage, damageProperty.Color, new Vector2(transform.position.x, transform.position.y), 0.7f, 1.2f);
+                _damageViewSpawner.SpawnDamageView(_damage, damageProperty.Color, 0.7f, 1.2f);
             }
         }
     }
@@ -50,7 +50,8 @@ public class DamageController : MonoBehaviour {
             return;
         }
 
-        StartCoroutine(damageProperty.DealDurationDamage(_healthController, new Vector2(transform.position.x, transform.position.y)));
+        //StartCoroutine(damageProperty.DealDurationDamage(_healthController, new Vector2(transform.position.x, transform.position.y)));
+        StartCoroutine(damageProperty.DealDurationDamage(_healthController, _damageViewSpawner));
     }
 
     private IEnumerator UnregisteredDamageObject(Damage damageObject) {

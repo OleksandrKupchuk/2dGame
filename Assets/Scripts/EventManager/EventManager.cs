@@ -23,12 +23,6 @@ public class EventManager {
         UseItem.Invoke(item);
     }
 
-    public static event Action<Item> ActionItemOver;
-
-    public static void ActionItemOverEventHandler(Item item) {
-        ActionItemOver.Invoke(item);
-    }
-
     public static event Action<Item> BuyItem;
 
     public static void BuyItemEventHandler(Item item) {

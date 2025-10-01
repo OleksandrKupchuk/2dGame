@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     private List<SpriteRenderer> _sprites = new List<SpriteRenderer>();
     [SerializeField]
     public HealthController _healthController;
+    [SerializeField]
+    private Canvas _canvas;
 
     public List<Collider2D> CollidesForIgnored { get => _collidersForIgnored; }
     public PlayerIdleState IdleState { get; private set; }
@@ -85,6 +87,15 @@ public class Player : MonoBehaviour {
         StateMachine.Update();
         _healthController.RegenerationHealth();
         ToggleInventory();
+
+        if (PlayerMovement.IsLookingLeft) {
+            _canvas.transform.localScale = new Vector2(0.016f, _canvas.transform.localScale.y);
+        }
+        else if(!PlayerMovement.IsLookingLeft) {
+            _canvas.transform.localScale = new Vector2(-0.016f, _canvas.transform.localScale.y);
+        }
+
+        print("Player looking left = " + PlayerMovement.IsLookingLeft);
     }
 
     private void FixedUpdate() {
