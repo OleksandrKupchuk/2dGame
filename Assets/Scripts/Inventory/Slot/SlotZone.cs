@@ -26,6 +26,7 @@ public class SlotZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     private void ForbidShowTooTip() {
         _canShowToolTip = false;
     }
+
     private void AllowShowTooTip() {
         _canShowToolTip = true;
     }

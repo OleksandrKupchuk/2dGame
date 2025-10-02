@@ -10,13 +10,18 @@ public class ItemToolTip : ScriptableObject {
 
     public bool IsActive => _itemToolTipView != null && _itemToolTipView.IsActive;
 
-    public void Show(Item itemData, RectTransform rectTransform) {
+    public void Show(Item item, RectTransform rectTransform) {
         if (_itemToolTipView == null) {
             _parent = GameObject.FindGameObjectWithTag("PlayerCanvas").GetComponent<Canvas>();
             _itemToolTipView = Instantiate(_prefab, _parent.transform);
         }
 
-        _itemToolTipView.Enable(itemData, rectTransform);
+        if(item == null) {
+            Debug.LogWarning("ItemToolTip: item is null");
+            return;
+        }
+
+        _itemToolTipView.Enable(item, rectTransform);
     }
 
     public void Hide() {

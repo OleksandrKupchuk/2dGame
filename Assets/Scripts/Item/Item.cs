@@ -35,6 +35,8 @@ public class Item : ScriptableObject {
     protected BodyType _bodyType;
     [SerializeField]
     protected List<ItemAction> _itemActions = new List<ItemAction>();
+    [SerializeField, Range(0, 100)]
+    protected float _spawnChance;
 
     public ItemType ItemType { get => _itemType; set => _itemType = value; }
     public string Name { get => _name; set => _name = value; }
@@ -46,6 +48,7 @@ public class Item : ScriptableObject {
     public ItemTypeAttribute ItemTypeAttribute { get => _itemTypeAttribute; set => _itemTypeAttribute = value; }
     public BodyType BodyType { get => _bodyType; set => _bodyType = value; }
     public List<ItemAction> ItemActions { get => _itemActions; }
+    public float SpawnChance { get => _spawnChance; }
 
     public void Use() {
         _itemActions.ToList().ForEach(action => action.Execute());

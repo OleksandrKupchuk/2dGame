@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MarketView : MonoBehaviour {
     private List<MarketSlotView> _slots = new List<MarketSlotView>();
@@ -13,6 +14,10 @@ public class MarketView : MonoBehaviour {
     private MarketSlotView _slotView;
     [SerializeField]
     private Transform _content;
+    [SerializeField]
+    private ButtonClosePanels _buttonClosePanels;
+    [SerializeField]
+    private LayoutElement _layoutElement;
 
     private void Awake() {
         GenerateCartItems();
@@ -20,6 +25,8 @@ public class MarketView : MonoBehaviour {
         _market.OnClose += Close;
         _market.OnAddItem += AddItem;
         _market.OnRemoveItem += RemoveItem;
+
+        _buttonClosePanels.OnClosePanels += Close;
 
         Close();
     }
@@ -66,10 +73,12 @@ public class MarketView : MonoBehaviour {
     }
 
     public void Open() {
+        _layoutElement.ignoreLayout = false;
         _background.SetActive(true);
     }
 
     public void Close() {
+        _layoutElement.ignoreLayout = true;
         _background.SetActive(false);
     }
 }

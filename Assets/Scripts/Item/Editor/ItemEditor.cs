@@ -14,6 +14,7 @@ public class ItemEditor : Editor {
     private SerializedProperty _itemTypeAttributeProperty;
     private SerializedProperty _bodyTypeProperty;
     private SerializedProperty _itemActionsProperty;
+    private SerializedProperty _spawnChanceProperty;
 
     public override void OnInspectorGUI() {
         _itemTypeProperty = serializedObject.FindProperty("_itemType");
@@ -28,6 +29,7 @@ public class ItemEditor : Editor {
         _itemTypeAttributeProperty = serializedObject.FindProperty("_itemTypeAttribute");
         _bodyTypeProperty = serializedObject.FindProperty("_bodyType");
         _itemActionsProperty = serializedObject.FindProperty("_itemActions");
+        _spawnChanceProperty = serializedObject.FindProperty("_spawnChance");
 
         serializedObject.Update();
 
@@ -40,6 +42,7 @@ public class ItemEditor : Editor {
         EditorGUILayout.PropertyField(_attributesProperty);
         EditorGUILayout.PropertyField(_itemTypeAttributeProperty);
         EditorGUILayout.PropertyField(_bodyTypeProperty);
+        EditorGUILayout.PropertyField(_spawnChanceProperty);
 
         if (_itemTypeProperty.intValue == (int)ItemType.Usable) {
             EditorGUILayout.PropertyField(_itemActionsProperty);

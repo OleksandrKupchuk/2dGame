@@ -1,4 +1,4 @@
-public class InventorySlotView : SlotView{
+public class InventorySlotView : SlotView {
     private void Awake() {
         DragAndDrop.OnDragStarted += ResetBorder;
     }

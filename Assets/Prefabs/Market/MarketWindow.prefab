@@ -485,8 +485,9 @@ GameObject:
   - component: {fileID: 8666886923354598060}
   - component: {fileID: 3051053057016932425}
   - component: {fileID: 8296886685150390812}
+  - component: {fileID: 730960953375965917}
   m_Layer: 5
-  m_Name: MarketView
+  m_Name: MarketWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,14 +534,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
-  _playerConfig: {fileID: 11400000, guid: a54ace36f66f2cb4dbac2f323babad9b, type: 2}
-  _inventoryController: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
-  _isDiscount: 0
-  _discount: {fileID: 9027402677928845970}
   _background: {fileID: 3616628397505553085}
   _slotView: {fileID: 4864916275332199246, guid: 425b4cfc0c5b98e4b831421c3506ffa1, type: 3}
   _content: {fileID: 4211003828889524509}
-  _borderRectTransform: {fileID: 7232399996220798438}
+  _buttonClosePanels: {fileID: 0}
+  _layoutElement: {fileID: 730960953375965917}
+--- !u!114 &730960953375965917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773464457031772422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &9027402677928845970
 GameObject:
   m_ObjectHideFlags: 0

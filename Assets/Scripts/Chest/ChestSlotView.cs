@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MarketSlotView : SlotView, IPointerClickHandler {
+public class ChestSlotView : SlotView, IPointerClickHandler {
     [SerializeField]
-    private Market _market;
-    [SerializeField]
-    private PlayerInputReader _playerInput;
+    private Inventory _inventory;
     [SerializeField]
     private ItemToolTip _itemToolTip;
 
@@ -15,6 +13,10 @@ public class MarketSlotView : SlotView, IPointerClickHandler {
 
     private void OnDestroy() {
         DragAndDrop.OnDragStarted -= ResetBorder;
+    }
+
+    public override bool IsCanPutItem(Item itemData) {
+        return true;
     }
 
     public override void PutItem(Item itemData) {
@@ -33,14 +35,10 @@ public class MarketSlotView : SlotView, IPointerClickHandler {
                 return;
             }
 
-            Debug.Log("BuyItem item");
-            _market.BuyItem(_item);
-            _market.RemoveItem(_item);
+            Debug.Log("Right click in chest");
+            _inventory.TryAddItem(_item);
+            RemoveItem();
             _itemToolTip.Hide();
         }
-    }
-
-    public override bool IsCanPutItem(Item itemData) {
-        return true;
     }
 }

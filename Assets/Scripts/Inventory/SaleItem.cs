@@ -13,6 +13,10 @@ public class SaleItem : MonoBehaviour, IPointerClickHandler {
 
     public void OnPointerClick(PointerEventData eventData) {
         if (eventData.button == PointerEventData.InputButton.Right) {
+            if(_slotView.IsEmpty) {
+                return;
+            }   
+
             _market.AddItem(_slotView.Item);
             _inventory.RemoveItem(_slotView.Item);
             _slotZone.HideItemToolTip();

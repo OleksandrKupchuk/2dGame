@@ -27,3 +27,4 @@ MonoBehaviour:
   _bodyType: 0
   _itemActions:
   - {fileID: 11400000, guid: 1719fc7329735f04dab2d5d66a614c46, type: 2}
+  _spawnChance: 100

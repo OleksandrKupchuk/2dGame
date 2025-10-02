@@ -15,6 +15,7 @@ public class Market : ScriptableObject {
 
     [field: SerializeField]
     public int AmountSlots { get; private set; }
+
     public List<Item> Items => _items;
     public event Action<Item> OnAddItem;
     public event Action<Item> OnRemoveItem;

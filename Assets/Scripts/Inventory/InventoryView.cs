@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryView : MonoBehaviour {
     private List<InventorySlotView> _slots = new List<InventorySlotView>();
@@ -16,7 +15,7 @@ public class InventoryView : MonoBehaviour {
     [SerializeField]
     private GameObject _background;
     [SerializeField]
-    private Button _closeButton;
+    private ButtonClosePanels _buttonClosePanels;
 
     private void Awake() {
         SpawnSlotsView();
@@ -24,7 +23,8 @@ public class InventoryView : MonoBehaviour {
         _inventory.OnClose += Close;
         _inventory.OnItemAdd += AddItem;
         _inventory.OnItemRemove += RemoveItem;
-        _closeButton.onClick.AddListener(() => { Close(); _market.Close(); });
+
+        _buttonClosePanels.OnClosePanels += Close;
 
         Close();
     }
@@ -65,9 +65,11 @@ public class InventoryView : MonoBehaviour {
 
     public void Open() {
         _background.SetActive(true);
+        _buttonClosePanels.ShowCloseButton();
     }
 
     public void Close() {
         _background.SetActive(false);
+        _buttonClosePanels.HideCloseButton();
     }
 }
