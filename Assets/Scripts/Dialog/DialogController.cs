@@ -16,8 +16,15 @@ public class DialogController : ScriptableObject {
     public event Action OnDialoguesClosed;
     public event Action<string, bool> OnParagraphShowed;
 
+    public bool IsDialoguesOpen { get; private set; }
+
+    private void OnEnable() {
+        IsDialoguesOpen = false;
+    }
+
     public void OpenDialogues(string speakerName, NpcDialogues dialogues) {
         _dialogues = dialogues;
+        IsDialoguesOpen = true;
         OnDialoguesOpened?.Invoke(speakerName, GetUpdatedDialogues());
     }
 
@@ -48,6 +55,7 @@ public class DialogController : ScriptableObject {
 
     public void CloseDialogues() {
         OnDialoguesClosed?.Invoke();
+        IsDialoguesOpen = false;
     }
 
     public void StartDialog(DialogData dialogData) {

@@ -14,7 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerConfig: {fileID: 11400000, guid: 88bd745e790ba064cb4f3ec2041ae2fd, type: 2}
   _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
-  _items:
-  - {fileID: 11400000, guid: 1a3cd54530f0b9a41ae26b7778909f81, type: 2}
-  - {fileID: 11400000, guid: 1b7d7464d37fcd540b69404fa9e42858, type: 2}
   <AmountSlots>k__BackingField: 25

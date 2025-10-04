@@ -50,7 +50,6 @@ public class DamageController : MonoBehaviour {
             return;
         }
 
-        //StartCoroutine(damageProperty.DealDurationDamage(_healthController, new Vector2(transform.position.x, transform.position.y)));
         StartCoroutine(damageProperty.DealDurationDamage(_healthController, _damageViewSpawner));
     }
 

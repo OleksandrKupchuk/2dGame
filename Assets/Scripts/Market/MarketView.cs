@@ -7,6 +7,8 @@ public class MarketView : MonoBehaviour {
     private CreationItem _creationItem = new CreationItem();
 
     [SerializeField]
+    private int _amountSlots;
+    [SerializeField]
     private Market _market;
     [SerializeField]
     private GameObject _background;
@@ -19,16 +21,25 @@ public class MarketView : MonoBehaviour {
     [SerializeField]
     private LayoutElement _layoutElement;
 
+    public static bool IsOpen { get; private set; }
+
     private void Awake() {
-        GenerateCartItems();
+        GenerateSlots();
         _market.OnOpen += Open;
         _market.OnClose += Close;
         _market.OnAddItem += AddItem;
         _market.OnRemoveItem += RemoveItem;
-
         _buttonClosePanels.OnClosePanels += Close;
 
         Close();
+    }
+
+    private void GenerateSlots() {
+        for (int i = 0; i < _amountSlots; i++) {
+            MarketSlotView _slotViewObject = Instantiate(_slotView, _content);
+            _slotViewObject.PutItem(null);
+            _slots.Add(_slotViewObject);
+        }
     }
 
     private void OnDestroy() {
@@ -36,22 +47,6 @@ public class MarketView : MonoBehaviour {
         _market.OnClose -= Close;
         _market.OnAddItem -= AddItem;
         _market.OnRemoveItem -= RemoveItem;
-    }
-
-    private void GenerateCartItems() {
-        for (int i = 0; i < _market.AmountSlots; i++) {
-            MarketSlotView _slotViewObject = Instantiate(_slotView, _content);
-
-            if (i < _market.Items.Count) {
-                Item _itemData = _creationItem.GetCreatedItem(_market.Items[i]);
-                _slotViewObject.PutItem(_itemData);
-            }
-            else {
-                _slotViewObject.PutItem(null);
-            }
-
-            _slots.Add(_slotViewObject);
-        }
     }
 
     private void AddItem(Item itemData) {
@@ -73,12 +68,31 @@ public class MarketView : MonoBehaviour {
     }
 
     public void Open() {
+        if (!_market.IsMarketChecked) {
+            StartCoroutine(MarketRestock.Instance.StartUpdatingItems());
+            PutItems();
+            _market.IsMarketChecked = true;
+        }
+
         _layoutElement.ignoreLayout = false;
         _background.SetActive(true);
+        IsOpen = true;
+    }
+
+    private void PutItems() {
+        for (int i = 0; i < _market.AmountSlots; i++) {
+            if (i < _market.Items.Count) {
+                Item _item = _creationItem.GetCreatedItem(_market.Items[i]);
+                int _newPrice = _item.Price + (_item.Price * _market.Commission / 100);
+                _item.Price = _newPrice;
+                _slots[i].PutItem(_item);
+            }
+        }
     }
 
     public void Close() {
         _layoutElement.ignoreLayout = true;
         _background.SetActive(false);
+        IsOpen = false;
     }
 }

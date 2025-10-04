@@ -61,7 +61,12 @@ public class ItemToolTipView : MonoBehaviour {
         _priceValue.text = item.Price.ToString();
 
         if (item.ItemType.Equals(ItemType.Usable)) {
-            ShowDuration(item);
+            if (item.Duration > 0) {
+                ShowDuration(item);
+            }
+            else {
+                HideDuration();
+            }
         }
         else {
             HideDuration();

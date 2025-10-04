@@ -28,7 +28,7 @@ public class Inventory : ScriptableObject {
             Debug.Log("In Inventory there is not a place");
             return false;
         }
-        //if(_items.Contains(itemData)) {
+        //if(_traderItems.Contains(itemData)) {
         //    Debug.Log("Item already add");
         //    return false;
         //}

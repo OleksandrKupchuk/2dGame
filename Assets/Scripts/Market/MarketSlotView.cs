@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class MarketSlotView : SlotView, IPointerClickHandler {
+public class MarketSlotView : SlotView {
     [SerializeField]
     private Market _market;
     [SerializeField]
@@ -25,19 +24,6 @@ public class MarketSlotView : SlotView, IPointerClickHandler {
     public override void RemoveItem() {
         _item = null;
         SetIcon();
-    }
-
-    public void OnPointerClick(PointerEventData eventData) {
-        if (eventData.button == PointerEventData.InputButton.Right) {
-            if (IsEmpty) {
-                return;
-            }
-
-            Debug.Log("BuyItem item");
-            _market.BuyItem(_item);
-            _market.RemoveItem(_item);
-            _itemToolTip.Hide();
-        }
     }
 
     public override bool IsCanPutItem(Item itemData) {

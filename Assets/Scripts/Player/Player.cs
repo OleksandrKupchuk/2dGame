@@ -94,8 +94,6 @@ public class Player : MonoBehaviour {
         else if(!PlayerMovement.IsLookingLeft) {
             _canvas.transform.localScale = new Vector2(-0.016f, _canvas.transform.localScale.y);
         }
-
-        print("Player looking left = " + PlayerMovement.IsLookingLeft);
     }
 
     private void FixedUpdate() {

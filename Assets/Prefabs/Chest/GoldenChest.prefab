@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2197012642133570027}
   - component: {fileID: 1713940817538319452}
   - component: {fileID: 1023820565773448178}
+  - component: {fileID: 3677572581014164960}
   m_Layer: 0
   m_Name: GoldenChest
   m_TagString: Untagged
@@ -118,18 +119,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.453125}
+  m_Offset: {x: 0.005259514, y: 0.8896638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.0625, y: 0.90625}
+    oldSize: {x: 2.125, y: 1.8125}
     newSize: {x: 1.0625, y: 0.90625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0625, y: 0.90625}
+  m_Size: {x: 1.9986918, y: 1.7793276}
   m_EdgeRadius: 0
 --- !u!114 &1023820565773448178
 MonoBehaviour:
@@ -143,9 +144,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f876550d2428449bf34f201f8d812e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isOpened: 0
   _items:
   - {fileID: 11400000, guid: 1b7d7464d37fcd540b69404fa9e42858, type: 2}
   - {fileID: 11400000, guid: 7e856ae78e19912409ca3925d7ab048d, type: 2}
   - {fileID: 11400000, guid: 1a3cd54530f0b9a41ae26b7778909f81, type: 2}
-  _chestController: {fileID: 11400000, guid: dae91e25182a47049ac724df6884872e, type: 2}
   _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
+  _animator: {fileID: 3677572581014164960}
+--- !u!95 &3677572581014164960
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82677752161464025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7eefeda995e9b644b99fdc5e2464283b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Chest : MonoBehaviour, IInteracvite {
+    private ItemGeneration _itemGeneration = new ItemGeneration();
+
     [SerializeField]
     private bool _isOpened = false;
 
@@ -11,6 +12,8 @@ public class Chest : MonoBehaviour, IInteracvite {
     private List<Item> _items;
     [SerializeField]
     private Inventory _inventory;
+    [SerializeField]
+    private Animator _animator;
 
     public static event Action<List<Item>> OnGetLoot;
     public static event Action OnOpen;
@@ -19,27 +22,14 @@ public class Chest : MonoBehaviour, IInteracvite {
         if (_isOpened) {
             OnOpen?.Invoke();
             _inventory.Open();
+            _animator.Play("ChestOpen");
         }
         else {
-            OnGetLoot?.Invoke(GetItems());
+            OnGetLoot?.Invoke(_itemGeneration.GenerateDropItems(_items));
             OnOpen?.Invoke();
             _inventory.Open();
+            _animator.Play("ChestOpen");
             _isOpened = true;
         }
-    }
-
-    private List<Item> GetItems() {
-        List<Item> _spawnedItems = new List<Item>();
-
-        foreach (var item in _items) {
-            float _itemSpawnChance = Random.Range(0, 100);
-            Debug.Log($"Chance spawn item {item.Name} = " + _itemSpawnChance);
-
-            if (_itemSpawnChance <= item.SpawnChance) {
-                _spawnedItems.Add(item);
-            }
-        }
-
-        return _spawnedItems;
     }
 }

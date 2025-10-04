@@ -17,6 +17,6 @@ MonoBehaviour:
   <ResistanceAttribute>k__BackingField: {fileID: 11400000, guid: 205ac6b41d1f2d646b01d9e8acf527d3, type: 2}
   <BlockedDamagePerOneResistance>k__BackingField: 0
   <Immunity>k__BackingField: 0
-  <Color>k__BackingField: {r: 1, g: 0.47070277, b: 0, a: 1}
+  <Color>k__BackingField: {r: 0.8679245, g: 0.13599093, b: 0.07778566, a: 1}
   <ChanceApplyDurationDamage>k__BackingField: 0
   <DurationDamage>k__BackingField: {fileID: 11400000, guid: 1e4b546b0ffa4324a807c5b5382d6f47, type: 2}

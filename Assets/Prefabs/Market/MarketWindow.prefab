@@ -533,12 +533,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b857a4d200a1d54d83970ab56fdf359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amountSlots: 25
   _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
   _background: {fileID: 3616628397505553085}
   _slotView: {fileID: 4864916275332199246, guid: 425b4cfc0c5b98e4b831421c3506ffa1, type: 3}
   _content: {fileID: 4211003828889524509}
   _buttonClosePanels: {fileID: 0}
   _layoutElement: {fileID: 730960953375965917}
+  _timeUntilUpdatingItemsInSecond: 10
 --- !u!114 &730960953375965917
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Trader : Npc {
+    private ItemGeneration _itemGeneration = new ItemGeneration();
+
     [SerializeField]
     private DialogController _dialogController;
     [SerializeField]
     private NpcDialogues _dialogues;
     [SerializeField]
-    private int _commissionPercent;
-
+    private int _traderCommissionInPercent;
+    [SerializeField]
+    private Market _market;
+    [SerializeField]
+    private List<Item> _traderItems;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.TryGetComponent(out Player player)) {
@@ -22,6 +28,13 @@ public class Trader : Npc {
     }
 
     public override void Interact() {
-        _dialogController.OpenDialogues(gameObject.name, _dialogues);
+        if (!_dialogController.IsDialoguesOpen) {
+            if (!_market.IsMarketChecked) {
+                _market.SetItems(_itemGeneration.GenerateDropItems(_traderItems));
+                _market.SetCommission(_traderCommissionInPercent);
+            }
+
+            _dialogController.OpenDialogues(gameObject.name, _dialogues);
+        }
     }
 }

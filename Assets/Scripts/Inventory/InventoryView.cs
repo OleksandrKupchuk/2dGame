@@ -5,8 +5,6 @@ public class InventoryView : MonoBehaviour {
     private List<InventorySlotView> _slots = new List<InventorySlotView>();
 
     [SerializeField]
-    private Market _market;
-    [SerializeField]
     private InventorySlotView _slotViewPrefab;
     [SerializeField]
     private Inventory _inventory;

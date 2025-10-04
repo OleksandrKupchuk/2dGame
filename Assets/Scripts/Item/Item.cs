@@ -9,6 +9,7 @@ public class Item : ScriptableObject {
 
     protected void OnEnable() {
         _price = Random.Range(_minPrice, _maxPrice);
+        Debug.Log($"Item <color=green>{_name}</color> have the price <color=yellow>{_price}</color> coins");
     }
 
     [SerializeField]

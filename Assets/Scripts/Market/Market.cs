@@ -4,42 +4,42 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Market")]
 public class Market : ScriptableObject {
-    private int _commission;
 
     [SerializeField]
     private PlayerConfig _playerConfig;
     [SerializeField]
     private Inventory _inventory;
-    [SerializeField]
-    private List<Item> _items;
 
     [field: SerializeField]
     public int AmountSlots { get; private set; }
 
-    public List<Item> Items => _items;
+    public bool IsMarketChecked { get; set; }
+    public List<Item> Items { get; private set; }
     public event Action<Item> OnAddItem;
     public event Action<Item> OnRemoveItem;
     public event Action OnOpen;
     public event Action OnClose;
+    public int Commission { get; private set; }
 
-    public void BuyItem(Item item) {
-        int _itemPrice = GetPriceWithTraderCommission(item.Price);
+    private void OnEnable() {
+        IsMarketChecked = false;
+    }
 
-        if (_playerConfig.Coins >= _itemPrice) {
-            _playerConfig.Coins -= _itemPrice;
+    public bool TryBuyItem(Item item) {
+        if (_playerConfig.Coins >= item.Price) {
+            _playerConfig.Coins -= item.Price;
+            item.Price = item.Price - (item.Price * Commission / 100);
             _inventory.TryAddItem(item);
+            return true;
         }
         else {
             Debug.LogWarning("Not enough money");
+            return false;
         }
     }
 
-    private int GetPriceWithTraderCommission(int itemPrice) {
-        return itemPrice + (itemPrice * _commission / 100);
-    }
-
     public void SetCommission(int commission) {
-        _commission = commission;
+        Commission = commission;
     }
 
     public void Open() {
@@ -51,12 +51,14 @@ public class Market : ScriptableObject {
     }
 
     public void AddItem(Item itemData) {
-        _items.Add(itemData);
         OnAddItem?.Invoke(itemData);
     }
 
     public void RemoveItem(Item itemData) {
-        _items.Remove(itemData);
         OnRemoveItem?.Invoke(itemData);
+    }
+
+    public void SetItems(List<Item> items) {
+        Items = items;
     }
 }
