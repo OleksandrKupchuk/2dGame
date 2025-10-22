@@ -26,7 +26,7 @@ public class ItemAttributeRange : ItemAttribute {
     public override string GetValue() {
         string _value = "";
 
-        if (ValueType.Equals(ValueType.Integer)) {
+        if (ValueType.Equals(ValueType.Flat)) {
             if (ValueMinRange > 0) {
                 _value += $"<color=green>{string.Format("{0:0.0}", ValueMinRange)}</color>";
             }

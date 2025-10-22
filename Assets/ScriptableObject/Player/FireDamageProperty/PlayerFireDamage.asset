@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15d279af2958c747be6ba53d774ba0f, type: 3}
-  m_Name: FireAttributeRange
+  m_Script: {fileID: 11500000, guid: bf8347ffc2bc8c941b25a9edafd6e480, type: 3}
+  m_Name: PlayerFireDamage
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}
-  <AttributeType>k__BackingField: 5
+  _config: {fileID: 0}
+  <AttributeType>k__BackingField: 0

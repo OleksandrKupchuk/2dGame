@@ -18,7 +18,7 @@ public class ItemAttributeInteger : ItemAttribute {
     }
 
     public override string GetValue() {
-        if (ValueType.Equals(ValueType.Integer)) {
+        if (ValueType.Equals(ValueType.Flat)) {
             if (Value > 0) {
                 return $"<color=green>+{string.Format("{0:0.0}", Value)}</color>";
             }

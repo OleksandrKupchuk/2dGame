@@ -2,8 +2,8 @@ using UnityEditor;
 using UnityEngine;
 
 //[CustomEditor(typeof(ItemAttribute))]
-public class AttributeEditor : Editor {
-    private const string _spritesPath = "Sprites/Attributes/";
+public class ItemAttributeEditor : Editor {
+    private const string _spritesPath = "Sprites/CharacterAttributes/";
     private SerializedProperty _isRangeAttributeProperty;
     private SerializedProperty _valueMinProperty;
     private SerializedProperty _valueMaxProperty;

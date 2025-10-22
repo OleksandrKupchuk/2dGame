@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttributesConfig", menuName = "Attributes/AttributesConfig")]
-public class AttributesConfig : ScriptableObject {
+[CreateAssetMenu(fileName = "CharacterAttributesConfig", menuName = "Character/AttributesConfig")]
+public class CharacterAttributesConfig : ScriptableObject {
     [field: SerializeField]
     public float Health { get; private set; }
     [field: SerializeField]

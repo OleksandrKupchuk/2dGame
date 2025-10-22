@@ -10,11 +10,11 @@ public class HealthController : ScriptableObject {
     [SerializeField]
     private float _delayHealthRegenerationInSeconds;
     [SerializeField]
-    private AttributeInteger _healthRegenerationAttribute;
+    private CharacterFixedAttribute _healthRegenerationAttribute;
     [SerializeField]
-    private AttributeInteger _healthAttribute;
+    private CharacterFixedAttribute _healthAttribute;
     [SerializeField]
-    private AttributesConfig _config;
+    private CharacterAttributesConfig _config;
 
     public float CurrentHealth { get => _currentHealth; }
     public float MaxHealth { get => _healthAttribute.Value; }

@@ -65,7 +65,7 @@ public abstract class ItemAttribute : ScriptableObject {
     }
 
     protected void LoadIcon() {
-        string _iconPath = $"Sprites/Attributes/{_attributeType}";
+        string _iconPath = $"Sprites/CharacterAttributes/{_attributeType}";
         _icon = Resources.Load<Sprite>(_iconPath);
     }
 
@@ -87,6 +87,6 @@ public enum AttributeType {
 }
 
 public enum ValueType {
-    Integer,
+    Flat,
     Percent
 }

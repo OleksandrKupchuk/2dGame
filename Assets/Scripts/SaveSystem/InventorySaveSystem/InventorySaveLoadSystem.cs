@@ -121,7 +121,7 @@ public class InventorySaveLoadSystem : MonoBehaviour {
             if (itemAttributesData.isRangeAttribute) {
                 ItemAttributeRange _itemAttributeRange = ScriptableObject.CreateInstance<ItemAttributeRange>();
                 _itemAttributeRange.IsRangeAttribute = itemAttributesData.isRangeAttribute;
-                string _iconPath = $"Sprites/Attributes/{itemAttributesData.attributeType}";
+                string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
                 _itemAttributeRange.Icon = Resources.Load<Sprite>(_iconPath);
                 _itemAttributeRange.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
                 _itemAttributeRange.ValueType = (ValueType)Enum.Parse(typeof(ValueType), itemAttributesData.valueType);
@@ -132,7 +132,7 @@ public class InventorySaveLoadSystem : MonoBehaviour {
             else {
                 ItemAttributeInteger _itemAttributeInteger = ScriptableObject.CreateInstance<ItemAttributeInteger>();
                 _itemAttributeInteger.IsRangeAttribute = itemAttributesData.isRangeAttribute;
-                string _iconPath = $"Sprites/Attributes/{itemAttributesData.attributeType}";
+                string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
                 _itemAttributeInteger.Icon = Resources.Load<Sprite>(_iconPath);
                 _itemAttributeInteger.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
                 _itemAttributeInteger.ValueType = (ValueType)Enum.Parse(typeof(ValueType), itemAttributesData.valueType);

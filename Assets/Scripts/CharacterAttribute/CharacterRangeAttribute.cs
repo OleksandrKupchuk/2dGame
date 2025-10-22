@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttributeRange", menuName = "Attributes/AttributeRange")]
-public class AttributeRange : Attribute {
+[CreateAssetMenu(fileName = "CharacterRangeAttribute", menuName = "Character/RangeAttribute")]
+public class CharacterRangeAttribute : CharacterAttribute {
     private float _valueIntegerMin;
     private float _valueIntegerMax;
     private float _valueFromPercentMin;
@@ -41,7 +41,7 @@ public class AttributeRange : Attribute {
                 _valueIntegerMax = _config.FireDamageMax;
                 break;
             default:
-                Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeRange.");
+                Debug.LogError($"CharacterAttribute type {AttributeType} is not supported in CharacterRangeAttribute.");
                 break;
         }
     }
@@ -64,7 +64,7 @@ public class AttributeRange : Attribute {
 
     private void AddIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
+            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
                 ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
                 _valueIntegerMin += _attributeData.ValueMinRange;
                 _valueIntegerMax += _attributeData.ValueMaxRange;
@@ -102,7 +102,7 @@ public class AttributeRange : Attribute {
 
     private void SubtractIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
+            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
                 ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
                 _valueIntegerMin -= _attributeData.ValueMinRange;
                 _valueIntegerMax -= _attributeData.ValueMaxRange;

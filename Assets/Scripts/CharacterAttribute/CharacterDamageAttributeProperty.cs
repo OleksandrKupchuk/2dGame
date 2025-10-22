@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DamageAttributeProperty", menuName = "Attributes/DamageAttributeProperty")]
-public class DamageAttributeProperty : ScriptableObject {
+[CreateAssetMenu(fileName = "CharacterDamageAttributeProperty", menuName = "Character/DamageAttributeProperty")]
+public class CharacterDamageAttributeProperty : ScriptableObject {
     [SerializeField]
     private bool _isDealDurationDamage;
 
     [field: SerializeField]
-    public AttributeRange DamageAttribute { get; private set; }
+    public CharacterRangeAttribute DamageAttribute { get; private set; }
     [field: SerializeField]
-    public AttributeInteger ResistanceAttribute { get; private set; }
+    public CharacterFixedAttribute ResistanceAttribute { get; private set; }
     [field: SerializeField]
     public float BlockedDamagePerOneResistance { get; private set; }
     [field: SerializeField]

@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c206b6caf9d4784e955607a25d963d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c0997b3afe73704ca18f059cac2f6af, type: 3}
   m_Name: PlayerArmorAttribute
   m_EditorClassIdentifier: 
-  _isRangeAttribute: 0
-  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}
+  _config: {fileID: 0}
   <AttributeType>k__BackingField: 0

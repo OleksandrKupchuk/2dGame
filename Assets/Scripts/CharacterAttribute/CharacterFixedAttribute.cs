@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttributeInteger", menuName = "Attributes/AttributeInteger")]
-public class AttributeInteger : Attribute {
+[CreateAssetMenu(fileName = "CharacterFixedAttribute", menuName = "Character/FixedAttribute")]
+public class CharacterFixedAttribute : CharacterAttribute {
     private float _valueInteger;
     private float _valuePercent;
     private float _valueFromPercent;
@@ -38,7 +38,7 @@ public class AttributeInteger : Attribute {
                 _valueInteger = _config.FireResistance;
                 break;
             default:
-                Debug.LogError($"Attribute type {AttributeType} is not supported in AttributeInteger.");
+                Debug.LogError($"CharacterAttribute type {AttributeType} is not supported in CharacterFixedAttribute.");
                 break;
         }
     }
@@ -61,7 +61,7 @@ public class AttributeInteger : Attribute {
 
     private void AddIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
+            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
                 ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valueInteger += _attributeData.Value;
             }
@@ -92,7 +92,7 @@ public class AttributeInteger : Attribute {
 
     private void SubtractIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Integer) {
+            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
                 ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
                 _valueInteger -= _attributeData.Value;
             }

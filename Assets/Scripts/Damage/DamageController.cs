@@ -20,7 +20,7 @@ public class DamageController : MonoBehaviour {
         }
     }
 
-    public void TryTakeDamage(List<DamageAttributeProperty> damageProperties, Damage damageObject) {
+    public void TryTakeDamage(List<CharacterDamageAttributeProperty> damageProperties, Damage damageObject) {
         if (_objectsAttack.Contains(damageObject)) {
             Debug.Log($"Object {damageObject.name} already give damage");
         }
@@ -44,7 +44,7 @@ public class DamageController : MonoBehaviour {
         }
     }
 
-    private void TryCallDurationDamage(DamageAttributeProperty damageProperty, float baseDamage) {
+    private void TryCallDurationDamage(CharacterDamageAttributeProperty damageProperty, float baseDamage) {
         if (damageProperty.IsDealDurationDamage) {
             Debug.Log($"Duration damage already deal");
             return;

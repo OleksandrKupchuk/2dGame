@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public abstract class Attribute : ScriptableObject {
+public abstract class CharacterAttribute : ScriptableObject {
     protected bool _isRangeAttribute;
 
     [SerializeField]
-    protected AttributesConfig _config;
+    protected CharacterAttributesConfig _config;
 
     [field: SerializeField]
     public AttributeType AttributeType { get; protected set; } = new AttributeType();
