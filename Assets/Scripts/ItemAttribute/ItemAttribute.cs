@@ -2,8 +2,8 @@ using UnityEngine;
 
 [System.Serializable]
 public abstract class ItemAttribute : ScriptableObject {
-    [SerializeField]
     protected bool _isRangeAttribute;
+
     [SerializeField]
     protected Sprite _icon;
     [SerializeField]
@@ -18,9 +18,56 @@ public abstract class ItemAttribute : ScriptableObject {
 
     protected void OnEnable() {
         GenerateParameters();
+        OnValidate();
     }
 
     public abstract void GenerateParameters();
+
+    protected void OnValidate() {
+        switch (_attributeType) {
+            case AttributeType.Armor:
+                LoadIcon();
+                break;
+            case AttributeType.Health:
+                LoadIcon();
+                break;
+            case AttributeType.Speed:
+                LoadIcon();
+                break;
+            case AttributeType.HealthRegeneration:
+                LoadIcon();
+                break;
+            case AttributeType.PhysicalDamage:
+                LoadIcon();
+                break;
+            case AttributeType.FireDamage:
+                LoadIcon();
+                break;
+            case AttributeType.FrostDamage:
+                LoadIcon();
+                break;
+            case AttributeType.LightingDamage:
+                LoadIcon();
+                break;
+            case AttributeType.PoisonDamage:
+                LoadIcon();
+                break;
+            case AttributeType.MagicDamage:
+                LoadIcon();
+                break;
+            case AttributeType.FireResistance:
+                LoadIcon();
+                break;
+            default:
+                Debug.LogWarning("Can not load item attribute image");
+                break;
+        }
+    }
+
+    protected void LoadIcon() {
+        string _iconPath = $"Sprites/Attributes/{_attributeType}";
+        _icon = Resources.Load<Sprite>(_iconPath);
+    }
 
     public abstract string GetValue();
 }

@@ -1,11 +1,6 @@
 using UnityEngine;
 
 public class King : Npc, IInteracvite {
-    [SerializeField]
-    private NpcDialogues _dialogues;
-    [SerializeField]
-    private DialogController _dialogController;
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.TryGetComponent(out Player player)) {
             print("interactive SET = " + gameObject.name);

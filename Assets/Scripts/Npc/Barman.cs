@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trader : Npc {
+public class Barman : Npc {
     private ItemGeneration _itemGeneration = new ItemGeneration();
 
     [SerializeField]
