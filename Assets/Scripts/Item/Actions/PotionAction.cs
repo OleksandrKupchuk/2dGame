@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PotionAction", menuName = "ItemAction/PotionAction")]
+[CreateAssetMenu(fileName = "PotionAction", menuName = "Item/Actions/PotionAction")]
 public class PotionAction : ItemAction {
     [SerializeField]
     private Item _item;

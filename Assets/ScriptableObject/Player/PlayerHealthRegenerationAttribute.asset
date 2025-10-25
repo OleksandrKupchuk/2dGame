@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0997b3afe73704ca18f059cac2f6af, type: 3}
   m_Name: PlayerHealthRegenerationAttribute
   m_EditorClassIdentifier: 
-  _config: {fileID: 0}
-  <AttributeType>k__BackingField: 0
+  _config: {fileID: 11400000, guid: c910d13fe28574c4582bd4ea68f7752b, type: 2}
+  <AttributeType>k__BackingField: 3

@@ -22,7 +22,7 @@ public class ItemData {
 
 [System.Serializable]
 public class ItemAttributeData {
-    public bool isRangeAttribute;
+    public ValueForm attributeValue;
     public Sprite icon;
     public string attributeType;
     public string valueType;

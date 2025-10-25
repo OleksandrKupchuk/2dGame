@@ -3,17 +3,18 @@ using UnityEngine;
 
 public class CreationItem {
     public Item GetCreatedItem(Item instance) {
-        Item _item = ScriptableObject.Instantiate(instance);
+        //Item _item = ScriptableObject.Instantiate(instance);
 
-        List<ItemAttribute> _attributes = new List<ItemAttribute>();
+        //List<ItemAttribute> _attributes = new List<ItemAttribute>();
 
-        foreach(ItemAttribute attribute in _item.Attributes) {
-            ItemAttribute _attribute = ScriptableObject.Instantiate(attribute);
-            _attributes.Add(_attribute);
-        }
+        //foreach(ItemAttribute attribute in _item.Attributes) {
+        //    ItemAttribute _attribute = ScriptableObject.Instantiate(attribute);
+        //    _attributes.Add(_attribute);
+        //}
 
-        _item.SetAttributes(_attributes);
+        //_item.SetAttributes(_attributes);
 
-        return _item;
+        //return _item;
+        return null;
     }
 }

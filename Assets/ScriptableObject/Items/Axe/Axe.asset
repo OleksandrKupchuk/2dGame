@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ee5ccdd93cdd4daf2562555818545, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  _price: 43
+  _price: 30
   _itemType: 0
   _name: Axe
   _description: Desc
@@ -20,7 +20,26 @@ MonoBehaviour:
   _maxPrice: 50
   _icon: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
   _attributes:
-  - {fileID: 11400000, guid: 3284695d96d29a148968692c0597098d, type: 2}
+  - _icon: {fileID: 21300000, guid: 5f4654cabe0051a40859dd17896b524b, type: 3}
+    _valueForm: 0
+    _modifierType: 1
+    _attributeType: 2
+    _fixedMin: 0
+    _fixedMax: 0
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
+  - _icon: {fileID: 21300000, guid: b2e3f46c371bd1040bed68201de8f040, type: 3}
+    _valueForm: 0
+    _modifierType: 1
+    _attributeType: 3
+    _fixedMin: 1
+    _fixedMax: 3
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
   _isNeedDuration: 0
   _duration: 0
   _itemTypeAttribute: 5

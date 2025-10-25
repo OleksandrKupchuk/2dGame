@@ -49,24 +49,16 @@ public class InventorySaveLoadSystem : MonoBehaviour {
         foreach (ItemAttribute itemAttribute in itemsAttributes) {
             ItemAttributeData _itemAttributes = new ItemAttributeData();
 
-            _itemAttributes.isRangeAttribute = itemAttribute.IsRangeAttribute;
+            _itemAttributes.attributeValue = itemAttribute.ValueForm;
             _itemAttributes.attributeType = itemAttribute.AttributeType.ToString();
-            _itemAttributes.valueType = itemAttribute.ValueType.ToString();
+            _itemAttributes.valueType = itemAttribute.ModifierType.ToString();
 
-            if (itemAttribute.IsRangeAttribute) {
-                ItemAttributeRange _itemAttributeRange = itemAttribute as ItemAttributeRange;
-
-                if (_itemAttributeRange != null) {
-                    _itemAttributes.valueMinRange = _itemAttributeRange.ValueMinRange;
-                    _itemAttributes.valueMaxRange = _itemAttributeRange.ValueMaxRange;
-                }
+            if (itemAttribute.ValueForm.Equals(ValueForm.Range)) {
+                _itemAttributes.valueMinRange = itemAttribute.RangeMinValue;
+                _itemAttributes.valueMaxRange = itemAttribute.RangeMaxValue;
             }
             else {
-                ItemAttributeInteger _itemAttributeInteger = itemAttribute as ItemAttributeInteger;
-
-                if (_itemAttributeInteger != null) {
-                    _itemAttributes.value = _itemAttributeInteger.Value;
-                }
+                _itemAttributes.value = itemAttribute.FixedValue;
             }
 
             _itemsAttributes.Add(_itemAttributes);
@@ -118,27 +110,27 @@ public class InventorySaveLoadSystem : MonoBehaviour {
         List<ItemAttribute> _itemAttributes = new List<ItemAttribute>();
 
         foreach (var itemAttributesData in itemsAttributesData) {
-            if (itemAttributesData.isRangeAttribute) {
-                ItemAttributeRange _itemAttributeRange = ScriptableObject.CreateInstance<ItemAttributeRange>();
-                _itemAttributeRange.IsRangeAttribute = itemAttributesData.isRangeAttribute;
-                string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
-                _itemAttributeRange.Icon = Resources.Load<Sprite>(_iconPath);
-                _itemAttributeRange.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
-                _itemAttributeRange.ValueType = (ValueType)Enum.Parse(typeof(ValueType), itemAttributesData.valueType);
-                _itemAttributeRange.ValueMinRange = itemAttributesData.valueMinRange;
-                _itemAttributeRange.ValueMaxRange = itemAttributesData.valueMaxRange;
-                _itemAttributes.Add(_itemAttributeRange);
-            }
-            else {
-                ItemAttributeInteger _itemAttributeInteger = ScriptableObject.CreateInstance<ItemAttributeInteger>();
-                _itemAttributeInteger.IsRangeAttribute = itemAttributesData.isRangeAttribute;
-                string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
-                _itemAttributeInteger.Icon = Resources.Load<Sprite>(_iconPath);
-                _itemAttributeInteger.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
-                _itemAttributeInteger.ValueType = (ValueType)Enum.Parse(typeof(ValueType), itemAttributesData.valueType);
-                _itemAttributeInteger.Value = itemAttributesData.value;
-                _itemAttributes.Add(_itemAttributeInteger);
-            }
+            //if (itemAttributesData.attributeValue.Equals(ValueForm.Range)) {
+            //    ItemAttribute _itemAttribute = ScriptableObject.CreateInstance<ItemAttribute>();
+            //    _itemAttribute.ValueForm = itemAttributesData.attributeValue;
+            //    string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
+            //    _itemAttribute.Icon = Resources.Load<Sprite>(_iconPath);
+            //    _itemAttribute.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
+            //    _itemAttribute.ModifierType = (ModifierType)Enum.Parse(typeof(ModifierType), itemAttributesData.valueType);
+            //    _itemAttribute.RangeMinValue = itemAttributesData.valueMinRange;
+            //    _itemAttribute.RangeMaxValue = itemAttributesData.valueMaxRange;
+            //    _itemAttributes.Add(_itemAttribute);
+            //}
+            //else {
+            //    ItemAttribute _itemAttribute = ScriptableObject.CreateInstance<ItemAttribute>();
+            //    _itemAttribute.ValueForm = itemAttributesData.attributeValue;
+            //    string _iconPath = $"Sprites/CharacterAttributes/{itemAttributesData.attributeType}";
+            //    _itemAttribute.Icon = Resources.Load<Sprite>(_iconPath);
+            //    _itemAttribute.AttributeType = (AttributeType)Enum.Parse(typeof(AttributeType), itemAttributesData.attributeType);
+            //    _itemAttribute.ModifierType = (ModifierType)Enum.Parse(typeof(ModifierType), itemAttributesData.valueType);
+            //    _itemAttribute.FixedValue = itemAttributesData.value;
+            //    _itemAttributes.Add(_itemAttribute);
+            //}
         }
 
         return _itemAttributes;

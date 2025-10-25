@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "ItemToolTip", menuName = "Item/ItemToolTip")]
 public class ItemToolTip : ScriptableObject {
     private ItemToolTipView _itemToolTipView;
     private Canvas _parent;

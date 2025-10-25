@@ -61,18 +61,16 @@ public class CharacterFixedAttribute : CharacterAttribute {
 
     private void AddIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
-                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
-                _valueInteger += _attributeData.Value;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Integer) {
+                _valueInteger += attribute.FixedValue;
             }
         }
     }
 
     private void AddPercentAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
-                _valuePercent += _attributeData.Value;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Percent) {
+                _valuePercent += attribute.FixedValue;
             }
         }
 
@@ -92,18 +90,16 @@ public class CharacterFixedAttribute : CharacterAttribute {
 
     private void SubtractIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
-                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
-                _valueInteger -= _attributeData.Value;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Integer) {
+                _valueInteger -= attribute.FixedValue;
             }
         }
     }
 
     private void SubtractPercentAttributes(Item item) {
         foreach (ItemAttribute attribute in item.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                ItemAttributeInteger _attributeData = attribute as ItemAttributeInteger;
-                _valuePercent -= _attributeData.Value;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Percent) {
+                _valuePercent -= attribute.FixedValue;
             }
         }
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Items/Item", order = 0)]
+[CreateAssetMenu(fileName = "Item", menuName = "Item/Item", order = 0)]
 public class Item : ScriptableObject {
     [SerializeField, HideInInspector]
     protected int _price;
@@ -57,6 +57,10 @@ public class Item : ScriptableObject {
 
     public void SetAttributes(List<ItemAttribute> attributes) {
         _attributes = attributes;
+    }
+
+    private void OnValidate() {
+        Attributes.ToArray().ToList().ForEach(attribute => attribute.GenerateParameters());
     }
 }
 

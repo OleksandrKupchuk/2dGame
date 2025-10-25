@@ -1,75 +1,119 @@
 using UnityEngine;
 
 [System.Serializable]
-public abstract class ItemAttribute : ScriptableObject {
-    protected bool _isRangeAttribute;
+public class ItemAttribute {
+    [SerializeField]
+    private Sprite _icon;
+    [SerializeField]
+    private ValueForm _valueForm;
+    [SerializeField]
+    private ModifierType _modifierType;
+    [SerializeField]
+    private AttributeType _attributeType;
+    [SerializeField]
+    private float _fixedMin;
+    [SerializeField]
+    private float _fixedMax;
+    [SerializeField]
+    private float _rangeMinLower;
+    [SerializeField]
+    private float _rangeMaxLower;
+    [SerializeField]
+    private float _rangeMinUpper;
+    [SerializeField]
+    private float _rangeMaxUpper;
 
-    [SerializeField]
-    protected Sprite _icon;
-    [SerializeField]
-    protected AttributeType _attributeType;
-    [SerializeField]
-    protected ValueType _valueType;
-
-    public bool IsRangeAttribute { get => _isRangeAttribute; set => _isRangeAttribute = value; }
-    public AttributeType AttributeType { get => _attributeType; set => _attributeType = value; }
-    public ValueType ValueType { get => _valueType; set => _valueType = value; }
     public Sprite Icon { get => _icon; set => _icon = value; }
+    public ValueForm ValueForm { get => _valueForm; set => _valueForm = value; }
+    public ModifierType ModifierType { get => _modifierType; set => _modifierType = value; }
+    public AttributeType AttributeType { get => _attributeType; set => _attributeType = value; }
+    public float FixedValue { get; set; }
+    public float RangeMinValue { get; set; }
+    public float RangeMaxValue { get; set; }
 
-    protected void OnEnable() {
-        GenerateParameters();
-        OnValidate();
-    }
-
-    public abstract void GenerateParameters();
-
-    protected void OnValidate() {
-        switch (_attributeType) {
-            case AttributeType.Armor:
-                LoadIcon();
-                break;
-            case AttributeType.Health:
-                LoadIcon();
-                break;
-            case AttributeType.Speed:
-                LoadIcon();
-                break;
-            case AttributeType.HealthRegeneration:
-                LoadIcon();
-                break;
-            case AttributeType.PhysicalDamage:
-                LoadIcon();
-                break;
-            case AttributeType.FireDamage:
-                LoadIcon();
-                break;
-            case AttributeType.FrostDamage:
-                LoadIcon();
-                break;
-            case AttributeType.LightingDamage:
-                LoadIcon();
-                break;
-            case AttributeType.PoisonDamage:
-                LoadIcon();
-                break;
-            case AttributeType.MagicDamage:
-                LoadIcon();
-                break;
-            case AttributeType.FireResistance:
-                LoadIcon();
-                break;
-            default:
-                Debug.LogWarning("Can not load item attribute image");
-                break;
+    public void GenerateParameters() {
+        if (ValueForm == ValueForm.Fixed) {
+            FixedValue = Random.Range(_fixedMin, _fixedMax);
+            Debug.Log($"Generated Fixed Value: {FixedValue}, <color=green>{AttributeType}</color>");
+        }
+        else {
+            RangeMinValue = Random.Range(_rangeMinLower, _rangeMinUpper);
+            RangeMaxValue = Random.Range(_rangeMaxLower, _rangeMaxUpper);
+            Debug.Log($"Generated Range Min Value: {RangeMinValue}, <color=green>{AttributeType}</color>");
+            Debug.Log($"Generated Range Max Value: {RangeMaxValue}, <color=green>{AttributeType}</color>");
         }
     }
 
-    protected void LoadIcon() {
-        string _iconPath = $"Sprites/CharacterAttributes/{_attributeType}";
-        _icon = Resources.Load<Sprite>(_iconPath);
+    public string GetValue() {
+        if (ValueForm.Equals(ValueForm.Fixed)) {
+            if (ModifierType.Equals(ModifierType.Integer)) {
+                if (FixedValue > 0) {
+                    return $"<color=green>+{string.Format("{0:0.0}", FixedValue)}</color>";
+                }
+                else {
+                    return $"<color=red>-{string.Format("{0:0.0}", FixedValue)}</color>";
+                }
+            }
+            else {
+                if (FixedValue > 0) {
+                    return $"<color=green>+{string.Format("{0:0.0}", FixedValue)}%</color>";
+                }
+                else {
+                    return $"<color=red>-{string.Format("{0:0.0}", FixedValue)}%</color>";
+                }
+            }
+        }
+        else {
+            string _value = "";
+
+            if (ModifierType.Equals(ModifierType.Integer)) {
+                if (RangeMinValue > 0) {
+                    _value += $"<color=green>{string.Format("{0:0.0}", RangeMinValue)}</color>";
+                }
+                else {
+                    _value += $"<color=red>{string.Format("{0:0.0}", RangeMinValue)}</color>";
+                }
+
+                if (RangeMaxValue > 0) {
+                    _value += $"—<color=green>{string.Format("{0:0.0}", RangeMaxValue)}</color>";
+                }
+                else {
+                    _value += $"—<color=red>({string.Format("{0:0.0}", RangeMaxValue)}) </color>";
+                }
+            }
+            else {
+                if (RangeMinValue > 0) {
+                    _value += $"<color=green>{string.Format("{0:0.0}", RangeMinValue)}</color>";
+                }
+                else {
+                    _value += $"<color=red>{string.Format("{0:0.0}", RangeMinValue)}</color>";
+                }
+
+                if (RangeMaxValue > 0) {
+                    _value += $"—<color=green>{string.Format("{0:0.0}", RangeMaxValue)}%</color>";
+                }
+                else {
+                    _value += $"—<color=red>{string.Format("{0:0.0}", RangeMaxValue)}%</color>";
+                }
+            }
+
+            return _value;
+        }
     }
 
-    public abstract string GetValue();
+    private string GetFormatedValue(float value, Color color) {
+        return $"<color={color}>{string.Format("{0:0.0}", value)}</color>";
+    }
+}
+
+public enum ValueForm {
+    Fixed,
+    Range
+}
+
+public enum ModifierType {
+    Integer,
+    Percent
 }
 
 public enum AttributeType {
@@ -84,9 +128,5 @@ public enum AttributeType {
     PoisonDamage,
     MagicDamage,
     FireResistance,
-}
-
-public enum ValueType {
-    Flat,
-    Percent
+    Test
 }

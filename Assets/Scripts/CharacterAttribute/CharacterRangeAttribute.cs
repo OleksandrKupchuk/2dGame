@@ -64,20 +64,18 @@ public class CharacterRangeAttribute : CharacterAttribute {
 
     private void AddIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
-                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
-                _valueIntegerMin += _attributeData.ValueMinRange;
-                _valueIntegerMax += _attributeData.ValueMaxRange;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Integer) {
+                _valueIntegerMin += attribute.RangeMinValue;
+                _valueIntegerMax += attribute.RangeMaxValue;
             }
         }
     }
 
     private void AddPercentAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
-                _valueMinPercent += _attributeData.ValueMinRange;
-                _valueMaxPercent += _attributeData.ValueMaxRange;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Percent) {
+                _valueMinPercent += attribute.RangeMinValue;
+                _valueMaxPercent += attribute.RangeMaxValue;
             }
         }
 
@@ -102,20 +100,18 @@ public class CharacterRangeAttribute : CharacterAttribute {
 
     private void SubtractIntegerAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Flat) {
-                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
-                _valueIntegerMin -= _attributeData.ValueMinRange;
-                _valueIntegerMax -= _attributeData.ValueMaxRange;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Integer) {
+                _valueIntegerMin -= attribute.RangeMinValue;
+                _valueIntegerMax -= attribute.RangeMaxValue;
             }
         }
     }
 
     private void SubtractPercentAttributes(Item itemData) {
         foreach (ItemAttribute attribute in itemData.Attributes) {
-            if (attribute.AttributeType == AttributeType && attribute.ValueType == ValueType.Percent) {
-                ItemAttributeRange _attributeData = attribute as ItemAttributeRange;
-                _valueMinPercent -= _attributeData.ValueMinRange;
-                _valueMaxPercent -= _attributeData.ValueMaxRange;
+            if (attribute.AttributeType == AttributeType && attribute.ModifierType == ModifierType.Percent) {
+                _valueMinPercent -= attribute.RangeMinValue;
+                _valueMaxPercent -= attribute.RangeMaxValue;
             }
         }
 
