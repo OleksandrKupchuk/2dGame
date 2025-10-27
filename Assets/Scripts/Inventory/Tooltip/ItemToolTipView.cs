@@ -60,7 +60,7 @@ public class ItemToolTipView : MonoBehaviour {
         _description.text = item.Description;
         _priceValue.text = item.Price.ToString();
 
-        if (item.ItemType.Equals(ItemType.Usable)) {
+        if (item.ItemCategory.Equals(ItemCategory.Usable)) {
             if (item.Duration > 0) {
                 ShowDuration(item);
             }

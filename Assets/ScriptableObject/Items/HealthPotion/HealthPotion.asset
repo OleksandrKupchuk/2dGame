@@ -13,17 +13,26 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   _price: 10
-  _itemType: 1
+  _itemCategory: 1
   _name: Health potion
   _description: Desc
   _minPrice: 10
   _maxPrice: 10
   _icon: {fileID: 21300000, guid: 0ef9601a19a20064e9b391bf0543df5a, type: 3}
   _attributes:
-  - {fileID: 11400000, guid: 08403ff1df1c0d24cacbcb03470ea050, type: 2}
+  - _icon: {fileID: 21300000, guid: 57a2433b9e60c4b41a56bbb8cc51e67b, type: 3}
+    _valueForm: 0
+    _modifierType: 0
+    _attributeType: 1
+    _fixedMin: 5
+    _fixedMax: 5
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
   _isNeedDuration: 0
   _duration: 0
-  _itemTypeAttribute: 0
+  _itemType: 0
   _bodyType: 0
   _itemActions:
   - {fileID: 11400000, guid: 1719fc7329735f04dab2d5d66a614c46, type: 2}

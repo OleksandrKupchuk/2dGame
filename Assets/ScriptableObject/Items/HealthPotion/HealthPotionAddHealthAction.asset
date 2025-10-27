@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HealthPotionAddHealthAction
   m_EditorClassIdentifier: 
   _healthController: {fileID: 11400000, guid: 6d21bf859853ba047973e1b1ee01b548, type: 2}
-  _potionAttribute: {fileID: 11400000, guid: 08403ff1df1c0d24cacbcb03470ea050, type: 2}
+  _healthPotion: {fileID: 11400000, guid: 7e856ae78e19912409ca3925d7ab048d, type: 2}

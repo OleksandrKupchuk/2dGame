@@ -5,9 +5,9 @@ public class PotionAddHealthAction : ItemAction {
     [SerializeField]
     private HealthController _healthController;
     [SerializeField]
-    private ItemAttribute _potionAttribute;
+    private Item _healthPotion;
 
     public override void Execute() {
-        _healthController.AddHealth(_potionAttribute.FixedValue);
+        _healthController.AddHealth(_healthPotion.Attributes[0].FixedValue);
     }
 }

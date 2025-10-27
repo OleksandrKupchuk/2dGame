@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerSlotView : SlotView {
     [SerializeField]
-    private List<ItemTypeAttribute> _slotTypes = new List<ItemTypeAttribute>();
+    private List<ItemType> _slotTypes = new List<ItemType>();
 
     private void Awake() {
         SetIcon();
@@ -25,7 +25,7 @@ public class PlayerSlotView : SlotView {
     public override bool IsCanPutItem(Item item) {
         if (item == null) return true;
 
-        if (item.ItemType.Equals(ItemType.Wearable)) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             return _slotTypes.Contains(item.ItemTypeAttribute);
         }
 
@@ -39,7 +39,7 @@ public class PlayerSlotView : SlotView {
     }
 
     private void ChangeBorderColor(Item item) {
-        if (item.ItemType.Equals(ItemType.Wearable)) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             if (_slotTypes.Contains(item.ItemTypeAttribute)) {
                 SetBorderColor(Color.green);
             }

@@ -37,8 +37,8 @@ public class ItemAttribute {
             Debug.Log($"Generated Fixed Value: {FixedValue}, <color=green>{AttributeType}</color>");
         }
         else {
-            RangeMinValue = Random.Range(_rangeMinLower, _rangeMinUpper);
-            RangeMaxValue = Random.Range(_rangeMaxLower, _rangeMaxUpper);
+            RangeMinValue = Random.Range(_rangeMinLower, _rangeMaxLower);
+            RangeMaxValue = Random.Range(_rangeMinUpper, _rangeMaxUpper);
             Debug.Log($"Generated Range Min Value: {RangeMinValue}, <color=green>{AttributeType}</color>");
             Debug.Log($"Generated Range Max Value: {RangeMaxValue}, <color=green>{AttributeType}</color>");
         }

@@ -4,7 +4,7 @@ public class CameraMovement : MonoBehaviour {
     private Vector3 _cameraPosition;
     private Player _player;
 
-    private Vector3 _offset = new Vector3(4f, 12f, -10f);
+    private Vector3 _offset = new Vector3(4f, 7f, -10f);
     private float _speedSmooth = 2f;
 
     void FixedUpdate() {

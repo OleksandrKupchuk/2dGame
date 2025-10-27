@@ -63,7 +63,7 @@ public class HealthController : ScriptableObject {
 
         CheckCurrentHealth();
 
-        Debug.Log("Health was added, value = " + health);
+        Debug.Log("Health was added, fixedValue = " + health);
         OnHealthChanged.Invoke();
     }
 

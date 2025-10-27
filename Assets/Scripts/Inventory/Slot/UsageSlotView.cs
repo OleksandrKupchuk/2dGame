@@ -40,7 +40,7 @@ public class UsageSlotView : SlotView {
     }
 
     public override bool IsCanPutItem(Item item) {
-        if (item == null || item.ItemType.Equals(ItemType.Usable)) {
+        if (item == null || item.ItemCategory.Equals(ItemCategory.Usable)) {
             return true;
         }
 

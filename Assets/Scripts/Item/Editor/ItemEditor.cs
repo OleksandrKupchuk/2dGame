@@ -17,7 +17,9 @@ public class ItemEditor : Editor {
     private SerializedProperty _spawnChanceProperty;
 
     public override void OnInspectorGUI() {
-        _itemTypeProperty = serializedObject.FindProperty("_itemType");
+        Item _item = (Item)target;
+
+        _itemTypeProperty = serializedObject.FindProperty("_itemCategory");
         _nameProperty = serializedObject.FindProperty("_name");
         _descriptionProperty = serializedObject.FindProperty("_description");
         _minPriceProperty = serializedObject.FindProperty("_minPrice");
@@ -26,7 +28,7 @@ public class ItemEditor : Editor {
         _attributesProperty = serializedObject.FindProperty("_attributes");
         _isNeedDurationProperty = serializedObject.FindProperty("_isNeedDuration");
         _durationProperty = serializedObject.FindProperty("_duration");
-        _itemTypeAttributeProperty = serializedObject.FindProperty("_itemTypeAttribute");
+        _itemTypeAttributeProperty = serializedObject.FindProperty("_itemType");
         _bodyTypeProperty = serializedObject.FindProperty("_bodyType");
         _itemActionsProperty = serializedObject.FindProperty("_itemActions");
         _spawnChanceProperty = serializedObject.FindProperty("_spawnChance");
@@ -39,12 +41,18 @@ public class ItemEditor : Editor {
         EditorGUILayout.PropertyField(_minPriceProperty);
         EditorGUILayout.PropertyField(_maxPriceProperty);
         EditorGUILayout.PropertyField(_iconProperty);
-        EditorGUILayout.PropertyField(_attributesProperty);
-        EditorGUILayout.PropertyField(_itemTypeAttributeProperty);
-        EditorGUILayout.PropertyField(_bodyTypeProperty);
-        EditorGUILayout.PropertyField(_spawnChanceProperty);
 
-        if (_itemTypeProperty.intValue == (int)ItemType.Usable) {
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(_attributesProperty);
+        if (EditorGUI.EndChangeCheck()) {
+            foreach (var attribute in _item.Attributes) {
+                attribute.GenerateParameters();
+            }
+        }
+
+        EditorGUILayout.PropertyField(_bodyTypeProperty);
+
+        if (_itemTypeProperty.intValue == (int)ItemCategory.Usable) {
             EditorGUILayout.PropertyField(_itemActionsProperty);
             EditorGUILayout.PropertyField(_isNeedDurationProperty);
 
@@ -55,7 +63,13 @@ public class ItemEditor : Editor {
                 _durationProperty.floatValue = 0f;
             }
         }
+        else {
+            _itemActionsProperty.ClearArray();
 
+            EditorGUILayout.PropertyField(_itemTypeAttributeProperty);
+        }
+
+        EditorGUILayout.PropertyField(_spawnChanceProperty);
         serializedObject.ApplyModifiedProperties();
     }
 }

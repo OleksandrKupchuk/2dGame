@@ -16,7 +16,7 @@ public class ChangeSkin : MonoBehaviour {
     }
 
     public void Change(Item item) {
-        if (item.ItemType.Equals(ItemType.Wearable)) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
                 if (item.BodyType == bodyPart.Type) {
                     bodyPart.ChangeSkin(item);
@@ -27,7 +27,7 @@ public class ChangeSkin : MonoBehaviour {
     }
 
     public void Reset(Item item) {
-        if (item.ItemType.Equals(ItemType.Wearable)) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
                 if (item.BodyType == bodyPart.Type) {
                     bodyPart.ResetSkin(item);

@@ -12,28 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ee5ccdd93cdd4daf2562555818545, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  _price: 30
-  _itemType: 0
+  _price: 25
+  _itemCategory: 0
   _name: Axe
   _description: Desc
   _minPrice: 20
   _maxPrice: 50
   _icon: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
   _attributes:
-  - _icon: {fileID: 21300000, guid: 5f4654cabe0051a40859dd17896b524b, type: 3}
-    _valueForm: 0
-    _modifierType: 1
-    _attributeType: 2
+  - _icon: {fileID: 21300000, guid: bf1aabd8052f97f41896842c39766751, type: 3}
+    _valueForm: 1
+    _modifierType: 0
+    _attributeType: 4
     _fixedMin: 0
     _fixedMax: 0
-    _rangeMinLower: 0
-    _rangeMaxLower: 0
-    _rangeMinUpper: 0
-    _rangeMaxUpper: 0
-  - _icon: {fileID: 21300000, guid: b2e3f46c371bd1040bed68201de8f040, type: 3}
+    _rangeMinLower: 1
+    _rangeMaxLower: 5
+    _rangeMinUpper: 7
+    _rangeMaxUpper: 12
+  - _icon: {fileID: 21300000, guid: 59c203c833bb0894384b1c344e889244, type: 3}
     _valueForm: 0
-    _modifierType: 1
-    _attributeType: 3
+    _modifierType: 0
+    _attributeType: 0
     _fixedMin: 1
     _fixedMax: 3
     _rangeMinLower: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
     _rangeMaxUpper: 0
   _isNeedDuration: 0
   _duration: 0
-  _itemTypeAttribute: 5
+  _itemType: 5
   _bodyType: 2
   _itemActions: []
   _spawnChance: 50
