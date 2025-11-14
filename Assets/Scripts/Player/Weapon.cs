@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour {
     [SerializeField]
     private Player _player;
     [SerializeField]
-    private DamageAttribute _damageAttribute;
+    private CharacterRangeAttribute _damageAttribute;
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.transform.TryGetComponent(out Enemy enemy)) {

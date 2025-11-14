@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4576197058235017556}
   - component: {fileID: 4267744901108075159}
   m_Layer: 5
-  m_Name: UsageItem
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,11 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4576197058235017556}
-  _inventoryController: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
-  _border: {fileID: 4464416888167888382}
-  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
+  _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
   <SlotView>k__BackingField: {fileID: 2151796629151091975}
-  isDropZone: 0
 --- !u!1 &5881482881056528917
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +428,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 8907479184134568808}
   _border: {fileID: 4464416888167888382}
+  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
+  _activeBorder: {fileID: 21300000, guid: b9b05ad1d692f23429022efc0fe145d6, type: 3}
   _label: {fileID: 1438949040716573626}
+  _itemToolTip: {fileID: 11400000, guid: 4903c3a417e5e4943a2adff73560a9bd, type: 2}
 --- !u!114 &4212658585128661314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,3 +445,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slotView: {fileID: 2151796629151091975}
+  _itemToolTip: {fileID: 11400000, guid: 4903c3a417e5e4943a2adff73560a9bd, type: 2}
+  _rectTransform: {fileID: 4904530246683642457}

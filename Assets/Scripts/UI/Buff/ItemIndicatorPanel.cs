@@ -3,18 +3,17 @@ using UnityEngine;
 
 public class ItemIndicatorPanel : MonoBehaviour {
     private List<BuffIndicator> _buffIndicators = new List<BuffIndicator>();
+
     [SerializeField]
     private BuffIndicator _indicator;
 
     private void Awake() {
         CreateBuffIndicators();
-        EventManager.UseItem += ShowBuffIndacator;
-        EventManager.ActionItemOver += HideBuffIndacator;
+        EventManager.UseItem += ShowBuffIndicator;
     }
 
     private void OnDestroy() {
-        EventManager.UseItem -= ShowBuffIndacator;
-        EventManager.ActionItemOver -= HideBuffIndacator;
+        EventManager.UseItem -= ShowBuffIndicator;
     }
 
     private void CreateBuffIndicators() {
@@ -26,20 +25,11 @@ public class ItemIndicatorPanel : MonoBehaviour {
         }
     }
 
-    private void ShowBuffIndacator(UsableItemData item) {
+    private void ShowBuffIndicator(Item item) {
         foreach (BuffIndicator indicator in _buffIndicators) {
             if (!indicator.gameObject.activeSelf) {
                 indicator.gameObject.SetActive(true);
                 indicator.Display(item);
-                break;
-            }
-        }
-    }
-
-    private void HideBuffIndacator(ItemData item) {
-        foreach (BuffIndicator indicator in _buffIndicators) {
-            if (indicator.Item == item) {
-                indicator.gameObject.SetActive(false);
                 break;
             }
         }

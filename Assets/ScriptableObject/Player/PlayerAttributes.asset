@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b181b08ed180ba944855e2ad1aa37bc2, type: 3}
+  m_Name: PlayerAttributes
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: {fileID: 11400000, guid: 03aa56e05c8f15349be2dc29d0593703, type: 2}
+  <HealthRegeneration>k__BackingField: {fileID: 11400000, guid: f735878febb4aad4cb30fb2f9c8c5b3b, type: 2}
+  <Speed>k__BackingField: {fileID: 11400000, guid: 0f561d4fef41bd34eb8f30bb8e3589a9, type: 2}
+  <DamageAttributeProperties>k__BackingField:
+  - {fileID: 11400000, guid: fc2f5fa9e6c8e7d4480e6e92b7a0a655, type: 2}

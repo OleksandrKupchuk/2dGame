@@ -20,11 +20,11 @@ public class BodyPart : MonoBehaviour {
 
     public BodyType Type { get => _type; }
 
-    public void ChangeSkin(ItemData item) {
+    public void ChangeSkin(Item item) {
         _spriteRenderer.sprite = item.Icon;
     }
 
-    public void ResetSkin(ItemData item) {
+    public void ResetSkin(Item item) {
         _spriteRenderer.sprite = _sprite;
     }
 }

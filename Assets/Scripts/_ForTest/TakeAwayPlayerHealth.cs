@@ -3,15 +3,17 @@ using UnityEngine.UI;
 
 public class TakeAwayPlayerHealth : MonoBehaviour {
     [SerializeField]
-    private float _health;
-    [SerializeField]
     private Button _addHealthButton;
     [SerializeField]
-    private PlayerHealthController _healthController;
+    private CharacterAttributes _attributes;
+    [SerializeField]
+    private Damage _damage;
 
     private void Start() {
+        DamageController _damageController = GameObject.FindGameObjectWithTag("Player").GetComponent<DamageController>();
+
         _addHealthButton.onClick.AddListener(() => {
-            _healthController.TakeDamage(_health);
+            _damageController.TryTakeDamage(_attributes.DamageAttributeProperties, _damage);
         });
     }
 }

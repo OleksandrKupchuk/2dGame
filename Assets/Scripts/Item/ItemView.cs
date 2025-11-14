@@ -5,9 +5,17 @@ public class ItemView : MonoBehaviour {
     private SpriteRenderer _icon;
 
     [field: SerializeField]
-    public ItemData ItemData { get; private set; }
+    public Item ItemData { get; private set; }
 
     private void OnEnable() {
+        gameObject.layer = LayerMask.NameToLayer("Item");
+    }
+
+    public void SetItem(Item item) {
+        ItemData = item;
+    }
+
+    public void SetIcon() {
         _icon.sprite = ItemData.Icon;
     }
 }

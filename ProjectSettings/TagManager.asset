@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Canvas
+  - PlayerCanvas
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Item
   - EnemyLeg
   - Npc
-  - 
+  - Weapon
   - 
   - 
   - 

@@ -1,58 +1,55 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerSlotView : SlotView {
-    [SerializeField]
-    protected Image _border;
     [SerializeField]
     private List<ItemType> _slotTypes = new List<ItemType>();
 
     private void Awake() {
         SetIcon();
-        DragAndDrop.OnItemTaken += ChangeBorderColor;
-        DragAndDrop.OnItemPutted += ResetBorderColor;
+        DragAndDrop.OnItemDragged += ChangeBorderColor;
+        DragAndDrop.OnDragEnded += ResetBorderColor;
     }
 
     private void OnDestroy() {
-        DragAndDrop.OnItemTaken -= ChangeBorderColor;
-        DragAndDrop.OnItemPutted -= ResetBorderColor;
+        DragAndDrop.OnItemDragged -= ChangeBorderColor;
+        DragAndDrop.OnDragEnded -= ResetBorderColor;
     }
 
-    public override void PutItem(ItemData itemData) {
-        if (itemData is WearableItemData) {
-            var _item = itemData as WearableItemData;
-
-            if (_slotTypes.Contains(_item.ItemType)) {
-                _itemData = _item;
-                SetIcon();
-                EventManager.OnItemDressedHandler(_item);
-            }
-        }
-        else {
-            _itemData = null;
-            SetIcon();
-        }
+    public override void PutItem(Item item) {
+        _item = item;
+        SetIcon();
+        EventManager.OnItemDressedHandler(_item);
     }
 
-    public override void TakeItem() {
-        EventManager.TakeAwayItemEventHandler(_itemData);
-        _itemData = null;
+    public override bool IsCanPutItem(Item item) {
+        if (item == null) return true;
+
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
+            return _slotTypes.Contains(item.ItemType);
+        }
+
+        return false;
+    }
+
+    public override void RemoveItem() {
+        EventManager.TakeAwayItemEventHandler(_item);
+        _item = null;
         SetIcon();
     }
 
-    private void ChangeBorderColor(ItemData item) {
-        if (item is WearableItemData) {
-            var _item = item as WearableItemData;
-
-            if (_slotTypes.Contains(_item.ItemType)) {
+    private void ChangeBorderColor(Item item) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
+            if (_slotTypes.Contains(item.ItemType)) {
                 SetBorderColor(Color.green);
             }
             else {
                 SetBorderColor(Color.red);
             }
         }
-
+        else {
+            SetBorderColor(Color.red);
+        }
     }
 
     private void ResetBorderColor() {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1baf7b898e9e704ea56f46323c67ebe, type: 3}
+  m_Name: FireDamageAttributeProperty
+  m_EditorClassIdentifier: 
+  _isDealDurationDamage: 0
+  <DamageAttribute>k__BackingField: {fileID: 11400000, guid: 4e06611f2c8f16f429009135e7f9ca8a, type: 2}
+  <ResistanceAttribute>k__BackingField: {fileID: 11400000, guid: 0b9ff7f0e99eaf44c94a25c39df0c9ea, type: 2}
+  <BlockedDamagePerOneResistance>k__BackingField: 0
+  <Immunity>k__BackingField: 0
+  <Color>k__BackingField: {r: 0.8679245, g: 0.13599093, b: 0.07778566, a: 1}
+  <ChanceApplyDurationDamage>k__BackingField: 0
+  <DurationDamage>k__BackingField: {fileID: 11400000, guid: 1e4b546b0ffa4324a807c5b5382d6f47, type: 2}

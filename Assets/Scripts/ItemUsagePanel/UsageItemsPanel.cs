@@ -17,7 +17,7 @@ public class UsageItemsPanel : MonoBehaviour {
     private void CreateUsageSlots() {
         foreach (var action in _actionMap.actions) {
             UsageSlotView _usageSlotObject = Instantiate(_usageSlotView, transform);
-            _usageSlotObject.PutItem(null);
+            _usageSlotObject.RemoveItem();
             _usageSlotObject.SetInputAction(action);
         }
     }

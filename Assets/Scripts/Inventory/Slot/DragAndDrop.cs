@@ -6,20 +6,19 @@ using UnityEngine.EventSystems;
 public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
     private RectTransform _rectTransform;
     private Transform _parent;
+    private bool _isDropZone = false;
 
     [SerializeField]
     private CanvasGroup _canvasGroup;
     [SerializeField]
-    private Inventory _inventoryController;
+    private Inventory _inventory;
 
     [field: SerializeField]
     public SlotView SlotView { get; private set; }
 
-    public bool isDropZone = false;
-
     public static event Action OnDragStarted;
-    public static event Action<ItemData> OnItemTaken;
-    public static event Action OnItemPutted;
+    public static event Action<Item> OnItemDragged;
+    public static event Action OnDragEnded;
 
     private void Awake() {
         _rectTransform = GetComponent<RectTransform>();
@@ -30,7 +29,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (SlotView.IsEmpty) { return; }
         transform.SetParent(transform.root);
         _canvasGroup.blocksRaycasts = false;
-        OnItemTaken?.Invoke(SlotView.ItemData);
+        OnItemDragged?.Invoke(SlotView.Item);
+        print("OnDragStarted");
         OnDragStarted?.Invoke();
     }
 
@@ -40,19 +40,24 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        if (isDropZone) {
-            _inventoryController.RemoveItem(SlotView.ItemData);
-            ResetPowition();
+        if (_isDropZone) {
+            EventManager.OnItemDropHandler(SlotView.Item);
+            ResetSlotPosition();
+            print("Drop Item from Inventory");
         }
         else {
-            ResetPowition();
+            ResetSlotPosition();
         }
     }
 
-    private void ResetPowition() {
+    public void SetDropZone(bool isDropZone) {
+        _isDropZone = isDropZone;
+    }
+
+    private void ResetSlotPosition() {
         transform.SetParent(_parent);
         transform.localPosition = Vector3.zero;
         _canvasGroup.blocksRaycasts = true;
-        OnItemPutted?.Invoke();
+        OnDragEnded?.Invoke();
     }
 }

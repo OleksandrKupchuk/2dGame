@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2491988134815338606}
   - component: {fileID: 4729099435692039309}
   - component: {fileID: 4864916275332199246}
+  - component: {fileID: 2941244948598861490}
   m_Layer: 5
   m_Name: MarketSlotView
   m_TagString: Untagged
@@ -166,8 +167,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemIcon: {fileID: 2463462894001416663}
+  _border: {fileID: 4022095468491554464}
+  _defaultBorder: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
+  _activeBorder: {fileID: 21300000, guid: b9b05ad1d692f23429022efc0fe145d6, type: 3}
   _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
-  _playerInput: {fileID: 11400000, guid: 25426407f4cb3554bbd1e7c625672b1b, type: 2}
+  _playerInput: {fileID: 11400000, guid: 32b23d19312ac6b4c8689b0ae3ee01e7, type: 2}
+  _itemToolTip: {fileID: 11400000, guid: 4903c3a417e5e4943a2adff73560a9bd, type: 2}
+--- !u!114 &2941244948598861490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858313065857012108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bd1be49480dcd4886bcbd91a0c5207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotView: {fileID: 4864916275332199246}
+  _itemToolTip: {fileID: 11400000, guid: 4903c3a417e5e4943a2adff73560a9bd, type: 2}
+  _rectTransform: {fileID: 7500805746528104801}
 --- !u!1 &5022839378251454937
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +199,7 @@ GameObject:
   - component: {fileID: 6178352888440721310}
   - component: {fileID: 6664869081418649113}
   - component: {fileID: 2463462894001416663}
+  - component: {fileID: 6889081216622389783}
   m_Layer: 5
   m_Name: ItemIcon
   m_TagString: Untagged
@@ -227,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -243,3 +264,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6889081216622389783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022839378251454937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7c24e9c5905a84fa81d593b2af37de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _market: {fileID: 11400000, guid: 1d704f51d47a56f4b8127bfa342ef29e, type: 2}
+  _inventory: {fileID: 11400000, guid: 342cc4a6cd225c541b9824678282c065, type: 2}
+  _slotView: {fileID: 4864916275332199246}
+  _slotZone: {fileID: 2941244948598861490}

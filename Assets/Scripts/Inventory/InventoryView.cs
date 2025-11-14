@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryView : MonoBehaviour {
     private List<InventorySlotView> _slots = new List<InventorySlotView>();
 
-    [SerializeField]
-    private Market _market;
     [SerializeField]
     private InventorySlotView _slotViewPrefab;
     [SerializeField]
@@ -16,15 +13,16 @@ public class InventoryView : MonoBehaviour {
     [SerializeField]
     private GameObject _background;
     [SerializeField]
-    private Button _closeButton;
+    private ButtonClosePanels _buttonClosePanels;
 
     private void Awake() {
         SpawnSlotsView();
         _inventory.OnOpen += Open;
         _inventory.OnClose += Close;
-        _inventory.OnAddItem += AddItem;
-        _inventory.OnRemoveItem += RemoveItem;
-        _closeButton.onClick.AddListener(() => { Close(); _market.Close(); });
+        _inventory.OnItemAdd += AddItem;
+        _inventory.OnItemRemove += RemoveItem;
+
+        _buttonClosePanels.OnClosePanels += Close;
 
         Close();
     }
@@ -32,20 +30,20 @@ public class InventoryView : MonoBehaviour {
     private void OnDestroy() {
         _inventory.OnOpen -= Open;
         _inventory.OnClose -= Close;
-        _inventory.OnAddItem -= AddItem;
-        _inventory.OnRemoveItem -= RemoveItem;
+        _inventory.OnItemAdd -= AddItem;
+        _inventory.OnItemRemove -= RemoveItem;
     }
 
     private void SpawnSlotsView() {
         for (int i = 0; i < _inventory.AmountSlots; i++) {
-            InventorySlotView _cell = Instantiate(_slotViewPrefab, _bag);
-            _cell.gameObject.name = _cell.gameObject.name + " " + i;
-            _cell.PutItem(null);
-            _slots.Add(_cell);
+            InventorySlotView _slot = Instantiate(_slotViewPrefab, _bag);
+            _slot.gameObject.name = _slot.gameObject.name + " " + i;
+            _slot.PutItem(null);
+            _slots.Add(_slot);
         }
     }
 
-    private void AddItem(ItemData itemData) {
+    private void AddItem(Item itemData) {
         foreach (var _slot in _slots) {
             if(_slot.IsEmpty) {
                 _slot.PutItem(itemData);
@@ -54,10 +52,10 @@ public class InventoryView : MonoBehaviour {
         }
     }
 
-    private void RemoveItem(ItemData itemData) {
+    private void RemoveItem(Item itemData) {
         foreach (var _slot in _slots) {
-            if (!_slot.IsEmpty && _slot.ItemData == itemData) {
-                _slot.TakeItem();
+            if (!_slot.IsEmpty && _slot.Item == itemData) {
+                _slot.RemoveItem();
                 return;
             }
         }
@@ -65,9 +63,11 @@ public class InventoryView : MonoBehaviour {
 
     public void Open() {
         _background.SetActive(true);
+        _buttonClosePanels.ShowCloseButton();
     }
 
     public void Close() {
         _background.SetActive(false);
+        _buttonClosePanels.HideCloseButton();
     }
 }

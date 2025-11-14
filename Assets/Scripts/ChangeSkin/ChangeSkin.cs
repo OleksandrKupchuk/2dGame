@@ -15,26 +15,22 @@ public class ChangeSkin : MonoBehaviour {
         //EventManager.TakeAwayItem -= Reset;
     }
 
-    public void Change(ItemData item) {
-        if (item is WearableItemData) {
-            var _item = item as WearableItemData;
-
+    public void Change(Item item) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
-                if (_item.BodyType == bodyPart.Type) {
-                    bodyPart.ChangeSkin(_item);
+                if (item.BodyType == bodyPart.Type) {
+                    bodyPart.ChangeSkin(item);
                 }
             }
 
         }
     }
 
-    public void Reset(ItemData item) {
-        if (item is WearableItemData) {
-            var _item = item as WearableItemData;
-
+    public void Reset(Item item) {
+        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
             foreach (BodyPart bodyPart in _bodyParts) {
-                if (_item.BodyType == bodyPart.Type) {
-                    bodyPart.ResetSkin(_item);
+                if (item.BodyType == bodyPart.Type) {
+                    bodyPart.ResetSkin(item);
                 }
             }
         }

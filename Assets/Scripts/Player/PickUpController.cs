@@ -14,6 +14,7 @@ public class PickUpController : MonoBehaviour {
 
         if (collision.transform.TryGetComponent(out ItemView itemView)) {
             if (_inventory.TryAddItem(itemView.ItemData)) {
+                Debug.Log("Pickup item = " + itemView.name);
                 Destroy(itemView.gameObject);
             }
         }

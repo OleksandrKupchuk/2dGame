@@ -1,0 +1,27 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class SaleItem : MonoBehaviour, IPointerClickHandler {
+    [SerializeField]
+    private Market _market;
+    [SerializeField]
+    private Inventory _inventory;
+    [SerializeField]
+    private InventorySlotView _slotView;
+    [SerializeField]
+    private SlotZone _slotZone;
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Right) {
+            if (_slotView.IsEmpty) {
+                return;
+            }
+
+            if (MarketView.IsOpen) {
+                _market.AddItem(_slotView.Item);
+                _inventory.RemoveItem(_slotView.Item);
+                _slotZone.HideItemToolTip();
+            }
+        }
+    }
+}

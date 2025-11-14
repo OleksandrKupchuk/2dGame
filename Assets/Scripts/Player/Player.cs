@@ -15,7 +15,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private List<SpriteRenderer> _sprites = new List<SpriteRenderer>();
     [SerializeField]
-    public PlayerHealthController _healthController;
+    public HealthController _healthController;
+    [SerializeField]
+    private Canvas _canvas;
 
     public List<Collider2D> CollidesForIgnored { get => _collidersForIgnored; }
     public PlayerIdleState IdleState { get; private set; }
@@ -39,12 +41,13 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         PlayerWeaponController.Init();
-        EventManager.OnHit += () => StateMachine.ChangeState(HitState);
-        EventManager.OnHit += () => {
+        _healthController.OnHit += () => StateMachine.ChangeState(HitState);
+        _healthController.OnHit += () => {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
-        EventManager.OnDead += () => StateMachine.ChangeState(DeadState);
+
+        _healthController.OnDead += () => StateMachine.ChangeState(DeadState);
 
         IdleState = new PlayerIdleState();
         RunState = new PlayerRunState();
@@ -59,12 +62,13 @@ public class Player : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        EventManager.OnHit -= () => StateMachine.ChangeState(HitState);
-        EventManager.OnHit -= () => {
+        _healthController.OnHit += () => StateMachine.ChangeState(HitState);
+        _healthController.OnHit += () => {
             StartCoroutine(InvulnerableStatus.ActivateInvulnerabilityStatus());
             StartCoroutine(BlinkAnimation());
         };
-        EventManager.OnDead -= () => StateMachine.ChangeState(DeadState);
+
+        _healthController.OnDead -= () => StateMachine.ChangeState(DeadState);
     }
 
     private void CheckComponentOnNull() {
@@ -83,6 +87,13 @@ public class Player : MonoBehaviour {
         StateMachine.Update();
         _healthController.RegenerationHealth();
         ToggleInventory();
+
+        if (PlayerMovement.IsLookingLeft) {
+            _canvas.transform.localScale = new Vector2(0.016f, _canvas.transform.localScale.y);
+        }
+        else if(!PlayerMovement.IsLookingLeft) {
+            _canvas.transform.localScale = new Vector2(-0.016f, _canvas.transform.localScale.y);
+        }
     }
 
     private void FixedUpdate() {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class SaveLoadJsonSystem : ISaveLoadSystem {
     public void Save(string fileName, object data) {
         string _filePath = Application.persistentDataPath + $"/{fileName}.json";
-        string _json = JsonUtility.ToJson(data);
-        File.WriteAllText(_filePath, _json);
+        string _json = JsonUtility.ToJson(data, true);
+        File.AppendAllText(_filePath, _json);
     }
 
     public T Load<T>(string fileName) {

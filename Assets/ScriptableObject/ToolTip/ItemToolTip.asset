@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfea680c9c901514eaf4a990b932e1e3, type: 3}
+  m_Name: ItemToolTip
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 9104990672612095067, guid: 6e8461e8150347842ac16358d7bff446, type: 3}
+  _prefabUsable: {fileID: 6319223979090121467, guid: 7736ee1e697a70949add1588077f092c, type: 3}
+  _prefabWearable: {fileID: 4989454819355862198, guid: d5d3c5e5551788541aad488c369c051f, type: 3}

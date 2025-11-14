@@ -14,8 +14,8 @@ public class PlayerJumpUpState : IState<Player> {
     }
 
     public void Update() {
-        //Debug.Log("is falling = " + _playerConfig.IsFalling);
-        //Debug.Log("jump button press = " + _playerConfig.Jump.action.triggered);
+        //Debug.Log("is falling = " + _config.IsFalling);
+        //Debug.Log("jump button press = " + _config.Jump.action.triggered);
         _timerToFalling -= Time.deltaTime;
 
         if (_player.PlayerMovement.IsGround() && _timerToFalling <= 0) {

@@ -21,7 +21,7 @@ public class FieldOfView : MonoBehaviour {
     [SerializeField]
     private LayerMask _layer;
     [SerializeField]
-    private PlayerHealthController _healthController;
+    private HealthController _healthController;
 
     public Player Target { get; private set; }
 
