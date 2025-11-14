@@ -51,7 +51,7 @@ public class ItemAttribute {
                     return $"<color=green>+{string.Format("{0:0.0}", FixedValue)}</color>";
                 }
                 else {
-                    return $"<color=red>-{string.Format("{0:0.0}", FixedValue)}</color>";
+                    return $"<color=red>{string.Format("{0:0.0}", FixedValue)}</color>";
                 }
             }
             else {
@@ -59,7 +59,7 @@ public class ItemAttribute {
                     return $"<color=green>+{string.Format("{0:0.0}", FixedValue)}%</color>";
                 }
                 else {
-                    return $"<color=red>-{string.Format("{0:0.0}", FixedValue)}%</color>";
+                    return $"<color=red>{string.Format("{0:0.0}", FixedValue)}%</color>";
                 }
             }
         }
@@ -101,8 +101,13 @@ public class ItemAttribute {
         }
     }
 
-    private string GetFormatedValue(float value, Color color) {
-        return $"<color={color}>{string.Format("{0:0.0}", value)}</color>";
+    private string GetFormattedValue(float value) {
+        if (value > 0) {
+            return $"<color=green>+{string.Format("{0:0.0}", value)}</color>";
+        }
+        else {
+            return $"<color=red>+{string.Format("{0:0.0}", value)}</color>";
+        }
     }
 }
 

@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Item/Item", order = 0)]
+[System.Serializable]
 public class Item : ScriptableObject {
     [SerializeField, HideInInspector]
     private int _price;
@@ -10,6 +11,7 @@ public class Item : ScriptableObject {
     private void OnEnable() {
         _price = Random.Range(_minPrice, _maxPrice);
         Debug.Log($"Item <color=green>{_name}</color> have the price <color=yellow>{_price}</color> coins");
+        _attributes.ToArray().ToList().ForEach(attribute => attribute.GenerateParameters());
     }
 
     [SerializeField]
@@ -46,7 +48,7 @@ public class Item : ScriptableObject {
     public Sprite Icon { get => _icon; set => _icon = value; }
     public List<ItemAttribute> Attributes { get => _attributes; set => _attributes = value; }
     public float Duration { get => _duration; set => _duration = value; }
-    public ItemType ItemTypeAttribute { get => _itemType; set => _itemType = value; }
+    public ItemType ItemType { get => _itemType; set => _itemType = value; }
     public BodyType BodyType { get => _bodyType; set => _bodyType = value; }
     public List<ItemAction> ItemActions { get => _itemActions; }
     public float SpawnChance { get => _spawnChance; }

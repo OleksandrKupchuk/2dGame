@@ -26,14 +26,20 @@ public class Market : ScriptableObject {
     }
 
     public bool TryBuyItem(Item item) {
-        if (_playerConfig.Coins >= item.Price) {
+        if (_playerConfig.Coins < item.Price) {
+            Debug.LogWarning("Not enough money");
+            return false;
+        }
+
+        if (_inventory.CanAddItem) {
             _playerConfig.Coins -= item.Price;
             item.Price = item.Price - (item.Price * Commission / 100);
-            _inventory.TryAddItem(item);
+            _inventory.AddItem(item);
+            EventManager.OnPriceUpdateHandler();
             return true;
         }
         else {
-            Debug.LogWarning("Not enough money");
+            Debug.LogWarning("Not enough space in inventory");
             return false;
         }
     }

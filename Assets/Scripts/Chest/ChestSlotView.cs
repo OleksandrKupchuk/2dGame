@@ -35,8 +35,13 @@ public class ChestSlotView : SlotView, IPointerClickHandler {
                 return;
             }
 
+            if(!_inventory.CanAddItem) {
+                Debug.Log("In Inventory there is not a place");
+                return;
+            }
+
             Debug.Log("Right click in chest");
-            _inventory.TryAddItem(_item);
+            _inventory.AddItem(_item);
             RemoveItem();
             _itemToolTip.Hide();
         }

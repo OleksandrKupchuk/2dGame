@@ -30,6 +30,36 @@ MonoBehaviour:
     _rangeMaxLower: 0
     _rangeMinUpper: 0
     _rangeMaxUpper: 0
+  - _icon: {fileID: 21300000, guid: 57a2433b9e60c4b41a56bbb8cc51e67b, type: 3}
+    _valueForm: 0
+    _modifierType: 0
+    _attributeType: 1
+    _fixedMin: -4
+    _fixedMax: -2
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
+  - _icon: {fileID: 21300000, guid: 57a2433b9e60c4b41a56bbb8cc51e67b, type: 3}
+    _valueForm: 0
+    _modifierType: 1
+    _attributeType: 1
+    _fixedMin: 1
+    _fixedMax: 2
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
+  - _icon: {fileID: 21300000, guid: 57a2433b9e60c4b41a56bbb8cc51e67b, type: 3}
+    _valueForm: 0
+    _modifierType: 1
+    _attributeType: 1
+    _fixedMin: -2
+    _fixedMax: -1
+    _rangeMinLower: 0
+    _rangeMaxLower: 0
+    _rangeMinUpper: 0
+    _rangeMaxUpper: 0
   _isNeedDuration: 0
   _duration: 0
   _itemType: 0

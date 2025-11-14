@@ -16,26 +16,26 @@ public class Inventory : ScriptableObject {
     public event Action<Item> OnItemAdd;
     public event Action<Item> OnItemRemove;
 
-    public bool IsEmptySlot => AmountSlots > _items.Count;
+    public bool CanAddItem => AmountSlots > _items.Count;
     public List<Item> Items => _items;
 
     private void OnEnable() {
         _items.Clear();
     }
 
-    public bool TryAddItem(Item itemData) {
-        if(!IsEmptySlot) {
+    public void AddItem(Item item) {
+        _items.Add(item);
+        OnItemAdd?.Invoke(item);
+    }
+
+    public bool TryAddItem(Item item) {
+        if(!CanAddItem) {
             Debug.Log("In Inventory there is not a place");
             return false;
         }
-        //if(_traderItems.Contains(itemData)) {
-        //    Debug.Log("Item already add");
-        //    return false;
-        //}
 
-        _items.Add(itemData);
-        OnItemAdd?.Invoke(itemData);
-
+        _items.Add(item);
+        OnItemAdd?.Invoke(item);
         return true;
     }
 

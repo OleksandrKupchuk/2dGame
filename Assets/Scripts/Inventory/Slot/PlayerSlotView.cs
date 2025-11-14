@@ -26,7 +26,7 @@ public class PlayerSlotView : SlotView {
         if (item == null) return true;
 
         if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
-            return _slotTypes.Contains(item.ItemTypeAttribute);
+            return _slotTypes.Contains(item.ItemType);
         }
 
         return false;
@@ -40,7 +40,7 @@ public class PlayerSlotView : SlotView {
 
     private void ChangeBorderColor(Item item) {
         if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
-            if (_slotTypes.Contains(item.ItemTypeAttribute)) {
+            if (_slotTypes.Contains(item.ItemType)) {
                 SetBorderColor(Color.green);
             }
             else {

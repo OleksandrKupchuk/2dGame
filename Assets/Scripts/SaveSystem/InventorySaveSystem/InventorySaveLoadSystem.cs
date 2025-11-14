@@ -24,22 +24,8 @@ public class InventorySaveLoadSystem : MonoBehaviour {
     }
 
     private ItemData GetItemData(Item item) {
-        ItemData _itemData = new ItemData();
-
-        _itemData.itemType = item.ItemCategory.ToString();
-        _itemData.name = item.Name;
-        _itemData.description = item.Description;
-        _itemData.price = item.Price;
-        _itemData._attributesData = GetItemsAttributesData(item.Attributes);
-
-        if (item.ItemCategory.Equals(ItemCategory.Wearable)) {
-            _itemData.itemTypeAttribute = item.ItemTypeAttribute.ToString();
-            _itemData.bodyType = item.BodyType.ToString();
-        }
-        else {
-            _itemData.duration = item.Duration;
-        }
-
+        ItemData _itemData = new ItemData(item);
+        _itemData.attributesData = GetItemsAttributesData(item.Attributes);
         return _itemData;
     }
 
@@ -47,20 +33,7 @@ public class InventorySaveLoadSystem : MonoBehaviour {
         List<ItemAttributeData> _itemsAttributes = new List<ItemAttributeData>();
 
         foreach (ItemAttribute itemAttribute in itemsAttributes) {
-            ItemAttributeData _itemAttributes = new ItemAttributeData();
-
-            _itemAttributes.valueForm = itemAttribute.ValueForm;
-            _itemAttributes.attributeType = itemAttribute.AttributeType;
-            _itemAttributes.modifierType = itemAttribute.ModifierType;
-
-            if (itemAttribute.ValueForm.Equals(ValueForm.Range)) {
-                _itemAttributes.rangeMinValue = itemAttribute.RangeMinValue;
-                _itemAttributes.rangeMaxValue = itemAttribute.RangeMaxValue;
-            }
-            else {
-                _itemAttributes.fixedValue = itemAttribute.FixedValue;
-            }
-
+            ItemAttributeData _itemAttributes = new ItemAttributeData(itemAttribute);
             _itemsAttributes.Add(_itemAttributes);
         }
 
@@ -74,30 +47,30 @@ public class InventorySaveLoadSystem : MonoBehaviour {
 
             foreach (var itemData in _itemsData.itemsData) {
                 Item _item = LoadItem(itemData);
-                _inventory.TryAddItem(_item);
+                _inventory.AddItem(_item);
             }
 
             print("Inventory loaded successfully.");
         }
-        catch (System.Exception e) {
-            Debug.LogError(e.Message);
+        catch (Exception exeption) {
+            Debug.LogError(exeption.Message);
         }
     }
 
     private Item LoadItem(ItemData itemData) {
         Item _item = ScriptableObject.CreateInstance<Item>();
 
-        _item.ItemCategory = (ItemCategory)Enum.Parse(typeof(ItemCategory), itemData.itemType);
+        _item.ItemCategory = itemData.itemCategory;
         _item.Name = itemData.name;
         _item.Description = itemData.description;
         _item.Price = itemData.price;
         string _iconPath = $"Sprites/Items/{itemData.name}";
         _item.Icon = Resources.Load<Sprite>(_iconPath);
-        _item.Attributes = LoadItemAttributes(itemData._attributesData);
+        _item.Attributes = LoadItemAttributes(itemData.attributesData);
 
         if (_item.ItemCategory.Equals(ItemCategory.Wearable)) {
-            _item.ItemTypeAttribute = (ItemType)Enum.Parse(typeof(ItemType), itemData.itemTypeAttribute);
-            _item.BodyType = (BodyType)Enum.Parse(typeof(BodyType), itemData.bodyType);
+            _item.ItemType = itemData.itemType;
+            _item.BodyType = itemData.bodyType;
         }
         else {
             _item.Duration = itemData.duration;
@@ -120,12 +93,12 @@ public class InventorySaveLoadSystem : MonoBehaviour {
             if (itemAttributesData.valueForm.Equals(ValueForm.Range)) {
                 _itemAttribute.RangeMinValue = itemAttributesData.rangeMinValue;
                 _itemAttribute.RangeMaxValue = itemAttributesData.rangeMaxValue;
-                _itemAttributes.Add(_itemAttribute);
             }
             else {
                 _itemAttribute.FixedValue = itemAttributesData.fixedValue;
-                _itemAttributes.Add(_itemAttribute);
             }
+
+            _itemAttributes.Add(_itemAttribute);
         }
 
         return _itemAttributes;

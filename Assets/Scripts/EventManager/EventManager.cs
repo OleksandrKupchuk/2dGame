@@ -23,10 +23,10 @@ public class EventManager {
         UseItem.Invoke(item);
     }
 
-    public static event Action<Item> BuyItem;
+    public static event Action OnPriceUpdate;
 
-    public static void BuyItemEventHandler(Item item) {
-        BuyItem.Invoke(item);
+    public static void OnPriceUpdateHandler() {
+        OnPriceUpdate.Invoke();
     }
 
     public static event Action<Item> OnItemDrop;

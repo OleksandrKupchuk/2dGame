@@ -4,23 +4,22 @@ using UnityEngine.UI;
 public class PlayerCoinsView : MonoBehaviour {
     [SerializeField]
     private PlayerConfig _playerConfig;
-
     [SerializeField]
     private Text _value;
 
     private void Awake() {
-        EventManager.BuyItem += UpdateCoins;
+        EventManager.OnPriceUpdate += UpdateCoins;
     }
 
     private void OnDestroy() {
-        EventManager.BuyItem -= UpdateCoins;
+        EventManager.OnPriceUpdate -= UpdateCoins;
     }
 
     private void Start() {
-        UpdateCoins(null);
+        UpdateCoins();
     }
 
-    public void UpdateCoins(Item item) {
+    public void UpdateCoins() {
         _value.text = "" + _playerConfig.Coins;
     }
 }

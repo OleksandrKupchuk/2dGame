@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ee5ccdd93cdd4daf2562555818545, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  _price: 25
+  _price: 41
   _itemCategory: 0
   _name: Axe
   _description: Desc

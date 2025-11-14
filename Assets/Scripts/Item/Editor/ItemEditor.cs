@@ -41,15 +41,7 @@ public class ItemEditor : Editor {
         EditorGUILayout.PropertyField(_minPriceProperty);
         EditorGUILayout.PropertyField(_maxPriceProperty);
         EditorGUILayout.PropertyField(_iconProperty);
-
-        EditorGUI.BeginChangeCheck();
         EditorGUILayout.PropertyField(_attributesProperty);
-        if (EditorGUI.EndChangeCheck()) {
-            foreach (var attribute in _item.Attributes) {
-                attribute.GenerateParameters();
-            }
-        }
-
         EditorGUILayout.PropertyField(_bodyTypeProperty);
 
         if (_itemTypeProperty.intValue == (int)ItemCategory.Usable) {
